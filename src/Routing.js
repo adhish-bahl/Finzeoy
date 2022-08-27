@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import PageNotFound from './PageNotFound'
 
 function Routing() {
   return (
@@ -9,10 +9,10 @@ function Routing() {
             <div className="App">
                 <Switch>
 
-                    <Route exact path="/ourteam">
-                        <Header  user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId}/>
+                    <Route exact path="/">
+                        {/* <Header  user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId}/>
                         <Team />
-                        <Footer />
+                        <Footer /> */}
                     </Route>
 
                     <Route >
