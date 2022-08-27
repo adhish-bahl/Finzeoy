@@ -1,0 +1,16 @@
+.PNFcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.head {
+    font-size: 70px;
+    text-decoration: solid;
+}
+
+.text {
+    font-size: 30px;
+}
