@@ -1,0 +1,65 @@
+body {
+    margin: 0px;
+    background-color: rgba(57, 174, 169, 0.18);
+}
+
+@font-face {
+    font-family: Prata;
+    src: url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
+}
+
+@font-face {
+    font-family: Lato;
+    src: url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3em 3.5em;
+    box-shadow: 0px 7px 10px 0px rgba(148,148,148,1);
+}
+
+.header--title {
+    display: flex;
+    align-items: center;
+}
+
+.header--name { 
+    font-family: Prata;
+    font-size: 25px;
+    padding-left: 0.5em;
+}
+
+.header--image {
+    height: 3.5em;
+    width: 3.5em;
+}
+
+.header--buttons {
+    display: flex;
+    align-items: center;
+}
+
+.header--link {
+    margin: 0em 0.4em;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 22px;
+    border: none;
+    background: transparent;
+    padding: 0.15em 0.65em; 
+    cursor: pointer;
+    transition: font-size 0.5s;
+}
+
+.header--link:hover {
+    font-size: 25px;
+}
+
+
+
+.active {
+    background-color: rgba(49, 157, 160, 0.8);
+    border-radius: 0.3em;
+}
