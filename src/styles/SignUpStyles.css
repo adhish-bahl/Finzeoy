@@ -1,12 +1,16 @@
-.signUp--container {
+.signUp--container, .login--container {
     margin: auto;
-    margin-top: 4em;
+    margin-top: 4.5em;
     height: fit-content;
     width: fit-content;
     background: #FFFFFF;
     border-radius: 1.5em;
     padding: 1em 5em;
     font-family: 'Outfit', sans-serif;
+}
+
+.login--container {
+    padding: 2.75em 5em;
 }
 
 .signUp--head {
@@ -45,4 +49,19 @@
 
 .form--submit:hover {
     background-color: rgba(49, 157, 160, 1);
+}
+
+.form--forgotPass {
+    color: black;
+    margin-top: 1.2em;
+}
+
+.form--radioInput {
+    margin-top: 0.7em;
+    border-radius: 0.6em;
+    padding: 0.6em 0em;
+}
+
+.form--radioInput--legend {
+    font-weight: 700;
 }
