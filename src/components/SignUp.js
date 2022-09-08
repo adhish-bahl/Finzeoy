@@ -8,12 +8,15 @@ export default function SignUp() {
         email: "",
         phno: "",
         userType: "none",
-        password: ""
+        password: "",
     });
 
     function handleChange(event) {
-        // validation code
-        const {name, value} = event.target;
+        const {name, value, style} = event.target;
+
+        let isError = validateForm(name, value);
+        isError ? style.outline = "2px solid red" : style.outline = "2px solid black";
+
         setUserDetails(prevFormData => {
             return {
                 ...prevFormData,
@@ -22,8 +25,22 @@ export default function SignUp() {
         })
     }
     
+    function validateForm(name, value) {
+        if(name === "name")
+            return value.match(/^[a-z][a-z\s]*$/i) ? false : true;
+        
+        if(name === "email")
+            return value.match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/) ? false : true;
+
+        if(name === "phno")
+            return value.match(/^\d{10}$/) ? false : true;
+
+        if(name === "password")
+            return value.match(/[^ ]{6}/) ? false : true;
+    }
+
     function saveFormData() {
-        //Code to call backend and save form data
+        // Code to call backend server and save data
     }
 
     return (

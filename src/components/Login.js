@@ -10,14 +10,25 @@ export default function Login() {
     })
 
     function handleChange(event) {
-        // validation code        
-        const {name, value} = event.target;
+        const {name, value, style} = event.target;
+        
+        let isError = validateForm(name, value);
+        isError ? style.outline = "2px solid red" : style.outline = "2px solid black";
+
         setLoginDetails(prevFormData => {
             return {
                 ...prevFormData,
                 [name] : value
             }
         })
+    }
+
+    function validateForm(name, value) {
+        if(name === "email")
+            return value.match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/) ? false : true;
+
+        if(name === "password")
+            return value.match(/[^ ]{6}/) ? false : true;
     }
 
     function loginUser() {

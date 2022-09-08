@@ -33,6 +33,10 @@
     font-size: 0.9em;
 }
 
+.form--input:focus {
+    outline: 2px solid black;
+}
+
 .form--submit {
     width: 50%;
     align-self: center;
