@@ -1,0 +1,10 @@
+.LLBcontainer {
+    /* outline: 1px solid black; */
+    background-color: white;
+    margin: 20px 50px;
+}
+
+.LLBTitleHeading {
+    text-align: left;
+    padding: 10px 50px;
+}

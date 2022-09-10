@@ -1,0 +1,15 @@
+.LLBPCcontainer {
+    /* outline: 1px black solid; */
+    display: inline-block;
+    padding: 0px 10px;
+}
+
+.LLBPCreadMore {
+    background-color: #B93160;
+    position: relative;
+    bottom: 35px;
+}
+
+.LLBPCcontainer img {
+    height: 100px;
+}
