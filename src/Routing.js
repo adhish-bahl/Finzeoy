@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory, Redirect } from "react-router-dom";
+import Footer from './components/Footer';
 import LearningPage from './components/LearningPage';
 import Registration from './components/Registration';
 import PageNotFound from './PageNotFound'
@@ -19,6 +20,7 @@ function Routing() {
                     
                     <Route exact path="/learning">
                         <LearningPage />
+                        <Footer />
                     </Route>
 
                     <Route path="/signup">
