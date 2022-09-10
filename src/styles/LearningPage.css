@@ -1,0 +1,15 @@
+.LPbookIll, .LPlaptopGirlIll {
+    position: absolute;
+    left: 10px;
+}
+
+.LPbookIll {
+    left: 20px;
+    width: 100px;
+}
+
+.LPlaptopGirlIll {
+    left: 100px;
+    width: 80px;
+    bottom: -35px;
+}
