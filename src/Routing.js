@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useHistory, Redirect } fr
 import Footer from './components/Footer';
 import LearningPage from './components/LearningPage';
 import Registration from './components/Registration';
-import PageNotFound from './PageNotFound'
+import PageNotFound from './components/PageNotFound'
 
 function Routing() {
   return (

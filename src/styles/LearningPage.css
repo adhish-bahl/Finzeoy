@@ -5,12 +5,13 @@
 
 .LPbookIll {
     left: 20px;
-    bottom: 0PX;
+    bottom: 7PX;
     width: 100px;
 }
 
 .LPlaptopGirlIll {
     left: 100px;
     width: 80px;
-    bottom: -5px;
+    bottom: 0px;
+    padding-bottom: 5px;
 }
