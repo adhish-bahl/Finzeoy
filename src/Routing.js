@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useHistory, Redirect } from "react-router-dom";
-import LearningLessonsBar from './components/LearningLessonsBar';
+import LearningPage from './components/LearningPage';
 import Registration from './components/Registration';
 import PageNotFound from './PageNotFound'
 
@@ -18,7 +18,7 @@ function Routing() {
                     </Route>
                     
                     <Route exact path="/learning">
-                        <LearningLessonsBar />
+                        <LearningPage />
                     </Route>
 
                     <Route path="/signup">
