@@ -55,7 +55,7 @@ export default function SignUp() {
                 <input type={"tel"} placeholder="Phone Number" className="form--input" name="phno" value={userDetails.phno} onChange={handleChange}></input>
                 <select name="userType" value={userDetails.userType} className="form--input" onChange={handleChange}>
                     <option value="none" hidden>User Type</option>
-                    <option value="end-user">End User</option>
+                    <option value="end-user">General User</option>
                     <option value="financial-advisor">Financial Advisor</option>
                     <option value="student">Student</option>
                 </select>

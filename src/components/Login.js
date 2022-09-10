@@ -47,7 +47,7 @@ export default function Login() {
                 <fieldset className="form--radioInput">
                     <legend className="form--radioInput--legend">User Type</legend>
                     <input type={"radio"} name="userType" id="endUser" value="end-user" checked={loginDetails.userType === "end-user"} onChange={handleChange}></input>
-                    <label htmlFor="endUser">End User</label>
+                    <label htmlFor="endUser">General</label>
                     <input type={"radio"} name="userType" id="advisor" value="financial-advisor" checked={loginDetails.userType === "financial-advisor"} onChange={handleChange}></input>
                     <label htmlFor="advisor">Advisor</label>
                     <input type={"radio"} name="userType" id="student" value="student" checked={loginDetails.userType === "student"} onChange={handleChange}></input>

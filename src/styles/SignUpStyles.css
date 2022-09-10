@@ -63,9 +63,10 @@
 .form--radioInput {
     margin-top: 0.7em;
     border-radius: 0.6em;
-    padding: 0.6em 0em;
+    padding: 0.6em 0.3em;
 }
 
 .form--radioInput--legend {
     font-weight: 700;
+    font-size: 1.2em;
 }
