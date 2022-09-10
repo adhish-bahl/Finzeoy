@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import LearningPage from './components/LearningPage';
 import Registration from './components/Registration';
 import PageNotFound from './components/PageNotFound'
+import LoginSignUpHeader from './components/LoginSignUpHeader';
 
 function Routing() {
   return (
@@ -19,6 +20,7 @@ function Routing() {
                     </Route>
                     
                     <Route exact path="/learning">
+                        <LoginSignUpHeader />
                         <LearningPage />
                         <Footer />
                     </Route>
