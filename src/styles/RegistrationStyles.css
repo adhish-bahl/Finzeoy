@@ -1,0 +1,24 @@
+.bg-illustration1 {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 14em;
+    width: 14em;
+}
+
+.bg-illustration2 {
+    position: absolute;
+    top: 168px;
+    left: 430px;
+    height: 10em;
+    width: 12em;
+    z-index: -1;
+}
+
+.bg-illustration3 {
+    position: absolute;
+    top: 426px;
+    left: 815px;
+    height: 12em;
+    width: 12em;
+}

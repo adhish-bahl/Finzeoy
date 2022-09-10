@@ -1,0 +1,71 @@
+.signUp--container, .login--container {
+    margin: auto;
+    margin-top: 4.5em;
+    height: fit-content;
+    width: fit-content;
+    background: #FFFFFF;
+    border-radius: 1.5em;
+    padding: 1em 5em;
+    font-family: 'Outfit', sans-serif;
+}
+
+.login--container {
+    padding: 2.75em 5em;
+}
+
+.signUp--head {
+    margin: 0.3em 0em;
+}
+
+.signUp--form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+}
+
+.form--input {
+    margin: 0.7em 0em;
+    height: 2.4em;
+    border: none;
+    background: rgba(55, 71, 79, 0.15);
+    border-radius: 0.6em;
+    padding: 0.2em 0.8em;
+    font-size: 0.9em;
+}
+
+.form--input:focus {
+    outline: 2px solid black;
+}
+
+.form--submit {
+    width: 50%;
+    align-self: center;
+    margin-top: 1.2em;
+    font-weight: 700;
+    padding: 0.3em 0em;
+    font-size: 1.25em;
+    background-color: rgba(49, 157, 160, 0.8);
+    border-radius: 0.4em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form--submit:hover {
+    background-color: rgba(49, 157, 160, 1);
+}
+
+.form--forgotPass {
+    color: black;
+    margin-top: 1.2em;
+}
+
+.form--radioInput {
+    margin-top: 0.7em;
+    border-radius: 0.6em;
+    padding: 0.6em 0em;
+}
+
+.form--radioInput--legend {
+    font-weight: 700;
+}

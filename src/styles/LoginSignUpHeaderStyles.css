@@ -3,16 +3,6 @@ body {
     background-color: rgba(57, 174, 169, 0.18);
 }
 
-@font-face {
-    font-family: Prata;
-    src: url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
-}
-
-@font-face {
-    font-family: Lato;
-    src: url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
-}
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -26,7 +16,8 @@ body {
 }
 
 .header--name { 
-    font-family: Prata;
+    font-family: 'Prata', sans-serif;
+    letter-spacing: 0.1em;
     font-size: 25px;
     padding-left: 0.5em;
 }
@@ -43,23 +34,26 @@ body {
 
 .header--link {
     margin: 0em 0.4em;
-    font-family: Lato;
+    font-family: 'Outfit', sans-serif;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 1.375em;
     border: none;
     background: transparent;
-    padding: 0.15em 0.65em; 
+    padding: 0.2em 0.65em; 
     cursor: pointer;
-    transition: font-size 0.5s;
 }
 
-.header--link:hover {
-    font-size: 25px;
+@keyframes show-back {
+    from {
+        background: transparent;
+    }
+    to {
+        background: rgba(49, 157, 160, 0.8);
+    }
 }
-
-
 
 .active {
     background-color: rgba(49, 157, 160, 0.8);
-    border-radius: 0.3em;
+    border-radius: 0.4em;
+    animation: show-back 0.3s ease-in;
 }
