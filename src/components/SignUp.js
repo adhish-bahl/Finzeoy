@@ -44,24 +44,27 @@ export default function SignUp() {
     }
 
     return (
-        <div className="signUp--container">
-            <div>
-                <h1 className="signUp--head">SIGN UP</h1>
-                <h5 className="signUp--head">STAY UPDATED ON THE FINANCIAL WORLD</h5>
-            </div>
-            <form className="signUp--form">
-                <input type={"text"} placeholder="Name" className="form--input" name="name" value={userDetails.name} onChange={handleChange}></input>
-                <input type={"email"} placeholder="Email ID" className="form--input" name="email" value={userDetails.email} onChange={handleChange}></input>
-                <input type={"tel"} placeholder="Phone Number" className="form--input" name="phno" value={userDetails.phno} onChange={handleChange}></input>
-                <select name="userType" value={userDetails.userType} className="form--input" onChange={handleChange}>
-                    <option value="none" hidden>User Type</option>
-                    <option value="end-user">General User</option>
-                    <option value="financial-advisor">Financial Advisor</option>
-                    <option value="student">Student</option>
-                </select>
-                <input type={"password"} placeholder="Password" className="form--input" name="password" value={userDetails.password} onChange={handleChange}></input>
+        <div>
+            <div className="signUp--container">
+                <div>
+                    <h1 className="signUp--head">SIGN UP</h1>
+                    <h5 className="signUp--head">STAY UPDATED ON THE FINANCIAL WORLD</h5>
+                </div>
+                <form className="signUp--form">
+                    <input type={"text"} placeholder="Name" className="form--input" name="name" value={userDetails.name} onChange={handleChange}></input>
+                    <input type={"email"} placeholder="Email ID" className="form--input" name="email" value={userDetails.email} onChange={handleChange}></input>
+                    <input type={"tel"} placeholder="Phone Number" className="form--input" name="phno" value={userDetails.phno} onChange={handleChange}></input>
+                    <select name="userType" value={userDetails.userType} className="form--input" onChange={handleChange}>
+                        <option value="none" hidden>User Type</option>
+                        <option value="end-user">General User</option>
+                        <option value="financial-advisor">Financial Advisor</option>
+                        <option value="student">Student</option>
+                    </select>
+                    <input type={"password"} placeholder="Password" className="form--input" name="password" value={userDetails.password} onChange={handleChange}></input>
+                </form>
+                <p className="form--terms">By clicking Agree & Join, you agree to the FINZEOY<br></br> User Agreement, Privacy Policy, and Cookie Policy.</p>
                 <button className="form--submit" onClick={saveFormData}>Join Now</button>
-            </form>
+            </div>
         </div>
     )
 }

@@ -36,7 +36,7 @@ export default function Login() {
     }
 
     return (
-        <div className="login--container">
+        <div className="signUp--container login--container">
             <div>
                 <h1 className="signUp--head">LOG IN</h1>
                 <h5 className="signUp--head">STAY UPDATED ON THE FINANCIAL WORLD</h5>
@@ -54,8 +54,8 @@ export default function Login() {
                     <label htmlFor="student">Student</label>
                 </fieldset>
                 <a href="#" className="form--forgotPass">Forgot your Password?</a>
-                <button className="form--submit" onClick={loginUser}>Login</button>
             </form>
+            <button className="form--submit" onClick={loginUser}>Login</button>
         </div>
     )
     
