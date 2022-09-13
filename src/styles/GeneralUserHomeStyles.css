@@ -1,0 +1,18 @@
+.general--homePage {
+    background: rgba(144, 183, 125, 0.5);
+}
+
+.page--active {
+    background: #90B77D;
+    border-radius: 0.4em;
+    animation: page-show-back 0.3s ease-in;
+}
+
+@keyframes page-show-back {
+    from {
+        background: transparent;
+    }
+    to {
+        background: rgba(144, 183, 125, 0.5);
+    }
+}

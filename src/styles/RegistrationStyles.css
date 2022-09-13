@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .bg-illustration1 {
     position: absolute;
     left: 0px;

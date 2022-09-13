@@ -5,6 +5,7 @@ import LearningPage from './components/LearningPage';
 import Registration from './components/Registration';
 import PageNotFound from './components/PageNotFound'
 import LoginSignUpHeader from './components/LoginSignUpHeader';
+import GeneralUserHomePage from './components/GeneralUserHomePage';
 
 function Routing() {
   return (
@@ -27,6 +28,10 @@ function Routing() {
 
                     <Route path="/signup">
                         <Registration />
+                    </Route>
+
+                    <Route path="/general">
+                        <GeneralUserHomePage username="xxx" />
                     </Route>
 
                     <Route >
