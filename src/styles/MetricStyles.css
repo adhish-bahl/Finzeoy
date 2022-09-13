@@ -1,0 +1,17 @@
+.metric--container {
+    width: 50%;
+    margin: 0em 1em;
+    padding: 0.7em 0em;
+    background: rgba(144, 183, 125, 0.24);
+    border-radius: 0.8em;
+}
+
+.metric--head {
+    margin: 0;
+    font-weight: 600;
+}
+
+.metric--amount {
+    margin: 0.5em 0em 0em 0em;
+    font-weight: 500;
+}

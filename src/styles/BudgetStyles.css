@@ -1,0 +1,40 @@
+.budget--container {
+    height: 35vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    background: rgba(144, 183, 125, 0.4);
+    border-radius: 1em;
+    padding: 1em 1.5em;
+}
+
+.budget--header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.budget--header--title {
+    margin: 0;
+}
+
+.budget--buttons {
+    display: flex;
+}
+
+.budget--header--button {
+    background: transparent;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 0.8em;
+    background: rgba(144, 183, 125, 0.8);
+    display: flex;
+    justify-content: center;
+    margin: 0em 0.6em;
+    cursor: pointer;
+    border: none;
+}
+
+.budget--buttonImage{
+    height: 2em;
+    width: 2em;
+}

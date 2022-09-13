@@ -15,10 +15,12 @@ export default function PageHeader(props) {
                 <h1 className="header--name">FINZEOY</h1>
             </div>
 
-            <div className="header--buttons">
-                {headerItems}
-                <h3 className="profile--name">{props.username}</h3>
-                <img className="profile--logo" src="./Images/profile_logo.png" />
+            <div className="header--right">
+                <div className="header--buttons">
+                    {headerItems}
+                    <h3 className="profile--name">{props.username}</h3>
+                    <img className="profile--logo" src="./Images/profile_logo.png" />
+                </div>
             </div>
         </div>
     )
