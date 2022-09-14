@@ -6,7 +6,7 @@ function LLBPictureComp() {
   return (
     <div className='LLBPCcontainer'>
         <img src={DemoIng} alt="thumbnail"/>
-        <div className="LLBPCreadMore">READ MORE</div>
+        <div className="LLBPCreadMore">READ CHAPTER</div>
     </div>
   )
 }
