@@ -11,12 +11,12 @@ function LearningLessonsBar({title}) {
   function scrollLeft() {
     console.log("click!!")
     const left = document.getElementsByClassName("LLBlower");
-    left.scrollInroView(-200, 0)
+    left.scrollIntoView(-200, 0)
   }
 
   function scrollRight()  {
     const left = document.getElementsByClassName("LLBlower");
-    left.scrollInroView(200,0)
+    left.scrollIntoView(200,0)
   }
 
 
