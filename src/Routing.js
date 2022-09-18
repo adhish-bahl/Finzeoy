@@ -16,6 +16,7 @@ function Routing() {
                 <Switch>
 
                     <Route exact path="/">
+                        <LoginSignUpHeader />
                         <LandingPage />
                     </Route>
                     

@@ -1,3 +1,7 @@
+* {
+    overflow-y: hidden;
+}
+
 .LandingPageContainer{
     width: 100%;
     height: fit-content;
@@ -5,5 +9,60 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    position: absolute;
+    top: 0px;
+    z-index: -10;
+    background-color: #b8b0aa;
+}
+
+.backgrounfLeft {
+    width: 50vw;
+}
+
+.LPleft {
+    width: 50vw;
+}
+
+.LPright {
+    width: 50vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.manIcon {
+    position: absolute;
+    bottom: 70px;
+    height: 350px;
+}
+
+.LPrightTop {
+    background-color: white;
+    width: 60%;
+    padding: 30px;
+    border-radius: 20px;
+    line-height: 40px;
+    font-size: 1.2rem;
+}
+
+.LPrightLower {
+    position: absolute;
+    bottom: 90px;
+}
+
+.LPWallet {
+    position: absolute;
+    top: 0px;
+    left:  790px;
+    height: 400px;
+    z-index: -10;
+}
+
+.LPCoinStack {
+    position: absolute;
+    top: 270px;
+    left: 1080px;
+    z-index: 10000;
 }
