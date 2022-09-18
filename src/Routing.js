@@ -6,6 +6,7 @@ import Registration from './components/Registration';
 import PageNotFound from './components/PageNotFound'
 import LoginSignUpHeader from './components/LoginSignUpHeader';
 import GeneralUserHomePage from './components/GeneralUserHomePage';
+import LandingPage from './components/LandingPage';
 
 function Routing() {
   return (
@@ -15,9 +16,7 @@ function Routing() {
                 <Switch>
 
                     <Route exact path="/">
-                        {/* <Header  user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId}/>
-                        <Team />
-                        <Footer /> */}
+                        <LandingPage />
                     </Route>
                     
                     <Route exact path="/learning">
