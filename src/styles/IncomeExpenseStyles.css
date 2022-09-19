@@ -1,8 +1,9 @@
 .tracker--container {
     width: 50%;
+    height: fit-content;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 2.75em;
-    padding: 1em 3.7em;
+    padding: 1.5em 3.7em;
     margin: 0em 3em;
     font-family: 'Outfit', sans-serif;
 }
@@ -10,7 +11,7 @@
 .tracker--metrics {
     display: flex;
     justify-content: space-between;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 .tracker--head {
@@ -19,6 +20,7 @@
 
 .tracker--incomePercentage {
     font-weight: bold;
+    margin-bottom: 0em;
 }
 
 .tracker--show--button {

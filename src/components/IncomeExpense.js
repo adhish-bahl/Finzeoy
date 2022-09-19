@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Metric from "./Metric";
-import Budget from "./Budget";
+import ProgressContainer from "./ProgressContainer";
 import "../styles/IncomeExpenseStyles.css";
 
 export default function IncomeExpense() {
@@ -13,7 +13,7 @@ export default function IncomeExpense() {
                 <Metric metricName="EXPENSE" amount={10000} />
             </div>
             <p className="tracker--incomePercentage">You have spent 50% of your income</p>
-            <Budget />
+            <ProgressContainer title="BUDGET" />
             <div>
                 <button className="tracker--show--button">Show All Incomes</button>
                 <button className="tracker--show--button">Show All Expenses</button>

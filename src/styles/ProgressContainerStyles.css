@@ -1,10 +1,12 @@
 .budget--container {
     height: 35vh;
+    /* height: 35vh; */
     overflow-y: auto;
     scroll-behavior: smooth;
     background: rgba(144, 183, 125, 0.4);
     border-radius: 1em;
     padding: 1em 1.5em;
+    margin-top: 1em;
 }
 
 .budget--header {
