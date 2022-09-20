@@ -7,6 +7,7 @@ import PageNotFound from './components/PageNotFound'
 import LoginSignUpHeader from './components/LoginSignUpHeader';
 import GeneralUserHomePage from './components/GeneralUserHomePage';
 import LandingPage from './components/LandingPage';
+import AdvisorProfile from './components/AdvisorProfile';
 
 function Routing() {
   return (
@@ -32,6 +33,11 @@ function Routing() {
 
                     <Route path="/general">
                         <GeneralUserHomePage username="xxx" />
+                    </Route>
+
+                    <Route path="/advisors">
+                        <LoginSignUpHeader />
+                        <AdvisorProfile />
                     </Route>
 
                     <Route >
