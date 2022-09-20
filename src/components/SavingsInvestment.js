@@ -1,22 +1,20 @@
 import React from "react";
 import Metric from "./Metric";
-import Budget from "./Budget";
+import ProgressContainer from "./ProgressContainer";
 import "../styles/IncomeExpenseStyles.css";
 
 export default function IncomeExpense() {
     return (
         <div className="tracker--container">
-            <h2 className="tracker--head">Income/Expense</h2>
+            <h2 className="tracker--head">SAVINGS/INVESTMENTS</h2>
             <div className="tracker--metrics">
-                <Metric metricName="Income" amount={20000} />
-                <Metric metricName="Expense" amount={10000} />
+                <Metric metricName="SAVINGS" amount={20000} />
             </div>
-            <p>You have spent X% of your income</p>
-            <Budget />
-            <div>
-                <button className="tracker--show--button">Show All Income</button>
-                <button className="tracker--show--button">Show All Income</button>
+            <ProgressContainer title="SAVINGS" />
+            <div className="tracker--metrics">
+                <Metric metricName="INVESTMENTS" amount={20000} />
             </div>
+            <ProgressContainer title="INVESTMENTS" />
         </div>
     )
 }

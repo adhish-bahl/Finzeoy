@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import "../styles/BudgetStyles.css";
+import "../styles/ProgressContainerStyles.css";
 import Progress from "./Progress";
 
-export default function Budget() {
+export default function ProgressContainer(props) {
 
     const [budgetItems, setBudgetItems] = useState([
         {
@@ -30,7 +30,7 @@ export default function Budget() {
     return (
         <div className="budget--container">
             <div className="budget--header">
-                <h3 className="budget--header--title">BUDGET</h3>
+                <h3 className="budget--header--title">{props.title}</h3>
                 <div className="budget--buttons">
                     <button className="budget--header--button"><img src="./Images/add_icon.png" className="budget--buttonImage"/></button>
                     <button className="budget--header--button"><img src="./Images/edit_icon.png" className="budget--buttonImage"/></button>
