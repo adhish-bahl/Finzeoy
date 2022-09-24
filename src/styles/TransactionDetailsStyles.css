@@ -1,0 +1,13 @@
+.transaction--table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transaction--head {
+    font-size: 1.2em;
+}
+
+.transaction--data {
+    padding: 0.5em 0em;
+    border: 1px solid black;
+}

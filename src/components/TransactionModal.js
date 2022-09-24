@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/TransactionModalStyles.css";
 import PieChart from "./PieChart";
+import TransactionDetails from "./TransactionDetails";
 
 export default function TransactionModal(props) {
     return (
@@ -8,17 +9,15 @@ export default function TransactionModal(props) {
             <div className="modal--content">
                 <div className="modal--header">
                     <span className="close">&times;</span>
-                    <h1>Income</h1>
+                    <h1>{props.title}</h1>
                 </div>
                 <div className="modal--pieChart">
-                    <h3>Division of Income by categories</h3>
+                    <h3>Division of {props.title} by categories</h3>
                     <PieChart />
                 </div>
                 <div className="modal--mainContent">
-                    <p>Some text here</p>
-                </div>
-                <div className="modal--footer">
-                    <h6>Footer</h6>
+                    <h3>All {props.title}s</h3>
+                    <TransactionDetails />
                 </div>
             </div>
         </div>

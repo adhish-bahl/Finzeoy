@@ -6,15 +6,21 @@ import TransactionModal from "./TransactionModal";
 
 export default function IncomeExpense() {
 
-    function showModal() {
-        var modal = document.getElementById("myModal");
+    function showModal(event) {
+        var modals = document.getElementsByClassName("modal");
+        var spans = document.getElementsByClassName("close");
 
-        var span = document.getElementsByClassName("close")[0];
-
-        modal.style.display = "block";
-
-        span.onclick = function() {
-            modal.style.display = "none";
+        if(event.target.id == "incomeBtn") {
+            modals[0].style.display = "block";
+            spans[0].onclick = function() {
+                modals[0].style.display = "none";
+            }
+        }
+        else {
+            modals[1].style.display = "block";
+            spans[1].onclick = function() {
+                modals[1].style.display = "none";
+            }
         }
     }
 
@@ -28,10 +34,10 @@ export default function IncomeExpense() {
             <p className="tracker--incomePercentage">You have spent 50% of your income</p>
             <ProgressContainer title="BUDGET" />
             <div>
-                <button className="tracker--show--button" onClick={showModal}>Show All Incomes</button>
-                <TransactionModal />
-                <button className="tracker--show--button" onClick={showModal}>Show All Expenses</button>
-                <TransactionModal />
+                <button id="incomeBtn" className="tracker--show--button" onClick={showModal}>Show All Incomes</button>
+                <TransactionModal key="incomeModal" title="Income" />
+                <button id="expenseBtn" className="tracker--show--button" onClick={showModal}>Show All Expenses</button>
+                <TransactionModal key="expenseModal" title="Expense" />
             </div>
         </div>
     )

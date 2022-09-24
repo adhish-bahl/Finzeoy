@@ -27,7 +27,7 @@
 .modal--content {
   background-color: #fefefe;
   margin: 5% auto;
-  padding: 0em 1.25em;
+  padding: 0em 1.25em 2em 1.25em;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
@@ -50,4 +50,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.modal--mainContent {
+  margin-top: 2.2em;
+  width: 100%;
 }
