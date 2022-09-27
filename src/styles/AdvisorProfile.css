@@ -109,3 +109,17 @@
     color: #6a6c6e;
 }
 
+.APright {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    flex-direction: column;
+    width: 75vw;
+    background-color: #7589a0;
+    height: fit-content;
+    margin-right: 50px;
+    box-sizing:border-box;
+    min-height: 200px;
+    border-radius: 30px;
+    padding: 10px 0px;
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/AdvisorProfile.css"
+import AdvisorQuestionComp from './AdvisorQuestionComp'
 
 
 function AdvisorProfile() {
@@ -39,7 +40,10 @@ function AdvisorProfile() {
         </div>
 
         <div className="APright">
-asda
+            <AdvisorQuestionComp question="How can my income Expenditure improve?" author="By althea D’Cruz" />
+            <AdvisorQuestionComp question="How can my income Expenditure improve?" author="By althea D’Cruz" />
+            <AdvisorQuestionComp question="How can my income Expenditure improve?" author="By althea D’Cruz" />
+            <AdvisorQuestionComp question="How can my income Expenditure improve?" author="By althea D’Cruz" />
         </div>
     </div>
   )
