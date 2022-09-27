@@ -39,7 +39,7 @@ function AdvisorProfile() {
         </div>
 
         <div className="APright">
-
+asda
         </div>
     </div>
   )

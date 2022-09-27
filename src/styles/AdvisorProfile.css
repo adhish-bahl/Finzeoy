@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 .APcontainer {
     position: absolute;
     z-index: -10;
@@ -5,18 +9,20 @@
     background-color: #90a5c3;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
+    padding-top: 15vh;
     height: 100vh;
     width: 100vw;
 }
 
 .APleft {
-    width: 30vw;
+    width: 25vw;
     min-height: 80vh;
     background-color: white;
     border-radius: 30px;
-    margin: 2vw;
-    margin-top: 15vh;
+    margin: 2vw; 
+    margin-top: 0px;
+    /* margin-top: 15vh; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,26 +31,81 @@
 
 .APLone {
     display: flex;
-    justify-content: center;
+    justify-content:flex-start;
+    padding-left: 50px;
     align-items: center;
-    height: 10vh;
+    min-height: fit-content;
+    /* height: 10vh; */
     width: 100%;
+    border-bottom: 5px solid balck;
 }
 
-.APLtwo {
-    height: 30vh;
-    
+/* .APLOright {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+} */
+
+.APLOright div {
+    display:inline-flexbox;
+    text-align: left;
 }
 
-.APLthree {
-    height: 30vh;
-    
+.APadname {
+    font-size: 2rem;
+    font-weight: 500;
+    padding-left: 20px;
+    padding-top: 30px;
+    left: 0px;
+}
+
+.APadage, .APadprofession {
+    margin-left: 20px;
+    width: 100%;
+    background-color: #d8dce0;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 5px;
+    width: 100%;
 }
 
 .APLOLprofileimg {
     width: 100px;
 }
 
-.APright {
-    width: 70vw;
+.APLtwo {
+    min-height: 30vh;
+    height: fit-content;
+    width: 100%;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-top: 30px;
 }
+
+.APLthree {
+    height: 30vh;
+    width: 100%;
+}
+
+.APheading {
+    margin: 10px 0px;
+}
+
+.APLTtags {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.tags {
+    margin: 5px 0px;
+    padding: 5px 0px;
+    font-size: 1.2rem;
+    background-color: #d8dce0;
+    width: 80%;
+    border-radius: 10px;
+    color: #6a6c6e;
+}
+
