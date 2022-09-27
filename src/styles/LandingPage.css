@@ -5,7 +5,7 @@
 .LandingPageContainer{
     overflow: hidden;
     width: 100%;
-    height: fit-content;
+    height: 100vh;
     min-height: 100%;
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@
 
 .manIcon {
     position: absolute;
-    bottom: 70px;
+    bottom: 0px;
     height: 350px;
 }
 
@@ -50,7 +50,7 @@
 
 .LPrightLower {
     position: absolute;
-    bottom: 90px;
+    bottom: 10px;
 }
 
 .LPWallet {

@@ -7,7 +7,7 @@ import coinStack from "../Images/CoinStack.svg"
 
 function LandingPage() {
   return (
-    <div className='LandingPageContainer'>
+    <div className='LandingPageContainer' style={{overflow: "hidden"}}>
         <div className="LPleft">
           <img className='backgrounfLeft' src={LPBG} alt="Background" />
         </div>

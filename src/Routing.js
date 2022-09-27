@@ -8,6 +8,7 @@ import LoginSignUpHeader from './components/LoginSignUpHeader';
 import GeneralUserHomePage from './components/GeneralUserHomePage';
 import LandingPage from './components/LandingPage';
 import AdvisorProfile from './components/AdvisorProfile';
+import PageHeader from './components/PageHeader';
 
 function Routing() {
   return (
@@ -37,6 +38,7 @@ function Routing() {
 
                     <Route path="/advisors">
                         <LoginSignUpHeader />
+                        {/* <PageHeader hearderItem="" */}
                         <AdvisorProfile />
                     </Route>
 
