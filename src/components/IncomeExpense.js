@@ -3,6 +3,7 @@ import Metric from "./Metric";
 import ProgressContainer from "./ProgressContainer";
 import "../styles/IncomeExpenseStyles.css";
 import TransactionModal from "./TransactionModal";
+import PieChart from "./PieChart";
 
 export default function IncomeExpense() {
 

@@ -1,0 +1,42 @@
+.article {
+    width: 100%;
+    height: 38%;
+    background: rgba(55,71,79, 0.3);
+    border-radius: 0.8em;
+    display: flex;
+    margin: 2em 0em;
+}
+
+.article--color {
+    border-radius: 0.8em 0em 0em 0.8em;
+    width: 5%;
+    height: 100%;
+    background-color: green;
+}
+
+.article--content {
+    width: 95%;
+    text-align: left;
+    padding: 0em 0.5em 0em 1em;
+}
+
+.article--title {
+    margin: 0.3em 0em 0.1em 0em;
+}
+
+.article--author {
+    margin: 0em 1em;
+}
+
+.article--body {
+    display: flex;
+    flex-direction: column;
+}
+
+.article--readMore {
+    align-self: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+}

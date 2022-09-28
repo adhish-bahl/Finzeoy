@@ -3,6 +3,7 @@ import PageHeader from "./PageHeader";
 import IncomeExpense from "./IncomeExpense";
 import SavingsInvestment from "./SavingsInvestment";
 import '../styles/GeneralUserHomeStyles.css';
+import FeedPage from "./FeedPage";
 
 export default function GeneralUserHomePage(props) {
 
@@ -15,10 +16,14 @@ export default function GeneralUserHomePage(props) {
     return (
         <div className="general--homePage">
             <PageHeader headerItems={["Tracker", "Feed"]} displayPage={displayPage} handleClick={togglePage} username={props.username} />
-            <div className="main--content">
-                <IncomeExpense />
-                <SavingsInvestment />
-            </div>
+            {displayPage === "Tracker" ?
+                <div className="main--content">
+                    <IncomeExpense />
+                    <SavingsInvestment />
+                </div>
+                :
+                <FeedPage />
+            }
         </div>
     )
 }
