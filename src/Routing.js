@@ -9,6 +9,7 @@ import GeneralUserHomePage from './components/GeneralUserHomePage';
 import LandingPage from './components/LandingPage';
 import AdvisorProfile from './components/AdvisorProfile';
 import PageHeader from './components/PageHeader';
+import Discussion from './components/Discussion';
 
 function Routing() {
   return (
@@ -40,6 +41,11 @@ function Routing() {
                         <LoginSignUpHeader />
                         {/* <PageHeader hearderItem="" */}
                         <AdvisorProfile />
+                    </Route>
+
+                    <Route path="/discussion">
+                        <LoginSignUpHeader />
+                        <Discussion />
                     </Route>
 
                     <Route >
