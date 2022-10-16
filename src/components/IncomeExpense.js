@@ -28,6 +28,10 @@ export default function IncomeExpense() {
     return (
         <div className="tracker--container">
             <h2 className="tracker--head">INCOME/EXPENSE</h2>
+            <div className="tracker--expensePie">
+                <h4>Expense breakdown</h4>
+                <PieChart />
+            </div>
             <div className="tracker--metrics">
                 <Metric metricName="INCOME" amount={20000} />
                 <Metric metricName="EXPENSE" amount={10000} />

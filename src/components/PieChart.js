@@ -21,6 +21,7 @@ export default function PieChart() {
             alignment: 'center',
             textStyle: {bold: true},
         },
+        backgroundColor: 'transparent',
         pieHole: 0.4,
     };
 
@@ -29,8 +30,6 @@ export default function PieChart() {
             chartType="PieChart"
             data={data}
             options={options}
-            // width={"100%"}
-            // height={"23em"}
         />
     )
 }
