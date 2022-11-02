@@ -39,7 +39,7 @@ function Routing() {
 
                     <Route path="/advisors">
                         <LoginSignUpHeader />
-                        {/* <PageHeader hearderItem="" */}
+                        {/* <PageHeader headerItem="" */}
                         <AdvisorProfile />
                     </Route>
 

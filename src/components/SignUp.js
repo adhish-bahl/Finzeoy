@@ -3,13 +3,29 @@ import '../styles/SignUpStyles.css'
 
 export default function SignUp() {
 
-    const [userDetails, setUserDetails] = useState({
-        name: "",
-        email: "",
-        phno: "",
-        userType: "none",
-        password: "",
-    });
+    const [userDetails, setUserDetails] = useState([
+        {
+            "name": "null",
+            "hasError": false
+        },
+        {
+            "email": "null",
+            "hasError": false
+        },
+        {
+            "phno": "null",
+            "hasError": false
+        },
+        {
+            "userType": "none",
+            "hasError": false
+        },
+        {
+            "password": "null",
+            "hasError": false
+        }
+    ]
+    );
 
     function handleChange(event) {
         const {name, value, style} = event.target;
@@ -18,10 +34,19 @@ export default function SignUp() {
         isError ? style.outline = "2px solid red" : style.outline = "2px solid black";
 
         setUserDetails(prevFormData => {
-            return {
-                ...prevFormData,
-                [name] : value
-            }
+            let outputArr = prevFormData.map(item => {
+                if(item[name]) {
+                    return {
+                        ...item,
+                        [name]: value,
+                        "hasError": isError
+                    }
+                }
+                else {
+                    return {...item}
+                }
+            })
+            return outputArr;
         })
     }
     
@@ -40,7 +65,14 @@ export default function SignUp() {
     }
 
     function saveFormData() {
-        // Code to call backend server and save data
+        if(userDetails[0].hasError || userDetails[1].hasError || userDetails[2].hasError || userDetails[3].hasError || userDetails[4].hasError) {
+            alert("Invalid inputs. Please check your inputs and retry.");
+        }
+        else {
+            fetch("https://finzeoy.000webhostapp.com/SaveUserData.php?name="+userDetails[0].name+"&email="+userDetails[1].email+"&phno="+userDetails[2].phno+"&type="+userDetails[3].userType+"&pwd="+userDetails[4].password+"")
+            .then(res => res.json())
+            .then(data => data.status === "Success" ? alert("Signed up successfully") : alert("Sign up failed"));
+        }
     }
 
     return (
@@ -51,16 +83,16 @@ export default function SignUp() {
                     <h5 className="signUp--head">STAY UPDATED ON THE FINANCIAL WORLD</h5>
                 </div>
                 <form className="signUp--form">
-                    <input type={"text"} placeholder="Name" className="form--input" name="name" value={userDetails.name} onChange={handleChange}></input>
-                    <input type={"email"} placeholder="Email ID" className="form--input" name="email" value={userDetails.email} onChange={handleChange}></input>
-                    <input type={"tel"} placeholder="Phone Number" className="form--input" name="phno" value={userDetails.phno} onChange={handleChange}></input>
-                    <select name="userType" value={userDetails.userType} className="form--input" onChange={handleChange}>
+                    <input type={"text"} placeholder="Name" className="form--input" name="name" onChange={handleChange}></input>
+                    <input type={"email"} placeholder="Email ID" className="form--input" name="email" onChange={handleChange}></input>
+                    <input type={"tel"} placeholder="Phone Number" className="form--input" name="phno" onChange={handleChange}></input>
+                    <select name="userType" className="form--input" onChange={handleChange}>
                         <option value="none" hidden>User Type</option>
                         <option value="end-user">General User</option>
                         <option value="financial-advisor">Financial Advisor</option>
                         <option value="student">Student</option>
                     </select>
-                    <input type={"password"} placeholder="Password" className="form--input" name="password" value={userDetails.password} onChange={handleChange}></input>
+                    <input type={"password"} placeholder="Password" className="form--input" name="password" onChange={handleChange}></input>
                 </form>
                 <p className="form--terms">By clicking Agree & Join, you agree to the FINZEOY<br></br> User Agreement, Privacy Policy, and Cookie Policy.</p>
                 <button className="form--submit" onClick={saveFormData}>Join Now</button>
