@@ -17,3 +17,10 @@
 .LLBPCcontainer img {
     height: 150px;
 }
+
+.articleTitle {
+    position: relative;
+    bottom: 20px;
+    text-align: center;
+    padding: 0px 15px;
+}
