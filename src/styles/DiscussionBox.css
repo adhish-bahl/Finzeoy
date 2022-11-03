@@ -6,6 +6,8 @@
     border-radius: 20px;
     padding: 10px;
     padding-left: 20px;
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden; */
 }
 
 .DBquestion {
