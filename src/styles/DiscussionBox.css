@@ -13,7 +13,15 @@
     text-align: justify;
 }
 
-.DBauthor {
+.DBauthor, .DBanswerBy {
     text-align: left;
     padding-left: 30px;
+}
+
+.DBanswerBy {
+    padding-top: 20px;
+}
+
+.DBanswer {
+    text-align: justify;
 }

@@ -20,11 +20,11 @@ function Discussion() {
         </div>
 
         <div className="DCright">
-            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
-            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
-            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
-            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
-            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
         </div>
     </div>
   )

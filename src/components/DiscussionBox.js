@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/DiscussionBox.css"
 
-function DiscussionBox({question, author}) {
+function DiscussionBox({question, author, answerBy, answer}) {
   return (
     <div className='DiscussionBoxContainer'>
         <div className="DBquestion">
@@ -10,8 +10,11 @@ function DiscussionBox({question, author}) {
         <div className="DBauthor">
             {author}
         </div>
-        <div className="DBansweredBy">
-
+        <div className="DBanswerBy">
+            <b>Answered by: </b> {answerBy}
+        </div>
+        <div className="DBanswer">
+            {answer}
         </div>
     </div>
   )
