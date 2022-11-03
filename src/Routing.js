@@ -19,7 +19,6 @@ function Routing() {
                 <Switch>
 
                     <Route exact path="/">
-                        
                         <LandingPage />
                     </Route>
                     
