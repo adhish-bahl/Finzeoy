@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/Discussion.css"
+import DiscussionBox from './DiscussionBox'
 
 function Discussion() {
   return (
@@ -19,7 +20,11 @@ function Discussion() {
         </div>
 
         <div className="DCright">
-            
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
+            <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz"  />
         </div>
     </div>
   )

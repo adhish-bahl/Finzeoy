@@ -1,0 +1,19 @@
+.DiscussionBoxContainer {
+    background-color: #e3e7ec;
+    height: fit-content;
+    min-height: 100px;
+    margin: 10px 20px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+.DBquestion {
+    font-weight:bolder;
+    text-align: justify;
+}
+
+.DBauthor {
+    text-align: left;
+    padding-left: 30px;
+}
