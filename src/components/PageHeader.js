@@ -1,6 +1,8 @@
 import React from "react";
 import '../styles/LoginSignUpHeaderStyles.css'
 import '../styles/PageHeaderStyles.css'
+import logo from "../Images/Logo.png"
+
 
 export default function PageHeader(props) {
 
@@ -11,7 +13,7 @@ export default function PageHeader(props) {
     return (
         <div className="header">
             <div className="header--title">
-                <img src="./Images/default_logo.png" className="header--image" />
+                <img src={logo} className="header--image" />
                 <h1 className="header--name">FINZEOY</h1>
             </div>
 

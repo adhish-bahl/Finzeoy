@@ -7,9 +7,20 @@
 .LLBPCreadMore {
     background-color: #B93160;
     position: relative;
-    bottom: 35px;
+    bottom: 45px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .LLBPCcontainer img {
     height: 150px;
+}
+
+.articleTitle {
+    position: relative;
+    bottom: 20px;
+    text-align: center;
+    padding: 0px 15px;
 }

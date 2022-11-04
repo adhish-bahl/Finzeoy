@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+import {useHistory} from 'react-router-dom'
 import '../styles/SignUpStyles.css'
 
 export default function Login() {
+
+    const history = useHistory();
+
 
     const [loginDetails, setLoginDetails] = useState([
         {
@@ -62,13 +66,29 @@ export default function Login() {
                     switch(loginDetails[2].userType) {
                         case "end-user":
                             // Route to end user home page
+                            history.push('/general');
+                            window.location.reload();
+                            // history.push({
+                            //     pathname: "/general",
+                            //     state: {
+                            //         needsRefresh: true,
+                            //     },
+                            // })
                             alert("Login successful");
                             break;
+                            
                         case "financial-advisor":
                             // Route to advisor home page
+                            history.push('/advisors');
+                            window.location.reload();
+                            alert("Login successful");
                             break;
+                            
                         case "student":
                             // Route to student home page
+                            history.push('/learning');
+                            window.location.reload();
+                            alert("Login successful");
                             break;
 
                         default:

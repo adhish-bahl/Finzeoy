@@ -1,0 +1,29 @@
+.DiscussionBoxContainer {
+    background-color: #e3e7ec;
+    height: fit-content;
+    min-height: 100px;
+    margin: 10px 20px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden; */
+}
+
+.DBquestion {
+    font-weight:bolder;
+    text-align: justify;
+}
+
+.DBauthor, .DBanswerBy {
+    text-align: left;
+    padding-left: 30px;
+}
+
+.DBanswerBy {
+    padding-top: 20px;
+}
+
+.DBanswer {
+    text-align: justify;
+}

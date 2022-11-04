@@ -1,17 +1,17 @@
 .LPbookIll, .LPlaptopGirlIll {
-    position: absolute;
+    position: relative;
     left: 10px;
 }
 
 .LPbookIll {
-    left: 20px;
-    bottom: -310PX;
+    left: -600px;
+    bottom: -40PX;
     width: 100px;
 }
 
 .LPlaptopGirlIll {
-    left: 100px;
+    left: -620px;
     width: 80px;
-    bottom: -320px;
+    bottom: -50px;
     padding-bottom: 5px;
 }
