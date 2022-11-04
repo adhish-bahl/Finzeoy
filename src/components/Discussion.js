@@ -2,46 +2,45 @@ import React, { useEffect } from 'react'
 import "../styles/Discussion.css"
 import DiscussionBox from './DiscussionBox'
 
-function Discussion(props) {
+function Discussion() {
 
     const [questionsData, setQuestionsData] = React.useState([]);
 
     useEffect(() => {
-        fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
+        fetch("https://localhost/Finzeoy/ServerFiles/GetQuestionsData.php")
         .then(res => res.json())
         .then(data => setQuestionsData(data))
     }, [])
 
     const questionsAskedData = questionsData.filter(question => {
-        return question.answer.length === 0 && question.quesBy === props.userId;
+        return (question.answer === null && question.quesBy == 4);
     })
 
-    console.log(questionsData);
-
     const questionsAnsweredData = questionsData.filter(question => {
-        return question.answer.length != 0 && question.quesBy === props.userId; 
+        return (question.answer != null && question.quesBy == 4); 
     })
 
     const allQuestionsAnsweredData = questionsData.filter(question => {
-        return question.answer.length != 0
+        return question.answer != null;
     })
 
     const questionsAsked = questionsAskedData.map(question => {
-        return <div className="questionAsked">
+        return <div className="questionAsked" key={question.quesid}>
             <h4>{question.ques}</h4>
         </div>
     })
 
     const questionsAnswered = questionsAnsweredData.map(question => {
-        return <div className="questionAnswered">
+        return <div className="questionAnswered" key={question.quesid}>
             <h4>{question.ques}</h4>
-            <p>{question.answer}</p>
         </div>
     })
 
     const allQuestionsAnswered = allQuestionsAnsweredData.map(question => {
-        return <DiscussionBox question={question.ques} answerBy={question.answerBy} answer={question.answer} />
+        return <DiscussionBox key={question.quesid} question={question.ques} answerBy={question.ansBy} answer={question.answer} />
     })
+
+    console.log(questionsData);
 
     return (
         <div className='discussionContainer'>

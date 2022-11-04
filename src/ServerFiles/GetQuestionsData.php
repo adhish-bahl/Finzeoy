@@ -13,8 +13,8 @@
             $question->quesId = $row["quesid"];
             $question->ques = $row["ques"];
             $question->answer = $row["answer"];
-            $question->quesBy = $row["QuesBy"];
-            $question->ansBy = $row["ansBy"];
+            $question->quesBy = $row["Quesby"];
+            $question->ansBy = $row["ansby"];
             array_push($arr, $question);
         }
     }

@@ -54,6 +54,8 @@ export default function Login() {
 
         if(name === "password")
             return value.match(/[^ ]{6}/) ? false : true;
+
+        return false;
     }
 
     function loginUser() {
@@ -63,6 +65,7 @@ export default function Login() {
         else {
             for(let i = 0; i<usersData.length; i++) {
                 if(loginDetails[0].email === usersData[i].email && loginDetails[1].password === usersData[i].password && loginDetails[2].userType === usersData[i].userType) {
+                    sessionStorage.setItem("userId", usersData[i].userId)
                     switch(loginDetails[2].userType) {
                         case "end-user":
                             // Route to end user home page
@@ -106,6 +109,8 @@ export default function Login() {
         .then(res => res.json())
         .then(data => setUsersData(data))
     }, [])
+
+    console.log(usersData);
 
     return (
         <div className="signUp--container login--container">
