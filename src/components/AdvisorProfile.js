@@ -1,6 +1,8 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import "../styles/AdvisorProfile.css"
 import AdvisorQuestionComp from './AdvisorQuestionComp'
+import PostByAdvisorModal from './PostByAdvisorModal';
+// import ArticleModal from './ArticleModal';
 
 
 function AdvisorProfile(props) {
@@ -33,9 +35,19 @@ function AdvisorProfile(props) {
         return <AdvisorQuestionComp question={question.ques} author={question.quesBy} />
     })
 
+    function showModal() {
+        var modal = document.getElementsByClassName('modal')[0];
+        var span = document.getElementsByClassName('close')[0];
+        
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+
     return (
         <div className='APcontainer'>
-            <button type="submit" className='postButton'>+</button>
+            <button type="submit" className='postButton' onClick={showModal}>+</button>
             <div className="APleft">
 
                 <div className="APLone">
@@ -72,6 +84,8 @@ function AdvisorProfile(props) {
             <div className="APright">
                 {unansweredQuestions}
             </div>
+
+            <PostByAdvisorModal />
         </div>
     )
 }

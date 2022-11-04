@@ -25,10 +25,15 @@ export default function PageHeader(props) {
         history.push(props.title2Route)
         window.location.reload()
     }
+    
+    const openLandingPage = () => {
+        history.push('/')
+        window.location.reload()
+    }
 
     return (
         <div className="header">
-            <div className="header--title">
+            <div className="header--title" onClick={openLandingPage}>
                 <img src={logo} className="header--image" />
                 <h1 className="header--name">FINZEOY</h1>
             </div>

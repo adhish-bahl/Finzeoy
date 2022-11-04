@@ -13,6 +13,7 @@ body {
 .header--title {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .header--name { 
