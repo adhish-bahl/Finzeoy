@@ -44,7 +44,6 @@ function Discussion() {
 
     return (
         <div className='discussionContainer'>
-            <button type="submit" className='postButton'>+</button>
             <div className="DCleft">
                 <div className="DClheading">
                     <h1>My Questions</h1>

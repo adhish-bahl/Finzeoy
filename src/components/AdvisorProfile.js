@@ -35,6 +35,7 @@ function AdvisorProfile(props) {
 
     return (
         <div className='APcontainer'>
+            <button type="submit" className='postButton'>+</button>
             <div className="APleft">
 
                 <div className="APLone">

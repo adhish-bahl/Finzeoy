@@ -1,7 +1,6 @@
 .discussionContainer {
     display: flex;
     justify-content: center;
-    /* align-items: top; */
     min-height: 100vh;
     width: 100vw;
     position: absolute;
@@ -9,8 +8,6 @@
     z-index: -50;
     background-color: #f9dddd;
     height: fit-content;
-    /* overflow-y: hidden; */
-    /* overflow-x: hidden; */
 }
 
 .DCleft {
@@ -63,41 +60,4 @@
     border-radius: 30px;
     /* overflow: hidden; */
     /* scroll-behavior: smooth; */
-}
-
-.postButton {
-    position: fixed;
-    bottom: 30px;
-    right: 40px;
-    font-size: 2rem;
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    background-color: #f9dddd;
-}
-
-@-webkit-keyframes rotate-center {
-  0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes rotate-center {
-  0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-.postButton:hover {
-	-webkit-animation: rotate-center 0.3s linear 1 both;
-	        animation: rotate-center 0.3s linear 1 both;
 }
