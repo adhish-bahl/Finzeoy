@@ -8,4 +8,10 @@
     overflow-y: scroll;
     scrollbar-width: thin;
     padding: 0em 2em 2em 2em;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.article--container::-webkit-scrollbar {
+  display: none;
 }
