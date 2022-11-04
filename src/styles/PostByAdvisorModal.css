@@ -15,6 +15,7 @@
     margin-bottom: 2rem;
     border-radius: 10px;
     padding: 5px;
+    width: 400px;
 }
 
 #articleType {
@@ -28,7 +29,7 @@
 #article {
     font-size: 1.2rem;
     height: 30vh;
-    width: 30vw;
+    width: 40vw;
     word-wrap: break-word;
     border-radius: 10px;
     margin-bottom: 2rem;
