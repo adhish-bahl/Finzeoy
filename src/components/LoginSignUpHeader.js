@@ -13,8 +13,8 @@ export default function LoginSignUpHeader(props) {
                 <h1 className="header--name">FINZEOY</h1>
             </div>
             <div className="header--buttons">
-                <button className={`header--link ${props.displayPage ? "active" : ""}`} onClick={props.handleClickLogin}>Login</button>
-                <button className={`header--link ${props.displayPage ? "" : "active"}`} onClick={props.handleClickSignup}>Sign Up</button>
+                <button className={`header--link ${props.displayPage = "true" ? "active" : ""}`} onClick={props.handleClickLogin}>Login</button>
+                <button className={`header--link ${props.displayPage = "true" ? "" : "active"}`} onClick={props.handleClickSignup}>Sign Up</button>
             </div>
         </div>
     )   
