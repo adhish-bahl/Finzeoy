@@ -10,6 +10,8 @@ import LandingPage from './components/LandingPage';
 import AdvisorProfile from './components/AdvisorProfile';
 import PageHeader from './components/PageHeader';
 import Discussion from './components/Discussion';
+import RegistrationLogin from './components/RegistrationLogin'
+import RegistrationSignup from './components/RegistrationSignup'
 
 function Routing() {
   return (
@@ -18,28 +20,27 @@ function Routing() {
             <div className="App">
                 <Switch>
 
+                    {/* LANDING PAGE */}
                     <Route exact path="/">
                         <LandingPage />
                     </Route>
+
+                    {/* LOGIN SIGNUP PAGE */}
+                    <Route path="/signup">
+                        <RegistrationSignup isLoginPage="false" />
+                    </Route>
                     
+                    <Route path="/login">
+                        <RegistrationLogin isLoginPage="true"/>
+                    </Route>
+
+
+                    
+                    {/* STUDENT MODULES */}
                     <Route exact path="/learning">
                         <LoginSignUpHeader />
                         <LearningPage />
                         <Footer />
-                    </Route>
-
-                    <Route path="/signup">
-                        <Registration />
-                    </Route>
-
-                    <Route path="/general">
-                        <GeneralUserHomePage username="xxx" />
-                    </Route>
-
-                    <Route path="/advisors">
-                        <LoginSignUpHeader />
-                        {/* <PageHeader headerItem="" */}
-                        <AdvisorProfile />
                     </Route>
 
                     <Route path="/discussion">
@@ -47,6 +48,22 @@ function Routing() {
                         <Discussion />
                     </Route>
 
+                    {/* ADVISOR MODULES */}
+                    <Route path="/advisors">
+                        <LoginSignUpHeader />
+                        <AdvisorProfile />
+                    </Route>
+
+                    {/* END USER MODULES */}
+                    <Route path="/general">
+                        <GeneralUserHomePage username="xxx" />
+                    </Route>
+                    
+                    <Route path="/feed">
+                        <GeneralUserHomePage username="xxx" />
+                    </Route>
+
+                    {/* PAGE NOT FOUND  */}
                     <Route >
                         <PageNotFound />
                     </Route>

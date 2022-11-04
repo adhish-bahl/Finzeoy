@@ -4,6 +4,8 @@ import logo from "../Images/Logo.png"
 
 export default function LoginSignUpHeader(props) {
 
+    // console.log(props.displayPage)
+
     return (
         <div className="header">
             <div className="header--title">
@@ -11,8 +13,8 @@ export default function LoginSignUpHeader(props) {
                 <h1 className="header--name">FINZEOY</h1>
             </div>
             <div className="header--buttons">
-                <button className={`header--link ${props.displayPage ? "active" : ""}`} onClick={props.handleClick}>Login</button>
-                <button className={`header--link ${props.displayPage ? "" : "active"}`} onClick={props.handleClick}>Sign Up</button>
+                <button className={`header--link ${props.displayPage ? "active" : ""}`} onClick={props.handleClickLogin}>Login</button>
+                <button className={`header--link ${props.displayPage ? "" : "active"}`} onClick={props.handleClickSignup}>Sign Up</button>
             </div>
         </div>
     )   

@@ -1,26 +1,37 @@
 import {React, useState} from 'react'
-import LoginSignUpHeader from './LoginSignUpHeader'
 import {useHistory} from 'react-router-dom'
+import LoginSignUpHeader from './LoginSignUpHeader'
 import LPBG from "../Images/LandingPageBG.png"
 import icon from "../Images/Ambassador-bro 1.svg"
-import "../styles/LandingPage.css"
 import wallet from "../Images/Wallet.svg"
 import coinStack from "../Images/CoinStack.svg"
+import "../styles/LandingPage.css"
 
 function LandingPage() {
 
   const [displayLogin, setDisplayLogin] = useState(true);
   const history = useHistory();
 
+    // const toggleLogin = () => {
+    //   setDisplayLogin(prevState => !prevState);
+    // }
+
     const toggleLogin = () => {
-      history.push('/signup')
-      window.location.reload()
-      setDisplayLogin(prevState => !prevState);
+        setDisplayLogin(true);
+        history.push('/login')
+        window.location.reload()
+    }
+
+    const toggleSignup = () => {
+        setDisplayLogin(false);
+        history.push('/signup')
+        window.location.reload()
     }
 
   return (
     <>
-    <LoginSignUpHeader displayPage={displayLogin} handleClick={toggleLogin} />
+    {/* <LoginSignUpHeader displayPage={displayLogin} handleClick={toggleLogin} /> */}
+    <LoginSignUpHeader displayPage={displayLogin} handleClickLogin={toggleLogin} handleClickSignup={toggleSignup} />
     <div className='LandingPageContainer' style={{overflow: "hidden"}}>
         <div className="LPleft">
           <img className='backgrounfLeft' src={LPBG} alt="Background" />
