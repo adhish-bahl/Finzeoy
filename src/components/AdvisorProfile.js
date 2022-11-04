@@ -9,28 +9,30 @@ function AdvisorProfile(props) {
     const [advisorInfo, setAdvisorInfo] = React.useState({});
 
     useEffect(() => {
-        fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
+        fetch("https://localhost/Finzeoy/ServerFiles/GetQuestionsData.php")
         .then(res => res.json())
         .then(data => setQuestionsData(data))
 
-        fetch("https://finzeoy.000webhostapp.com/GetAdvisorInfo.php?userId="+props.userId+"")
+        fetch("https://localhost/Finzeoy/ServerFiles/GetAdvisorInfo.php?userId="+sessionStorage.getItem("userId")+"")
+        .then(res => res.json())
+        .then(data => setAdvisorInfo(data))
+
+        fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
         .then(res => res.json())
         .then(data => setAdvisorInfo(prevState => {
             return {...prevState,
                     "name": data.name,
-                    "email": data.email,
-                    "phno": data.phno}
+                    "phno": data.phno,
+                    "email": data.email}
         }))
-
-        fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+props.userId+"")
     }, [])
 
     const unansweredQuestionsData = questionsData.filter(question => {
-        return question.answer.length === 0
+        return question.answer === null
     })
 
     const unansweredQuestions = unansweredQuestionsData.map(question => {
-        return <AdvisorQuestionComp question={question.ques} author={question.quesBy} />
+        return <AdvisorQuestionComp key={question.quesid} question={question.ques} author={question.quesBy} />
     })
 
     return (
@@ -39,9 +41,6 @@ function AdvisorProfile(props) {
             <div className="APleft">
 
                 <div className="APLone">
-                    <div className="APLOleft">
-                        <img className='APLOLprofileimg' src="./Images/default_logo.png" alt="profileImg" />
-                    </div>
 
                     <div className="APLOright">
                         <div className="APadname">{advisorInfo.name}</div>
@@ -51,7 +50,7 @@ function AdvisorProfile(props) {
                 </div>
 
                 <div className="APLtwo">
-                    <h1 className="APheading">{advisorInfo.desc}</h1>
+                    <h3 className="APheading">{advisorInfo.desc}</h3>
                 </div>
 
                 <div className="APLthree">
