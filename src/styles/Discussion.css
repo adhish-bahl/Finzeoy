@@ -1,7 +1,6 @@
 .discussionContainer {
     display: flex;
     justify-content: center;
-    /* align-items: top; */
     min-height: 100vh;
     width: 100vw;
     position: absolute;
@@ -9,8 +8,6 @@
     z-index: -50;
     background-color: #f9dddd;
     height: fit-content;
-    /* overflow-y: hidden; */
-    /* overflow-x: hidden; */
 }
 
 .DCleft {

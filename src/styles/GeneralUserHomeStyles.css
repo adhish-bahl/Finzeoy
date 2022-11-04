@@ -1,5 +1,12 @@
 .general--homePage {
     background: rgba(144, 183, 125, 0.5);
+    position: absolute;
+    top: 0px;
+    z-index: -50;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 10vh;
+    overflow-x: hidden;
 }
 
 .page--active {

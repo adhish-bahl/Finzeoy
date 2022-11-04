@@ -1,3 +1,8 @@
+* {
+  /* overflow-x: hidden; */
+  /* box-sizing:content-box; */
+}
+
 .App {
   text-align: center;
 }

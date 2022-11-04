@@ -6,6 +6,7 @@
     padding: 1.5em 3.7em;
     margin: 0em 3em;
     font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
 }
 
 .tracker--metrics {
