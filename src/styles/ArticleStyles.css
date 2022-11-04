@@ -30,7 +30,7 @@
 
 .article--body {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 .article--readMore {

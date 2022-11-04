@@ -70,6 +70,9 @@ export default function Login() {
                         case "student":
                             // Route to student home page
                             break;
+
+                        default:
+                            break;
                     }
                     return;
                 }

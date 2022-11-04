@@ -1,16 +1,16 @@
 import React from "react";
 import "../styles/TransactionModalStyles.css";
 
-export default function ArticleModal() {
+export default function ArticleModal(props) {
     return (
         <div id="myModal" className="modal">
             <div className="modal--content">
                 <div className="modal--header">
                     <span className="close">&times;</span>
-                    <h2>Title</h2>
+                    <h2>{props.title}</h2>
                 </div>
                 <div className="modal--mainContent">
-                    <h3>Content</h3>
+                    <p>{props.content}</p>
                 </div>
             </div>
         </div>
