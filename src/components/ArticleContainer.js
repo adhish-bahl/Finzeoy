@@ -13,7 +13,6 @@ export default function ArticleContainer(props) {
             <h1 className="article--container--head">{props.title}</h1>
             <div className="article--container-scrollable">
                 {articlesToDisplay}
-                {articlesToDisplay}
             </div>
         </div>
     )

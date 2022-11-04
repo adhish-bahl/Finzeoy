@@ -4,7 +4,7 @@
     background: rgba(55,71,79, 0.3);
     border-radius: 0.8em;
     display: flex;
-    margin: 2em 0em;
+    margin: 0em 0em 2em 0em;
 }
 
 .article--color {
