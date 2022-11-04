@@ -9,7 +9,7 @@ function DiscussionBox({question, author, answerBy, answer}) {
         fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+answerBy+"")
         .then(res => res.json())
         .then(data => setAnsweredBy(data.name))
-    })
+    }, [])
 
     return (
         <div className='DiscussionBoxContainer'>

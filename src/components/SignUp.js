@@ -69,7 +69,7 @@ export default function SignUp() {
             alert("Invalid inputs. Please check your inputs and retry.");
         }
         else {
-            fetch("https://finzeoy.000webhostapp.com/SaveUserData.php?name="+userDetails[0].name+"&email="+userDetails[1].email+"&phno="+userDetails[2].phno+"&type="+userDetails[3].userType+"&pwd="+userDetails[4].password+"")
+            fetch("https://localhost/Finzeoy/ServerFiles/SaveUserData.php?name="+userDetails[0].name+"&email="+userDetails[1].email+"&phno="+userDetails[2].phno+"&type="+userDetails[3].userType+"&pwd="+userDetails[4].password+"")
             .then(res => res.json())
             .then(data => data.status === "Success" ? alert("Signed up successfully") : alert("Sign up failed"));
         }

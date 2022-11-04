@@ -9,7 +9,7 @@ function AdvisorQuestionComp({question, author}) {
       fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+author+"")
       .then(res => res.json())
       .then(data => setAskedBy(data))
-    })
+    }, [])
 
     return (
       <div className='AdvisorQuestionCompContainer'>

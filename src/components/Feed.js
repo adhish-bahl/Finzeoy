@@ -7,19 +7,18 @@ export default function FeedPage() {
     const [articlesData, setArticlesData] = useState([]);
 
     useEffect(() => {
-        fetch("https://finzeoy.000webhostapp.com/GetArticles.php")
+        fetch("https://localhost/Finzeoy/ServerFiles/GetArticles.php")
         .then(res => res.json())
         .then(data => setArticlesData(data));
     }, [])
 
     const investmentArticles = articlesData.filter(article => {
-        return article.type === "Investment";
+        return article.type === "investment";
     })
 
     const generalArticles = articlesData.filter(article => {
-        return article.type === "General";
+        return article.type === "general";
     })
-
 
     return (
         <div className="feed--container">
