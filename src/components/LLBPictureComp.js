@@ -1,12 +1,11 @@
 import React from 'react';
-import DemoIng from "../Images/demoImg.jpg";
 import "../styles/LLBPictureComp.css"
 import ArticleModal from '../components/ArticleModal';
 
 function LLBPictureComp(props) {
 
   function showModal(event) {
-    var modal =event.target.children[0];
+    var modal = event.target.children[0];
     var span = modal.children[0].children[0].children[0];
     
     modal.style.display = "block";
@@ -17,7 +16,7 @@ function LLBPictureComp(props) {
 
   return (
     <div className='LLBPCcontainer'>
-        <img src={DemoIng} alt="thumbnail"/>
+        <img src={props.imgSrc} alt="thumbnail"/>
         <div className="LLBPCreadMore" onClick={showModal}>READ CHAPTER
           <ArticleModal title={props.title} content={props.content} />
         </div>

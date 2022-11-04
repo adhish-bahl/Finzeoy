@@ -2,7 +2,12 @@
     /* outline: 1px black solid; */
     display: flex;
     flex-direction: column;
-    padding: 0px 10px;
+    margin: 0px 12px;
+    border: 2px solid black;
+    flex-basis: 250px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-radius: 7px;
 }
 
 .LLBPCreadMore {

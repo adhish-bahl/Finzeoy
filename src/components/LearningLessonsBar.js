@@ -15,8 +15,8 @@ function LearningLessonsBar(props) {
     ref.current.scrollLeft += scrollOffset;
   };
   
-  const learningLessons = props.modules.map(module => {
-    return <LLBPictureComp key={module.moduleId} title={module.title} content={module.content} />
+  const learningLessons = props.modules.map((module, index) => {
+    return <LLBPictureComp key={module.moduleId} title={module.title} content={module.content} imgSrc={props.images[index]} />
   })
 
   return (

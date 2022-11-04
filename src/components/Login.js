@@ -68,7 +68,6 @@ export default function Login() {
                     sessionStorage.setItem("userId", usersData[i].userId)
                     switch(loginDetails[2].userType) {
                         case "end-user":
-                            // Route to end user home page
                             history.push('/general');
                             window.location.reload();
                             // history.push({
@@ -81,14 +80,12 @@ export default function Login() {
                             break;
                             
                         case "financial-advisor":
-                            // Route to advisor home page
                             history.push('/advisors');
                             window.location.reload();
                             alert("Login successful");
                             break;
                             
                         case "student":
-                            // Route to student home page
                             history.push('/learning');
                             window.location.reload();
                             alert("Login successful");

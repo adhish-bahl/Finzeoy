@@ -5,7 +5,7 @@ import PostByAdvisorModal from './PostByAdvisorModal';
 // import ArticleModal from './ArticleModal';
 
 
-function AdvisorProfile(props) {
+function AdvisorProfile() {
 
     const [questionsData, setQuestionsData] = React.useState([]);
     const [advisorInfo, setAdvisorInfo] = React.useState({});

@@ -1,8 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/TransactionModalStyles.css'
 import '../styles/PostByAdvisorModal.css'
 
 function PostByAdvisorModal() {
+
+  const [articleData, setArticleData] = useState({
+    "title": "",
+    "typeOfArticle": "investment",
+    "article": ""
+  });
+
+  function handleChange(event) {
+    const {name, value} = event.target;
+
+    setArticleData(prevData => {
+      return {...prevData, [name]: value}
+    })
+  }
+
+  function submitContent() {
+    if(articleData.title == "" || articleData.article == "") {
+      alert("Please fill all the fields")
+    }
+
+    else {
+      var date = new Date();
+      fetch("https://localhost/Finzeoy/ServerFiles/SaveArticles.php?title="+articleData.title+"&postedBy="+sessionStorage.getItem("userId")+"&date="+date.toLocaleDateString()+"&article="+articleData.article+"&type="+articleData.typeOfArticle+"")
+      .then(res => res.json)
+      .then(data => data.status === "success" ? alert("Article posted successfully") : alert("Article could not be posted"))
+    }
+  }
+
   return (
     <div id="myModal" className="modal">
         <div className="modal--content">
@@ -12,13 +40,13 @@ function PostByAdvisorModal() {
             </div>
             <div className="modal--mainContent">
                 <form action="">
-                    <input type="text" name="title" id="title" placeholder='Give Title' />
-                    <select name="typeOfArticle" id="articleType">
+                    <input type="text" name="title" id="title" placeholder='Give Title' onChange={handleChange}/>
+                    <select name="typeOfArticle" id="articleType" onChange={handleChange} >
                       <option value="investment">Investment</option>
                       <option value="general">General</option>
                     </select>
-                    <textarea type="" name="article" id="article" placeholder='Article Here' />
-                    <button id="postButton" type="submit">Post</button>
+                    <textarea type="" name="article" id="article" placeholder='Article Here' onChange={handleChange} />
+                    <button id="postButton" type="submit" onClick={submitContent}>Post</button>
                 </form>
             </div>
         </div>

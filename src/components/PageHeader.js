@@ -1,7 +1,7 @@
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
 import '../styles/LoginSignUpHeaderStyles.css'
-// import '../styles/PageHeaderStyles.css'
+import '../styles/PageHeaderStyles.css' 
 import logo from "../Images/Logo.png"
 
 
@@ -12,6 +12,7 @@ export default function PageHeader(props) {
     // })
 
     const [title1State, setTitle1State] = useState(props.titleState);
+    const [username, setUserName] = useState("");
     const history = useHistory();
 
     const handleClickTitle1 = () => {
@@ -31,6 +32,12 @@ export default function PageHeader(props) {
         window.location.reload()
     }
 
+    useEffect(() => {
+        fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
+        .then(res => res.json())
+        .then(data => setUserName(data))
+    })
+
     return (
         <div className="header">
             <div className="header--title" onClick={openLandingPage}>
@@ -42,8 +49,8 @@ export default function PageHeader(props) {
                 <button className={`header--link ${title1State == "true" ? "" : "active"}`} onClick={handleClickTitle2}>{props.title2}</button>
             </div>
             <div className="header--buttons">
-                <h3 className="profile--name">{props.username}</h3>
-                {/* <img className="profile--logo" src="./Images/profile_logo.png" /> */}
+                <h3 className="profile--name">{username.name}</h3>
+                <img className="profile--logo" src="./Images/profile_logo.png" />
             </div>
         </div>
         // <div className="header">
