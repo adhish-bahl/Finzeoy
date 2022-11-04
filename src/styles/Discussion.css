@@ -61,3 +61,29 @@
     /* overflow: hidden; */
     /* scroll-behavior: smooth; */
 }
+
+.postQuestion {
+    background-color: white;
+    margin-top: 20px;
+    width: 90%;
+    margin-left: 20px;
+    border-radius: 30px;
+    padding: 10px;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+#questionInput {
+    font-size: 1.3rem;
+    width: 90%;
+    border-radius: 30px;
+    /* margin-right: 30px; */
+    padding: 5px 15px;
+}
+
+.postQuestionButton {
+    font-size: 1.3rem;
+    border-radius: 30px;
+    padding: 5px 15px;
+}

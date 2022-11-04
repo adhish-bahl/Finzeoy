@@ -61,6 +61,10 @@ function Discussion() {
             </div>
 
             <div className="DCright">
+                <div className="postQuestion">
+                    <input type="text" name="questionInput" id="questionInput" placeholder='Write your Question here...' />
+                    <button type="submit" className='postQuestionButton'>Post</button>
+                </div>
                 {allQuestionsAnswered}
             </div>
         </div>
