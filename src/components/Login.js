@@ -105,12 +105,10 @@ export default function Login() {
     }
 
     useEffect(() => {
-        fetch("https://finzeoy.000webhostapp.com/GetUsersData.php")
+        fetch("https://localhost/Finzeoy/ServerFiles/GetUsersData.php")
         .then(res => res.json())
         .then(data => setUsersData(data))
     }, [])
-
-    console.log(usersData);
 
     return (
         <div className="signUp--container login--container">
