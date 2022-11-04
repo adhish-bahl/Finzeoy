@@ -6,10 +6,10 @@ export default function Article(props) {
 
     const [postedBy, setPostedBy] = useState("");
 
-    function showModal() {
-        var modal = document.getElementsByClassName("modal")[props.idx];
-        var span = document.getElementsByClassName("close")[props.idx];
-
+    function showModal(event) {
+        var modal = event.target.parentElement.children[1];
+        var span = modal.children[0].children[0].children[0];
+        
         modal.style.display = "block";
         span.onclick = function() {
             modal.style.display = "none";
@@ -30,8 +30,10 @@ export default function Article(props) {
                 <h5 className="article--author">{postedBy.charAt(0).toUpperCase() + postedBy.slice(1)}, {props.date}</h5>
                 <div className="article--body">
                     <p>{props.content.slice(0, 150)} ...</p>
-                    <button className="article--readMore" onClick={showModal}>Read More</button>
-                    <ArticleModal title={props.title} content={props.content}/>
+                    <div>
+                        <button className="article--readMore" onClick={showModal}>Read More</button>
+                        <ArticleModal title={props.title} content={props.content}/>
+                    </div>
                 </div>
             </div>
         </div>
