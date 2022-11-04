@@ -1,0 +1,41 @@
+.modal--mainContent form {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+}
+
+.modal--content {
+    width: 50vw;
+    background-color: #fefefed3;
+}
+
+#title {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#articleType {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    padding: 5px;
+    border-radius: 10px;
+    width: 150px;
+}
+
+#article {
+    font-size: 1.2rem;
+    height: 30vh;
+    width: 30vw;
+    word-wrap: break-word;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+#postButton {
+    width: 150px;
+    padding: 5px;
+    border-radius: 10px;
+}
