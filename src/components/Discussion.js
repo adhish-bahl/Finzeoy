@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import "../styles/Discussion.css"
 import DiscussionBox from './DiscussionBox'
 
-function Discussion() {
+function Discussion(props) {
 
     const [questionsData, setQuestionsData] = React.useState([]);
 
@@ -13,13 +13,34 @@ function Discussion() {
     }, [])
 
     const questionsAskedData = questionsData.filter(question => {
-        return question.answer.length === 0;
+        return question.answer.length === 0 && question.quesBy === props.userId;
     })
 
     console.log(questionsData);
 
     const questionsAnsweredData = questionsData.filter(question => {
-        return question.answer.length != 0; 
+        return question.answer.length != 0 && question.quesBy === props.userId; 
+    })
+
+    const allQuestionsAnsweredData = questionsData.filter(question => {
+        return question.answer.length != 0
+    })
+
+    const questionsAsked = questionsAskedData.map(question => {
+        return <div className="questionAsked">
+            <h4>{question.ques}</h4>
+        </div>
+    })
+
+    const questionsAnswered = questionsAnsweredData.map(question => {
+        return <div className="questionAnswered">
+            <h4>{question.ques}</h4>
+            <p>{question.answer}</p>
+        </div>
+    })
+
+    const allQuestionsAnswered = allQuestionsAnsweredData.map(question => {
+        return <DiscussionBox question={question.ques} answerBy={question.answerBy} answer={question.answer} />
     })
 
     return (
@@ -32,19 +53,17 @@ function Discussion() {
         
                 <div className="DCRupper">
                     <h1>Questions Asked:</h1>
+                    {questionsAsked}
                 </div>
 
                 <div className="DCRlower">
                     <h1>Question Answered:</h1>
+                    {questionsAnswered}
                 </div>
             </div>
 
             <div className="DCright">
-                <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
-                <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
-                <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
-                <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
-                <DiscussionBox  question="How can my income Expenditure improve?" author="By althea D’Cruz" answerBy="Mr. Mehta" answer="In order to make a budget, estimate the amount of money you will ideally need to spend each month based on your income, lifestyle, and wants. Having such an estimate will help you gain more control over your finances, and accordingly organize your spending and savings."/>
+                {allQuestionsAnswered}
             </div>
         </div>
     )
