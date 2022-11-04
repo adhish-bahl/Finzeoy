@@ -11,7 +11,10 @@ export default function ArticleContainer(props) {
     return (
         <div className="article--container">
             <h1 className="article--container--head">{props.title}</h1>
-            {articlesToDisplay}
+            <div className="article--container-scrollable">
+                {articlesToDisplay}
+                {articlesToDisplay}
+            </div>
         </div>
     )
 }
