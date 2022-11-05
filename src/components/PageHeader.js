@@ -15,6 +15,11 @@ export default function PageHeader(props) {
     const [username, setUserName] = useState("");
     const history = useHistory();
 
+    const logoutNow = () => {
+        history.push('/login')
+        window.location.reload()
+    }
+
     const handleClickTitle1 = () => {
         setTitle1State(true);
         history.push(props.title1Route)
@@ -50,7 +55,7 @@ export default function PageHeader(props) {
             </div>
             <div className="header--buttons">
                 <h3 className="profile--name">{username.name}</h3>
-                <img className="profile--logo" src="./Images/profile_logo.png" />
+                <img className="profile--logo" onClick={logoutNow} src="./Images/profile_logo.png" />
             </div>
         </div>
         // <div className="header">
