@@ -6,7 +6,7 @@ function DiscussionBox({question, author, answerBy, answer}) {
     const [answeredBy, setAnsweredBy] = useState("");
 
     useEffect(() => {
-        fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+answerBy+"")
+        fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+answerBy+"")
         .then(res => res.json())
         .then(data => setAnsweredBy(data.name))
     }, [])

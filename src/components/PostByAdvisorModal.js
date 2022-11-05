@@ -18,16 +18,18 @@ function PostByAdvisorModal() {
     })
   }
 
-  function submitContent() {
+  async function submitContent() {
     if(articleData.title == "" || articleData.article == "") {
       alert("Please fill all the fields")
     }
 
     else {
       var date = new Date();
-      fetch("https://localhost/Finzeoy/ServerFiles/SaveArticles.php?title="+articleData.title+"&postedBy="+sessionStorage.getItem("userId")+"&date="+date.toLocaleDateString()+"&article="+articleData.article+"&type="+articleData.typeOfArticle+"")
-      .then(res => res.json)
+      await fetch("https://finzeoy.000webhostapp.com/SaveArticles.php?title="+articleData.title+"&postedBy="+sessionStorage.getItem("userId")+"&date="+date.toLocaleDateString()+"&article="+articleData.article+"&type="+articleData.typeOfArticle+"")
+      .then(res => res.json())
       .then(data => data.status === "success" ? alert("Article posted successfully") : alert("Article could not be posted"))
+
+      window.location.reload();
     }
   }
 
@@ -39,7 +41,7 @@ function PostByAdvisorModal() {
                 <h2>Post Content</h2>
             </div>
             <div className="modal--mainContent">
-                <form action="">
+                <div>
                     <input type="text" name="title" id="title" placeholder='Give Title' onChange={handleChange}/>
                     <select name="typeOfArticle" id="articleType" onChange={handleChange} >
                       <option value="investment">Investment</option>
@@ -47,7 +49,7 @@ function PostByAdvisorModal() {
                     </select>
                     <textarea type="" name="article" id="article" placeholder='Article Here' onChange={handleChange} />
                     <button id="postButton" type="submit" onClick={submitContent}>Post</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>

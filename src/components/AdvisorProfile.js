@@ -11,15 +11,15 @@ function AdvisorProfile() {
     const [advisorInfo, setAdvisorInfo] = React.useState({});
 
     useEffect(() => {
-        fetch("https://localhost/Finzeoy/ServerFiles/GetQuestionsData.php")
+        fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
         .then(res => res.json())
         .then(data => setQuestionsData(data))
 
-        fetch("https://localhost/Finzeoy/ServerFiles/GetAdvisorInfo.php?userId="+sessionStorage.getItem("userId")+"")
+        fetch("https://finzeoy.000webhostapp.com/GetAdvisorInfo.php?userId="+sessionStorage.getItem("userId")+"")
         .then(res => res.json())
         .then(data => setAdvisorInfo(data))
 
-        fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
+        fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
         .then(res => res.json())
         .then(data => setAdvisorInfo(prevState => {
             return {...prevState,

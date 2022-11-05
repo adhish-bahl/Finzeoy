@@ -11,7 +11,7 @@
             $advisor->userId = $row["userid"];
             $advisor->age = $row["age"];
             $advisor->profession = $row["profession"];
-            $advisor->desc = $row["desc"];
+            $advisor->desc = $row["description"];
             $advisor->linkedin = $row["linkedin"];
             $advisor->twitter = $row["twitter"];
             $advisor->facebook = $row["facebook"];

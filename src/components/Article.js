@@ -17,7 +17,7 @@ export default function Article(props) {
     }
 
     useEffect(() => {
-        fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+props.postedBy+"")
+        fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+props.postedBy+"")
         .then(res => res.json())
         .then(data => setPostedBy(data.name))
     }, [])

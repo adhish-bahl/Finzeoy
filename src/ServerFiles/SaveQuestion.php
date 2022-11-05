@@ -21,12 +21,13 @@
 
 	if($mysqli->query($sql) === TRUE)
 	{
-		echo "Success";
+		echo json_encode(array("status" => "success"));
 	}
     else
     {
-        echo "Failed";
-    }
+        echo json_decode(array("status" => "failed"));
+    } 
+
 
 	$mysqli->close();
 ?>

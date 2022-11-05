@@ -7,10 +7,6 @@ import logo from "../Images/Logo.png"
 
 export default function PageHeader(props) {
 
-    // const headerItems = props.headerItems.map(item => {
-    //     return <button className={`header--link ${props.displayPage === item ? "page--active" : ""}`} onClick={event => props.handleClick(event)}>{item}</button>
-    // })
-
     const [title1State, setTitle1State] = useState(props.titleState);
     const [username, setUserName] = useState("");
     const history = useHistory();
@@ -38,7 +34,7 @@ export default function PageHeader(props) {
     }
 
     useEffect(() => {
-        fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
+        fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
         .then(res => res.json())
         .then(data => setUserName(data))
     })

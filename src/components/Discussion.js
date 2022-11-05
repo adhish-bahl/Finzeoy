@@ -7,17 +7,17 @@ function Discussion() {
     const [questionsData, setQuestionsData] = React.useState([]);
 
     useEffect(() => {
-        fetch("https://localhost/Finzeoy/ServerFiles/GetQuestionsData.php")
+        fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
         .then(res => res.json())
         .then(data => setQuestionsData(data))
     }, [])
 
     const questionsAskedData = questionsData.filter(question => {
-        return (question.answer === null && question.quesBy == 4);
+        return (question.answer === null && question.quesBy == 3);
     })
 
     const questionsAnsweredData = questionsData.filter(question => {
-        return (question.answer != null && question.quesBy == 4); 
+        return (question.answer != null && question.quesBy == 3); 
     })
 
     const allQuestionsAnsweredData = questionsData.filter(question => {
@@ -40,7 +40,15 @@ function Discussion() {
         return <DiscussionBox key={question.quesid} question={question.ques} answerBy={question.ansBy} answer={question.answer} />
     })
 
-    console.log(questionsData);
+    async function submitQuestion() {
+        var question = document.getElementById("questionInput").value;
+
+        await fetch("https://finzeoy.000webhostapp.com/SaveQuestion.php?question="+question+"&quesBy=3&operation=insert&answer=null&userId=null&quesId=null")
+        .then(res => res.json())
+        .then(data => data.status === "success" ? alert("Question posted successfully") : alert("Question posting failed"))
+
+        window.location.reload()
+    }
 
     return (
         <div className='discussionContainer'>
@@ -63,7 +71,7 @@ function Discussion() {
             <div className="DCright">
                 <div className="postQuestion">
                     <input type="text" name="questionInput" id="questionInput" placeholder='Write your Question here...' />
-                    <button type="submit" className='postQuestionButton'>Post</button>
+                    <button type="submit" className='postQuestionButton' onClick={submitQuestion}>Post</button>
                 </div>
                 {allQuestionsAnswered}
             </div>

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import {useHistory} from 'react-router-dom'
 import '../styles/SignUpStyles.css'
 
 export default function SignUp() {
+
+    const history = useHistory();
+    var userId;
 
     const [userDetails, setUserDetails] = useState([
         {
@@ -17,7 +21,7 @@ export default function SignUp() {
             "hasError": false
         },
         {
-            "userType": "none",
+            "userType": "end-user",
             "hasError": false
         },
         {
@@ -35,7 +39,7 @@ export default function SignUp() {
 
         setUserDetails(prevFormData => {
             let outputArr = prevFormData.map(item => {
-                if(item[name]) {
+                if(item[name] || item[name] === "") {
                     return {
                         ...item,
                         [name]: value,
@@ -48,6 +52,7 @@ export default function SignUp() {
             })
             return outputArr;
         })
+
     }
     
     function validateForm(name, value) {
@@ -62,17 +67,58 @@ export default function SignUp() {
 
         if(name === "password")
             return value.match(/[^ ]{6}/) ? false : true;
+
+        return false;
     }
 
-    function saveFormData() {
+    async function saveFormData() {
         if(userDetails[0].hasError || userDetails[1].hasError || userDetails[2].hasError || userDetails[3].hasError || userDetails[4].hasError) {
             alert("Invalid inputs. Please check your inputs and retry.");
         }
         else {
-            fetch("https://localhost/Finzeoy/ServerFiles/SaveUserData.php?name="+userDetails[0].name+"&email="+userDetails[1].email+"&phno="+userDetails[2].phno+"&type="+userDetails[3].userType+"&pwd="+userDetails[4].password+"")
-            .then(res => res.json())
-            .then(data => data.status === "Success" ? alert("Signed up successfully") : alert("Sign up failed"));
+            await getUsersData();
+
+            if(userDetails[3].userType === "financial-advisor") {
+                await fetch("https://finzeoy.000webhostapp.com/SaveAdvisorInfo.php?userid="+userId+"")
+                .then(res => res.json())
+                .then(data => {})
+            }
+
+            switch(userDetails[3].userType) {
+                case "end-user":
+                    history.push('/general');
+                    window.location.reload();
+                    break;
+                            
+                case "financial-advisor":
+                    history.push('/advisors');
+                    window.location.reload();
+                    break;
+                            
+                case "student":
+                    history.push('/learning');
+                    window.location.reload();
+                    break;
+
+                default:
+                    break;
+            }
         }
+    }
+
+    async function getUsersData() {
+        await fetch("https://finzeoy.000webhostapp.com/SaveUserData.php?name="+userDetails[0].name+"&email="+userDetails[1].email+"&phno="+userDetails[2].phno+"&type="+userDetails[3].userType+"&pwd="+userDetails[4].password+"")
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === "Success") {
+                userId = data.userId;
+                sessionStorage.setItem("userId", userId);
+                alert("Signed up successfully");
+            }
+            else {
+                alert("Sign up failed");
+            }
+        });
     }
 
     return (

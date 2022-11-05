@@ -16,7 +16,7 @@
 	}
     else
     {
-        echo json_decode(array("status" => "failed"));
+        echo json_encode(array("status" => "failed"));
     } 
 
 	$mysqli->close();

@@ -6,7 +6,7 @@ function AdvisorQuestionComp({question, author}) {
     const [askedBy, setAskedBy] = useState("");
 
     useEffect(() => {
-      fetch("https://localhost/Finzeoy/ServerFiles/GetUserData.php?userId="+author+"")
+      fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+author+"")
       .then(res => res.json())
       .then(data => setAskedBy(data))
     }, [])

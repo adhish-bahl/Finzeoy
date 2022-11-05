@@ -13,7 +13,7 @@ function LearningPage() {
                     "./Images/3(1).jpg", "./Images/3(2).jpg", "./Images/3(3).jpg", "./Images/3(4).jpg", "./Images/3(4).jpg", "./Images/3(4).jpg"]
 
     useEffect(() => {
-      fetch("https://localhost/Finzeoy/ServerFiles/GetLearningData.php")
+      fetch("https://finzeoy.000webhostapp.com/GetLearningData.php")
       .then(res => res.json())
       .then(data => setLearningData(data));
     }, [])

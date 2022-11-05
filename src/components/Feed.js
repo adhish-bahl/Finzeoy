@@ -7,7 +7,7 @@ export default function FeedPage() {
     const [articlesData, setArticlesData] = useState([]);
 
     useEffect(() => {
-        fetch("https://localhost/Finzeoy/ServerFiles/GetArticles.php")
+        fetch("https://finzeoy.000webhostapp.com/GetArticles.php")
         .then(res => res.json())
         .then(data => setArticlesData(data));
     }, [])

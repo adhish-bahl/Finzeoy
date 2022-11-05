@@ -33,7 +33,7 @@ export default function Login() {
 
         setLoginDetails(prevFormData => {
             let outputArr = prevFormData.map(item => {
-                if(item[name]) {
+                if(item[name] || item[name] === "") {
                     return {
                         ...item,
                         [name]: value,
@@ -68,27 +68,21 @@ export default function Login() {
                     sessionStorage.setItem("userId", usersData[i].userId)
                     switch(loginDetails[2].userType) {
                         case "end-user":
+                            alert("Login successful");
                             history.push('/general');
                             window.location.reload();
-                            // history.push({
-                            //     pathname: "/general",
-                            //     state: {
-                            //         needsRefresh: true,
-                            //     },
-                            // })
-                            alert("Login successful");
                             break;
                             
                         case "financial-advisor":
+                            alert("Login successful");
                             history.push('/advisors');
                             window.location.reload();
-                            alert("Login successful");
                             break;
                             
                         case "student":
+                            alert("Login successful");
                             history.push('/learning');
                             window.location.reload();
-                            alert("Login successful");
                             break;
 
                         default:
@@ -102,7 +96,7 @@ export default function Login() {
     }
 
     useEffect(() => {
-        fetch("https://localhost/Finzeoy/ServerFiles/GetUsersData.php")
+        fetch("https://finzeoy.000webhostapp.com/GetUsersData.php")
         .then(res => res.json())
         .then(data => setUsersData(data))
     }, [])
