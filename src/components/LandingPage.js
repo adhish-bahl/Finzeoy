@@ -12,10 +12,6 @@ function LandingPage() {
   const [displayLogin, setDisplayLogin] = useState(true);
   const history = useHistory();
 
-    // const toggleLogin = () => {
-    //   setDisplayLogin(prevState => !prevState);
-    // }
-
     const toggleLogin = () => {
         setDisplayLogin(true);
         history.push('/login')
@@ -30,7 +26,6 @@ function LandingPage() {
 
   return (
     <>
-    {/* <LoginSignUpHeader displayPage={displayLogin} handleClick={toggleLogin} /> */}
     <LoginSignUpHeader displayPage={displayLogin} handleClickLogin={toggleLogin} handleClickSignup={toggleSignup} />
     <div className='LandingPageContainer' style={{overflow: "hidden"}}>
         <div className="LPleft">

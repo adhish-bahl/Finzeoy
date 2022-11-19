@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Metric from "./Metric";
 import ProgressContainer from "./ProgressContainer";
 import "../styles/IncomeExpenseStyles.css";
@@ -6,6 +6,10 @@ import TransactionModal from "./TransactionModal";
 import PieChart from "./PieChart";
 
 export default function IncomeExpense() {
+
+    const [budgetData, setBudgetData] = useState([]);
+    const [expenseData, setExpenseData] = useState([]);
+    const [incomeData, setIncomeData] = useState([]);
 
     function showModal(event) {
         var modals = document.getElementsByClassName("modal");
@@ -24,6 +28,20 @@ export default function IncomeExpense() {
             }
         }
     }
+
+    useEffect(() => {
+        fetch("https://finzeoy.000webhostapp.com/GetBudgetData.php?userId = "+sessionStorage.getItem("userId")+"")
+        .then(res => res.json())
+        .then(data => setBudgetData(data))
+
+        fetch("https://finzeoy.000webhostapp.com/GetExpenseData.php?userId = "+sessionStorage.getItem("userId")+"")
+        .then(res => res.json())
+        .then(data => setExpenseData(data))
+
+        fetch("https://finzeoy.000webhostapp.com/GetIncomeData.php?userId = "+sessionStorage.getItem("userId")+"")
+        .then(res => res.json())
+        .then(data => setIncomeData(data))
+    })
 
     return (
         <div className="tracker--container">
