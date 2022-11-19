@@ -13,11 +13,11 @@ function Discussion() {
     }, [])
 
     const questionsAskedData = questionsData.filter(question => {
-        return (question.answer === null && question.quesBy == 3);
+        return (question.answer === null && question.quesBy == sessionStorage.getItem("userId"));
     })
 
     const questionsAnsweredData = questionsData.filter(question => {
-        return (question.answer != null && question.quesBy == 3); 
+        return (question.answer != null && question.quesBy == sessionStorage.getItem("userId")); 
     })
 
     const allQuestionsAnsweredData = questionsData.filter(question => {
@@ -43,7 +43,7 @@ function Discussion() {
     async function submitQuestion() {
         var question = document.getElementById("questionInput").value;
 
-        await fetch("https://finzeoy.000webhostapp.com/SaveQuestion.php?question="+question+"&quesBy=3&operation=insert&answer=null&userId=null&quesId=null")
+        await fetch("https://finzeoy.000webhostapp.com/SaveQuestion.php?question="+question+"&quesBy="+sessionStorage.getItem("userId")+"&operation=insert&answer=null&userId=null&quesId=null")
         .then(res => res.json())
         .then(data => data.status === "success" ? alert("Question posted successfully") : alert("Question posting failed"))
 
