@@ -53,6 +53,19 @@
     text-align: left;
 }
 
+.editProfileButton img {
+    width: 50%;
+}
+
+.editProfileButton {
+    border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 120px;
+    left: 330px;
+}
+
 .APadname {
     font-size: 2rem;
     font-weight: 500;

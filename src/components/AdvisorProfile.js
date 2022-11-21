@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import "../styles/AdvisorProfile.css"
 import AdvisorQuestionComp from './AdvisorQuestionComp'
 import PostByAdvisorModal from './PostByAdvisorModal';
+import editIcon from "../Images/editIcon.svg"
+import AdvisorProfileEditModal from "./AdvisorProfileEditModal.js"
 // import ArticleModal from './ArticleModal';
 
 
@@ -9,6 +11,16 @@ function AdvisorProfile() {
 
     const [questionsData, setQuestionsData] = React.useState([]);
     const [advisorInfo, setAdvisorInfo] = React.useState({});
+
+    function showModal(event) {
+        var modal = event.target.parentElement.children[1];
+        var span = modal.children[0].children[0].children[0];
+
+        modal.style.display = "block";
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    }
 
     useEffect(() => {
         fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
@@ -51,6 +63,8 @@ function AdvisorProfile() {
         <div className='APcontainer'>
             <button type="submit" className='postButton' onClick={showModal}>+</button>
             <div className="APleft">
+                <button className='editProfileButton' onClick={showModal}><img src={editIcon} alt="Edit Icon"/></button>
+                <AdvisorProfileEditModal nameP = {advisorInfo.name} ageP = {advisorInfo.age} professionP = {advisorInfo.profession} descP = {advisorInfo.desc} phnoP = {advisorInfo.phno} twitterP = {advisorInfo.twitter} emailP = {advisorInfo.email} facebookP = {advisorInfo.facebook} linkedinP = {advisorInfo.linkedin} websiteP = {advisorInfo.website} />
 
                 <div className="APLone">
 
