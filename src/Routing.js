@@ -52,6 +52,7 @@ function Routing() {
                     {/* ADVISOR MODULES */}
                     <Route path="/advisors">
                         <PageHeader title1="Home" title1Route="/advisors"  titleState="true" username="ABC BCD" />
+                          {/* <PageHeader title1="Home" title1Route="/advisors" title2="Discussion" title2Route="/discussion" titleState="true" username="ABC BCD" /> */}
                         <AdvisorProfile />
                     </Route>
 
