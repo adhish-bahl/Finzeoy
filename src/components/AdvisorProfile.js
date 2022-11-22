@@ -12,15 +12,15 @@ function AdvisorProfile() {
     const [questionsData, setQuestionsData] = React.useState([]);
     const [advisorInfo, setAdvisorInfo] = React.useState({});
 
-    function showModal(event) {
-        var modal = event.target.parentElement.children[1];
-        var span = modal.children[0].children[0].children[0];
+    // function showModal(event) {
+    //     var modal = event.target.parentElement.children[1];
+    //     var span = modal.children[0].children[0].children[0];
 
-        modal.style.display = "block";
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-    }
+    //     modal.style.display = "block";
+    //     span.onclick = function () {
+    //         modal.style.display = "none";
+    //     }
+    // }
 
     useEffect(() => {
         fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")

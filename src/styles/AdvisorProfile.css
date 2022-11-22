@@ -17,7 +17,8 @@
 
 .APleft {
     width: 25vw;
-    min-height: 80vh;
+    max-height: 80vh;
+    height: fit-content;
     background-color: white;
     border-radius: 30px;
     margin: 2vw; 
@@ -89,13 +90,32 @@
 }
 
 .APLtwo {
-    min-height: 30vh;
+    max-height: 30vh;
     height: fit-content;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
     width: 100%;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
     margin-top: 30px;
     padding: 10px;
+}
+
+.APLtwo::-webkit-scrollbar-track
+{
+	background-color: #F5F5F5;
+}
+
+.APLtwo::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.APLtwo::-webkit-scrollbar-thumb
+{
+	background-color: rgba(55,71,79, 0.3);
+	border: 2px solid rgba(55,71,79, 0.3);
 }
 
 .APLthree {
