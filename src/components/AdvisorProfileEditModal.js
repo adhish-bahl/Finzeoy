@@ -1,21 +1,33 @@
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import "../styles/TransactionModalStyles.css";
 
 export default function ArticleModal({nameP, ageP, professionP, descP, phnoP, twitterP, emailP, facebookP, linkedinP, websiteP}) {
 
 
-    const [name, setName] = useState(nameP);
-    const [age, setAge] = useState(ageP);
-    const [profession, setProfession] = useState(professionP);
-    const [desc, setDesc] = useState(descP);
-    const [phno, setPhno] = useState(phnoP);
-    const [twitter, setTwitter] = useState(twitterP);
-    const [email, setEmail] = useState(emailP);
-    const [facebook, setFacebook] = useState(facebookP);
-    const [linkedin, setLinkedin] = useState(linkedinP);
-    const [website, setWebsite] = useState(websiteP);
+    const [name, setName] = useState();
+    const [age, setAge] = useState();
+    const [profession, setProfession] = useState();
+    const [desc, setDesc] = useState();
+    const [phno, setPhno] = useState();
+    const [twitter, setTwitter] = useState();
+    const [email, setEmail] = useState();
+    const [facebook, setFacebook] = useState();
+    const [linkedin, setLinkedin] = useState();
+    const [website, setWebsite] = useState();
 
 
+    useEffect(() => {
+        setName(nameP);
+        setAge(ageP);
+        setProfession(professionP);
+        setDesc(descP);
+        setPhno(phnoP);
+        setTwitter(twitterP);
+        setEmail(emailP);
+        setFacebook(facebookP);
+        setLinkedin(linkedinP);
+        setWebsite(websiteP);
+    });
 
     return (
         <div id="myModal" className="modal">

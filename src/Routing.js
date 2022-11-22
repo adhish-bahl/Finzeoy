@@ -51,22 +51,24 @@ function Routing() {
 
                     {/* ADVISOR MODULES */}
                     <Route path="/advisors">
-                        <PageHeader title1="Home" title1Route="/advisors"  titleState="true" username="ABC BCD" />
-                          {/* <PageHeader title1="Home" title1Route="/advisors" title2="Discussion" title2Route="/discussion" titleState="true" username="ABC BCD" /> */}
+                        <PageHeader title1="Home" title1Route="/advisors" title2="Feed" title2Route="/advisorfeed" titleState="true" username="ABC BCD" />
                         <AdvisorProfile />
                     </Route>
+
+                      <Route path="/advisorfeed">
+                          <PageHeader title1="Home" title1Route="/advisors" title2="Feed" title2Route="/advisorfeed" titleState="false" username="ABC BCD" />
+                          <FeedMainPage />
+                      </Route>
 
                     {/* END USER MODULES */}
                     <Route path="/general">
                         <PageHeader title1="Tracker" title1Route="/general" title2="Feed" title2Route="/feed" titleState="true" username="ABC BCD" />
                         <GeneralPage />
-                        {/* <GeneralUserHomePage username="xxx" /> */}
                     </Route>
                     
                     <Route path="/feed">
                         <PageHeader title1="Tracker" title1Route="/general" title2="Feed" title2Route="/feed" titleState="false" username="ABC BCD" />
                         <FeedMainPage />
-                        {/* <GeneralUserHomePage username="xxx" /> */}
                     </Route>
 
                     {/* PAGE NOT FOUND  */}
