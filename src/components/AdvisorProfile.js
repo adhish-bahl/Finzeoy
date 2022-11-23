@@ -4,6 +4,10 @@ import AdvisorQuestionComp from './AdvisorQuestionComp'
 import PostByAdvisorModal from './PostByAdvisorModal';
 import editIcon from "../Images/editIcon.svg"
 import AdvisorProfileEditModal from "./AdvisorProfileEditModal.js"
+import facebookIcon from "../Images/facebookIcon.png"
+import linkedinIcon from "../Images/linkedinIcon.png"
+import websiteIcon from "../Images/websiteIcon.png"
+import twitterIcon from "../Images/twitterIcon.png"
 // import ArticleModal from './ArticleModal';
 
 
@@ -82,13 +86,17 @@ function AdvisorProfile() {
                 <div className="APLthree">
                     <h1 className="APheading">Contact</h1>
                     
-                    <div className="APLTtags">
+                    <div className ="APLTtags">
                         <div className="tags">{advisorInfo.phno}</div>
-                        <div className="tags">{advisorInfo.twitter}</div>
                         <div className="tags">{advisorInfo.email}</div>
-                        <div className="tags">{advisorInfo.facebook}</div>
-                        <div className="tags">{advisorInfo.linkedin}</div>
-                        <div className="tags">{advisorInfo.website}</div>
+                        <div className='advisorSocialMedia'>
+                            <a href={advisorInfo.twitter} target = "_blank" ><img src={twitterIcon} className="advisorProfileSocialMediaIcons" alt="Twitter Id" /></a>
+                            <a href={advisorInfo.facebook} target="_blank" ><img src={facebookIcon} className="advisorProfileSocialMediaIcons" alt="Twitter Id" /></a>
+                        </div>
+                        <div className='advisorSocialMedia'>
+                            <a href={advisorInfo.linkedin} target = "_blank" ><img src={linkedinIcon} className="advisorProfileSocialMediaIcons" alt="Twitter Id" /></a>
+                            <a href={advisorInfo.website} target = "_blank" ><img src={websiteIcon} className="advisorProfileSocialMediaIcons" alt="Twitter Id" /></a>
+                        </div>
                     </div>
                 </div>
 

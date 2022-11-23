@@ -138,7 +138,7 @@
     padding: 5px 0px;
     font-size: 1rem;
     background-color: #d8dce0;
-    width: 80%;
+    width: 90%;
     border-radius: 10px;
     color: #6a6c6e;
 }
@@ -193,4 +193,15 @@
 .postButton:hover {
 	-webkit-animation: rotate-center 0.3s linear 1 both;
 	        animation: rotate-center 0.3s linear 1 both;
+}
+
+.advisorProfileSocialMediaIcons {
+    height: 40px;
+}
+
+.advisorSocialMedia {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
 }
