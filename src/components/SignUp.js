@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {useHistory} from 'react-router-dom'
 import '../styles/SignUpStyles.css'
 
 export default function SignUp() {
 
     const [signupError, setSignupError] = useState("");
+    const [acceptPolicy, setAcceptPolicy] = useState(false);
+    const ref = useRef(null);
 
     const history = useHistory();
     var userId;
+
+    const ischecked = () => {
+        setSignupError("");
+        if(ref.current.checked) {
+            setAcceptPolicy(true)
+        } else {
+            setAcceptPolicy(false)
+        }
+    }
 
     const [userDetails, setUserDetails] = useState([
         {
@@ -34,6 +45,8 @@ export default function SignUp() {
     );
 
     function handleChange(event) {
+        setSignupError("");
+
         const {name, value, style} = event.target;
 
         let isError = validateForm(name, value);
@@ -74,38 +87,43 @@ export default function SignUp() {
     }
 
     async function saveFormData() {
-        if(userDetails[0].hasError || userDetails[1].hasError || userDetails[2].hasError || userDetails[3].hasError || userDetails[4].hasError) {
-            // alert("Invalid inputs. Please check your inputs and retry.");
-            setSignupError("Invalid inputs. Please check your inputs and retry.");
+        if(acceptPolicy) {
+            if(userDetails[0].hasError || userDetails[1].hasError || userDetails[2].hasError || userDetails[3].hasError || userDetails[4].hasError) {
+                // alert("Invalid inputs. Please check your inputs and retry.");
+                setSignupError("Invalid inputs. Please check your inputs and retry.");
+            }
+            else {
+                await getUsersData();
+
+                if(userDetails[3].userType === "financial-advisor") {
+                    await fetch("https://finzeoy.000webhostapp.com/SaveAdvisorInfo.php?userid="+userId+"")
+                    .then(res => res.json())
+                    .then(data => {})
+                }
+
+                switch(userDetails[3].userType) {
+                    case "end-user":
+                        history.push('/general');
+                        window.location.reload();
+                        break;
+
+                    case "financial-advisor":
+                        history.push('/advisors');
+                        window.location.reload();
+                        break;
+
+                    case "student":
+                        history.push('/learning');
+                        window.location.reload();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
         else {
-            await getUsersData();
-
-            if(userDetails[3].userType === "financial-advisor") {
-                await fetch("https://finzeoy.000webhostapp.com/SaveAdvisorInfo.php?userid="+userId+"")
-                .then(res => res.json())
-                .then(data => {})
-            }
-
-            switch(userDetails[3].userType) {
-                case "end-user":
-                    history.push('/general');
-                    window.location.reload();
-                    break;
-                            
-                case "financial-advisor":
-                    history.push('/advisors');
-                    window.location.reload();
-                    break;
-                            
-                case "student":
-                    history.push('/learning');
-                    window.location.reload();
-                    break;
-
-                default:
-                    break;
-            }
+            setSignupError("Please check the accept policy box")
         }
     }
 
@@ -146,7 +164,7 @@ export default function SignUp() {
                     <input type={"password"} placeholder="Password" className="form--input" name="password" onChange={handleChange}></input>
                 </form>
                 <div className="PoliciesSection">
-                    <input type="checkbox" name="form--terms" id="policies" />
+                    <input type="checkbox" name="form--terms" id="policies" onChange={ischecked} ref = {ref} />
                     <p className="form--terms">By clicking Agree & Join, you agree to the FINZEOY<br></br> User Agreement, Privacy Policy, and Cookie Policy.</p>
                 </div>
                 <div className="errorAndButton">
