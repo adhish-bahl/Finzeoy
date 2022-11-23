@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Metric from "./Metric";
-import ProgressContainer from "./ProgressContainer";
+import "../styles/ProgressContainerStyles.css";
+import Progress from "./Progress";
 import "../styles/IncomeExpenseStyles.css";
 import TransactionModal from "./TransactionModal";
 import PieChart from "./PieChart";
@@ -104,7 +105,18 @@ export default function IncomeExpense() {
                 <Metric metricName="EXPENSE" amount={expenseTotal = expenseData.length > 0 ? expenseData.reduce((total, currentExpense) => { return total + parseInt(currentExpense.amount)},0) : 0} />
             </div>
             <p className="tracker--incomePercentage">You have spent {Math.round((incomeTotal - expenseTotal)/incomeTotal*100)}% of your income</p>
-            <ProgressContainer title="BUDGET" data={budgetData} usedData={Object.fromEntries(expenseBreakdown)} />
+            <div className="budget--container">
+                <div className="budget--header">
+                    <h3 className="budget--header--title">BUDGET</h3>
+                    <div className="budget--buttons">
+                        <button className="budget--header--button"><img src="./Images/add_icon.png" className="budget--buttonImage"/></button>
+                    </div>
+                </div>
+                {budgetData!==undefined && expenseBreakdown!==undefined ? budgetData.map((item) => {
+                    const {[item.category] : usedAmount} = Object.fromEntries(expenseBreakdown);
+                    return <Progress key={item.budgetid} title={item.category} done={usedAmount !== undefined ? Math.round(usedAmount/item.amount*100) : 0} amount={item.amount} />
+                }) : 0}
+            </div>
             <div>
                 <button id="incomeBtn" className="tracker--show--button" onClick={showModal}>Show All Incomes</button>
                 <TransactionModal key="incomeModal" title="Income" data={incomeData} breakdown={incomeBreakdown=calculateIncomeBreakdown(incomeData)} />
