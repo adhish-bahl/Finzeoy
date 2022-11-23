@@ -13,11 +13,11 @@ export default function TransactionModal(props) {
                 </div>
                 <div className="modal--pieChart">
                     <h3>Division of {props.title} by categories</h3>
-                    <PieChart />
+                    <PieChart data={props.breakdown} />
                 </div>
                 <div className="modal--mainContent">
                     <h3>All {props.title}s</h3>
-                    <TransactionDetails />
+                    <TransactionDetails data={props.data} />
                 </div>
             </div>
         </div>

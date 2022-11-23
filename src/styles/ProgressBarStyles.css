@@ -22,11 +22,8 @@
   
 .progress--done {
   background: #90B77D;
-  /* box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C; */
   border-radius: 1.25em;
   color: black;
-  display: flex;
-  align-items: center;
   justify-content: center;
   height: 100%;
   width: 0;
