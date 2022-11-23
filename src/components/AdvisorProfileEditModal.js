@@ -30,37 +30,37 @@ export default function ArticleModal({nameP, ageP, professionP, descP, phnoP, tw
     });
 
     return (
-        <div id="myModal" className="modal">
+        <div id="myModal" className="modal" style={{ overflowY: "hidden" }}>
             <div className="modal--content">
                 <div className="modal--header">
                     <span className="close">&times;</span>
                     <h2>Edit Personal Infomation</h2>
                 </div>
                 <div className="modal--mainContent">
-                    <form action="" style={{width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr"}}>
+                    <form action="" style={{width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", overflowY: "hidden"}}>
                         <div className="leftOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <p className="advisorEditName">Name</p>
-                            <input type="text" name="advisorEditName" id="advisorEditNameInput" value={name} />
-                            <p className="advisorEditAge">Age</p>
-                            <input type="text" name="advisorEditAge" id="advisorEditAgeInput" value={age} />
-                            <p className="advisorEditProfession">Profession</p>
-                            <input type="text" name="advisorEditProfession" id="advisorEditProfessionInput" value={profession} />
-                            <p className="advisorEditDesc">Description</p>
-                            <textarea name="advisorEditDesc" id="advisorEditDescInput" value={desc} />
+                            <p className="advisorEditName" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Name</p>
+                            <input type="text" name="advisorEditName" id="advisorEditNameInput" value={name} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditAge" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Age</p>
+                            <input type="text" name="advisorEditAge" id="advisorEditAgeInput" value={age} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditProfession" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Profession</p>
+                            <input type="text" name="advisorEditProfession" id="advisorEditProfessionInput" value={profession} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditDesc" style={{ textAlign: "left", width: "80%", fontWeight: "500" }} >Description</p>
+                            <textarea name="advisorEditDesc" id="advisorEditDescInput" value={desc} style={{ height: "10rem", width: "80%", padding: "5px" }} />
                         </div>
                         <div className="rightOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <p className="advisorEditPhNo">Phone Number</p>
-                            <input type="text" name="advisorEditPhNo" id="advisorEditPhNoInput" value={phno} />
-                            <p className="advisorEditTwitter">Twitter</p>
-                            <input type="text" name="advisorEditTwitter" id="advisorEditTwitterInput" value={twitter} />
-                            <p className="advisorEditEmail">E-mail</p>
-                            <input type="email" name="advisorEditEmail" id="advisorEditEmailInput" value={email} />
-                            <p className="advisorEditFacebook">Facebook</p>
-                            <input type="text" name="advisorEditFacebook" id="advisorEditFacebookInput" value={facebook} />
-                            <p className="advisorEditLinkedIn">LinkedIn</p>
-                            <input type="text" name="advisorEditLinkedIn" id="advisorEditLinkedInInput" value={linkedin} />
-                            <p className="advisorEditWebsite">Website</p>
-                            <input type="text" name="advisorEditWebsite" id="advisorEditWebsiteInput"  value={website} />
+                            <p className="advisorEditPhNo" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Phone Number</p>
+                            <input type="text" name="advisorEditPhNo" id="advisorEditPhNoInput" value={phno} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditTwitter" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Twitter</p>
+                            <input type="text" name="advisorEditTwitter" id="advisorEditTwitterInput" value={twitter} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditEmail" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>E-mail</p>
+                            <input type="email" name="advisorEditEmail" id="advisorEditEmailInput" value={email} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditFacebook" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Facebook</p>
+                            <input type="text" name="advisorEditFacebook" id="advisorEditFacebookInput" value={facebook} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditLinkedIn" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>LinkedIn</p>
+                            <input type="text" name="advisorEditLinkedIn" id="advisorEditLinkedInInput" value={linkedin} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditWebsite" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Website</p>
+                            <input type="text" name="advisorEditWebsite" id="advisorEditWebsiteInput" value={website} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                         </div>
                     </form>
                 </div>
