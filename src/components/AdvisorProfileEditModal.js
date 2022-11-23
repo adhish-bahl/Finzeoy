@@ -39,30 +39,31 @@ export default function ArticleModal({nameP, ageP, professionP, descP, phnoP, tw
                 <div className="modal--mainContent">
                     <form action="" style={{width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", overflowY: "hidden"}}>
                         <div className="leftOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <p className="advisorEditName" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Name</p>
+                            <p className="advisorEditName" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Name</p>
                             <input type="text" name="advisorEditName" id="advisorEditNameInput" value={name} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditAge" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Age</p>
+                            <p className="advisorEditAge" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Age</p>
                             <input type="text" name="advisorEditAge" id="advisorEditAgeInput" value={age} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditProfession" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Profession</p>
+                            <p className="advisorEditProfession" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Profession</p>
                             <input type="text" name="advisorEditProfession" id="advisorEditProfessionInput" value={profession} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditDesc" style={{ textAlign: "left", width: "80%", fontWeight: "500" }} >Description</p>
+                            <p className="advisorEditDesc" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }} >Description</p>
                             <textarea name="advisorEditDesc" id="advisorEditDescInput" value={desc} style={{ height: "10rem", width: "80%", padding: "5px" }} />
                         </div>
                         <div className="rightOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <p className="advisorEditPhNo" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Phone Number</p>
+                            <p className="advisorEditPhNo" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Phone Number</p>
                             <input type="text" name="advisorEditPhNo" id="advisorEditPhNoInput" value={phno} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditTwitter" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Twitter</p>
+                            <p className="advisorEditTwitter" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Twitter</p>
                             <input type="text" name="advisorEditTwitter" id="advisorEditTwitterInput" value={twitter} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditEmail" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>E-mail</p>
+                            <p className="advisorEditEmail" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>E-mail</p>
                             <input type="email" name="advisorEditEmail" id="advisorEditEmailInput" value={email} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditFacebook" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Facebook</p>
+                            <p className="advisorEditFacebook" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Facebook</p>
                             <input type="text" name="advisorEditFacebook" id="advisorEditFacebookInput" value={facebook} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditLinkedIn" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>LinkedIn</p>
+                            <p className="advisorEditLinkedIn" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>LinkedIn</p>
                             <input type="text" name="advisorEditLinkedIn" id="advisorEditLinkedInInput" value={linkedin} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditWebsite" style={{ textAlign: "left", width: "80%", fontWeight: "500" }}>Website</p>
+                            <p className="advisorEditWebsite" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Website</p>
                             <input type="text" name="advisorEditWebsite" id="advisorEditWebsiteInput" value={website} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                         </div>
                     </form>
+                        <button className="saveDetailsButton" type="submit" style={{marginTop: "30px", width: "100px", padding: "5px", fontWeight: "bold" }}>Save</button>
                 </div>
             </div>
         </div>

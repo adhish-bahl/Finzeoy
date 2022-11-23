@@ -6,6 +6,7 @@ export default function Login() {
 
     const history = useHistory();
 
+    const[errorLabel, setErrorlabel] = useState()
 
     const [loginDetails, setLoginDetails] = useState([
         {
@@ -26,6 +27,7 @@ export default function Login() {
     const [usersData, setUsersData] = useState([]);
 
     function handleChange(event) {
+        setErrorlabel("")
         const {name, value, style} = event.target;
 
         let isError = validateForm(name, value);
@@ -60,7 +62,8 @@ export default function Login() {
 
     function loginUser() {
         if(loginDetails[0].hasError || loginDetails[1].hasError || loginDetails[2].hasError) {
-            alert("Invalid inputs. Please check your inputs and retry.");
+            setErrorlabel("Invalid inputs. Please check your inputs and retry.");
+            // alert("Invalid inputs. Please check your inputs and retry.");
         }
         else {
             for(let i = 0; i<usersData.length; i++) {
@@ -68,19 +71,22 @@ export default function Login() {
                     sessionStorage.setItem("userId", usersData[i].userId)
                     switch(loginDetails[2].userType) {
                         case "end-user":
-                            alert("Login successful");
+                            setErrorlabel("Login successful!");
+                            // alert("Login successful!");
                             history.push('/general');
                             window.location.reload();
                             break;
                             
                         case "financial-advisor":
-                            alert("Login successful");
+                            setErrorlabel("Login successful!");
+                            // alert("Login successful");
                             history.push('/advisors');
                             window.location.reload();
                             break;
                             
                         case "student":
-                            alert("Login successful");
+                            setErrorlabel("Login successful!");
+                            // alert("Login successful");
                             history.push('/learning');
                             window.location.reload();
                             break;
@@ -91,7 +97,8 @@ export default function Login() {
                     return;
                 }
             }
-            alert("Invalid email or password. Please try again.");
+            setErrorlabel("Invalid email or password. Please try again.");
+            // alert("Invalid email or password. Please try again.");
         }
     }
 
@@ -119,6 +126,7 @@ export default function Login() {
                     <input type={"radio"} name="userType" id="student" value="student" checked={loginDetails[2].userType === "student"} onChange={handleChange}></input>
                     <label htmlFor="student">Student</label>
                 </fieldset>
+                <label className="loginErrorDislayLabel"> {errorLabel} </label>
                 <a href="#" className="form--forgotPass">Forgot your Password?</a>
             </form>
             <button className="form--submit" onClick={loginUser}>Login</button>

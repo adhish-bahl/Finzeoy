@@ -74,3 +74,24 @@
     font-size: 0.8em;
     margin-bottom: 0em;
 }
+
+.loginErrorDislayLabel {
+    color: red;
+    /* width: 60%; */
+    margin-top: 15px;
+    padding: 0% 15%;
+    /* box-sizing:content-box; */
+}
+
+.PoliciesSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.errorAndButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

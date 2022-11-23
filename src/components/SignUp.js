@@ -4,6 +4,8 @@ import '../styles/SignUpStyles.css'
 
 export default function SignUp() {
 
+    const [signupError, setSignupError] = useState("");
+
     const history = useHistory();
     var userId;
 
@@ -73,7 +75,8 @@ export default function SignUp() {
 
     async function saveFormData() {
         if(userDetails[0].hasError || userDetails[1].hasError || userDetails[2].hasError || userDetails[3].hasError || userDetails[4].hasError) {
-            alert("Invalid inputs. Please check your inputs and retry.");
+            // alert("Invalid inputs. Please check your inputs and retry.");
+            setSignupError("Invalid inputs. Please check your inputs and retry.");
         }
         else {
             await getUsersData();
@@ -113,10 +116,12 @@ export default function SignUp() {
             if(data.status === "Success") {
                 userId = data.userId;
                 sessionStorage.setItem("userId", userId);
-                alert("Signed up successfully");
+                // alert("Signed up successfully");
+                setSignupError("Signed up successfully")
             }
             else {
-                alert("Sign up failed");
+                // alert("Sign up failed");
+                setSignupError("Sign up failed")
             }
         });
     }
@@ -140,8 +145,14 @@ export default function SignUp() {
                     </select>
                     <input type={"password"} placeholder="Password" className="form--input" name="password" onChange={handleChange}></input>
                 </form>
-                <p className="form--terms">By clicking Agree & Join, you agree to the FINZEOY<br></br> User Agreement, Privacy Policy, and Cookie Policy.</p>
-                <button className="form--submit" onClick={saveFormData}>Join Now</button>
+                <div className="PoliciesSection">
+                    <input type="checkbox" name="form--terms" id="policies" />
+                    <p className="form--terms">By clicking Agree & Join, you agree to the FINZEOY<br></br> User Agreement, Privacy Policy, and Cookie Policy.</p>
+                </div>
+                <div className="errorAndButton">
+                    <label className="loginErrorDislayLabel"> {signupError} </label>
+                    <button className="form--submit" onClick={saveFormData}>Join Now</button>
+                </div>
             </div>
         </div>
     )
