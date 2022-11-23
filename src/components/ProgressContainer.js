@@ -2,31 +2,7 @@ import React, {useState} from "react";
 import "../styles/ProgressContainerStyles.css";
 import Progress from "./Progress";
 
-export default function ProgressContainer(props) {
-
-    const [budgetItems, setBudgetItems] = useState([
-        {
-            "Title": "Food and Groceries", 
-            "Amount": 20000
-        }, 
-        {
-            "Title": "Miscellaneous", 
-            "Amount": 5000
-        },
-        {
-            "Title": "Rent", 
-            "Amount": 10000
-        }, 
-        {
-            "Title": "Medicine", 
-            "Amount": 1500
-        }, 
-        {
-            "Title": "Electricity Bill", 
-            "Amount": 1000
-        }
-    ])
-
+export default function ProgressContainer(props) { 
     return (
         <div className="budget--container">
             <div className="budget--header">
@@ -36,9 +12,10 @@ export default function ProgressContainer(props) {
                     <button className="budget--header--button"><img src="./Images/edit_icon.png" className="budget--buttonImage"/></button>
                 </div>
             </div>
-            {budgetItems.map(item => {
-                return <Progress title={item.Title} done={45} amount={item.Amount} />
-            })}
+            {props.data!==undefined && props.usedData!==undefined ? props.data.map((item) => {
+                const {[item.category] : usedAmount} = props.usedData;
+                return <Progress key={item.budgetid} title={item.category} done={usedAmount !== undefined ? Math.round(usedAmount/item.amount*100) : 0} amount={item.amount} />
+            }) : 0}
         </div>
     )
 }

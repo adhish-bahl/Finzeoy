@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Metric from "./Metric";
 import ProgressContainer from "./ProgressContainer";
 import "../styles/IncomeExpenseStyles.css";
@@ -10,11 +10,14 @@ export default function IncomeExpense() {
     const [budgetData, setBudgetData] = useState([]);
     const [expenseData, setExpenseData] = useState([]);
     const [incomeData, setIncomeData] = useState([]);
-
+    let expenseBreakdown = [["Category", "Amount"]];
+    let incomeBreakdown = [["Category", "Amount"]];
+    let expenseTotal = 0, incomeTotal = 0;
+    
     function showModal(event) {
         var modals = document.getElementsByClassName("modal");
         var spans = document.getElementsByClassName("close");
-
+        
         if(event.target.id == "incomeBtn") {
             modals[0].style.display = "block";
             spans[0].onclick = function() {
@@ -28,39 +31,85 @@ export default function IncomeExpense() {
             }
         }
     }
+    
+    function calculateExpenseBreakdown(expensesData) {
+        const groupByCategory = expensesData.reduce((group, expense) => {
+            const { category } = expense;
+            group[category] = group[category] ?? [];
+            group[category].push(expense.amount);
+            return group;
+        }, {});
+        
+        const dataSet = Object.entries(groupByCategory).map(category => {
+            let sum = category[1].reduce((prevSum, currentExpense) => {
+                return prevSum + parseInt(currentExpense)
+            }, 0)
+            category[1] = sum;
+            return category;
+        })
+        
+        dataSet.forEach(data => expenseBreakdown.push(data))
+    }
+    
+    function calculateIncomeBreakdown(incomesData) {
+        var incomeBreakdown = [["Category", "Amount"]];
+        const groupByCategory = incomesData.reduce((group, income) => {
+            const { category } = income;
+            group[category] = group[category] ?? [];
+            group[category].push(income.amount);
+            return group;
+        }, {});
+        
+        const dataSet = Object.entries(groupByCategory).map(category => {
+            let sum = category[1].reduce((prevSum, currentIncome) => {
+                return prevSum + parseInt(currentIncome)
+            }, 0)
+            category[1] = sum;
+            return category;
+        })
+
+        dataSet.forEach(data => incomeBreakdown.push(data))
+
+        return incomeBreakdown;
+    }   
 
     useEffect(() => {
-        fetch("https://finzeoy.000webhostapp.com/GetBudgetData.php?userId = "+sessionStorage.getItem("userId")+"")
-        .then(res => res.json())
-        .then(data => setBudgetData(data))
+        const getData = async () => {
+            await fetch("https://finzeoy.000webhostapp.com/GetBudgetData.php?userId="+sessionStorage.getItem("userId")+"")
+            .then(res => res.json())
+            .then(data => setBudgetData(data))
 
-        fetch("https://finzeoy.000webhostapp.com/GetExpenseData.php?userId = "+sessionStorage.getItem("userId")+"")
-        .then(res => res.json())
-        .then(data => setExpenseData(data))
-
-        fetch("https://finzeoy.000webhostapp.com/GetIncomeData.php?userId = "+sessionStorage.getItem("userId")+"")
-        .then(res => res.json())
-        .then(data => setIncomeData(data))
-    })
+            await fetch("https://finzeoy.000webhostapp.com/GetIncomeData.php?userId="+sessionStorage.getItem("userId")+"")
+            .then(res => res.json())
+            .then(data => setIncomeData(data))
+            
+            await fetch("https://finzeoy.000webhostapp.com/GetExpenseData.php?userId="+sessionStorage.getItem("userId")+"")
+            .then(res => res.json())
+            .then(data => setExpenseData(data))
+        }
+        getData();
+    }, [])
+    
+    useMemo(() => calculateExpenseBreakdown(expenseData), [expenseData])
 
     return (
         <div className="tracker--container">
             <h2 className="tracker--head">INCOME/EXPENSE</h2>
             <div className="tracker--expensePie">
                 <h4>Expense breakdown</h4>
-                <PieChart />
+                <PieChart data={expenseBreakdown} />
             </div>
             <div className="tracker--metrics">
-                <Metric metricName="INCOME" amount={20000} />
-                <Metric metricName="EXPENSE" amount={10000} />
+                <Metric metricName="INCOME" amount={incomeTotal = incomeData.length > 0 ? incomeData.reduce((total, currentIncome) => { return total + parseInt(currentIncome.amount)},0) : 0} />
+                <Metric metricName="EXPENSE" amount={expenseTotal = expenseData.length > 0 ? expenseData.reduce((total, currentExpense) => { return total + parseInt(currentExpense.amount)},0) : 0} />
             </div>
-            <p className="tracker--incomePercentage">You have spent 50% of your income</p>
-            <ProgressContainer title="BUDGET" />
+            <p className="tracker--incomePercentage">You have spent {Math.round((incomeTotal - expenseTotal)/incomeTotal*100)}% of your income</p>
+            <ProgressContainer title="BUDGET" data={budgetData} usedData={Object.fromEntries(expenseBreakdown)} />
             <div>
                 <button id="incomeBtn" className="tracker--show--button" onClick={showModal}>Show All Incomes</button>
-                <TransactionModal key="incomeModal" title="Income" />
+                <TransactionModal key="incomeModal" title="Income" data={incomeData} breakdown={incomeBreakdown=calculateIncomeBreakdown(incomeData)} />
                 <button id="expenseBtn" className="tracker--show--button" onClick={showModal}>Show All Expenses</button>
-                <TransactionModal key="expenseModal" title="Expense" />
+                <TransactionModal key="expenseModal" title="Expense" data={expenseData} breakdown={expenseBreakdown} />
             </div>
         </div>
     )

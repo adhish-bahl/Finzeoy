@@ -21,6 +21,8 @@ export default function Article(props) {
         .then(res => res.json())
         .then(data => setPostedBy(data.name))
     }, [])
+
+    console.log(props.content)
     
     return (
         <div className="article">

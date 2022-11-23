@@ -37,7 +37,7 @@ export default function PageHeader(props) {
         fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
         .then(res => res.json())
         .then(data => setUserName(data))
-    })
+    }, [])
 
     return (
         <div className="header">
