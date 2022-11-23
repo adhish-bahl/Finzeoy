@@ -33,7 +33,6 @@ export default function ProgressContainer(props) {
                 <h3 className="budget--header--title">{props.title}</h3>
                 <div className="budget--buttons">
                     <button className="budget--header--button"><img src="./Images/add_icon.png" className="budget--buttonImage"/></button>
-                    <button className="budget--header--button"><img src="./Images/edit_icon.png" className="budget--buttonImage"/></button>
                 </div>
             </div>
             {budgetItems.map(item => {
