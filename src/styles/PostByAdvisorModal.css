@@ -7,7 +7,9 @@
 
 .modal--content {
     width: 50vw;
-    background-color: #fefefed3;
+    /* background-color: #fefefed3; */
+    background-color: #fefefe;
+    border-radius: 30px;
 }
 
 #title {
