@@ -5,6 +5,7 @@ import "../styles/IncomeExpenseStyles.css";
 import "../styles/ProgressContainerStyles.css";
 import Progress from "./Progress";
 import AddSavingModal from "./AddSavingModal";
+import AddInvestmentModal from "./AddInvestmentModal";
 
 export default function IncomeExpense() {
 
@@ -24,10 +25,10 @@ export default function IncomeExpense() {
                 modals[5].style.display = "none";
             }
         }
-        else if (event.target.id == "addExpenseBtn") {
-            modals[1].style.display = "block";
-            spans[1].onclick = function () {
-                modals[1].style.display = "none";
+        else if (event.target.id == "addInvestmentImg") {
+            modals[6].style.display = "block";
+            spans[6].onclick = function () {
+                modals[6].style.display = "none";
             }
         }
     }
@@ -91,7 +92,8 @@ export default function IncomeExpense() {
                 <div className="budget--header">
                     <h3 className="budget--header--title">INVESTMENTS</h3>
                     <div className="budget--buttons">
-                        <button className="budget--header--button"><img src="./Images/add_icon.png" className="budget--buttonImage"/></button>
+                        <button className="budget--header--button"><img id="addInvestmentImg" onClick={showModal} src="./Images/add_icon.png" className="budget--buttonImage"/></button>
+                        <AddInvestmentModal />
                     </div>
                 </div>
                 {investmentData!==undefined ? investmentData.map((item) => {
