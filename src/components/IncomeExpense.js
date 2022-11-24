@@ -35,7 +35,6 @@ export default function IncomeExpense() {
             }
         }
         else if (event.target.id == "addBudgetBtnImg") {
-            console.log("click");
             modals[2].style.display = "block";
             spans[2].onclick = function() {
                 modals[2].style.display = "none";
@@ -141,7 +140,6 @@ export default function IncomeExpense() {
                     <h3 className="budget--header--title">BUDGET</h3>
                     <div className="budget--buttons">
                         <button id="addBudgetBtn" className="budget--header--button" onClick={showModal}><img id="addBudgetBtnImg" src="./Images/add_icon.png" className="budget--buttonImage" onClick={showModal} /></button>
-                        {/* <button id="addBudgetBtn" className="budget--header--button" onClick={showModal}>+</button> */}
                         <AddBudgetModal />
                     </div>
                 </div>
