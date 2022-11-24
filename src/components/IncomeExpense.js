@@ -105,6 +105,12 @@ export default function IncomeExpense() {
                 <Metric metricName="EXPENSE" amount={expenseTotal = expenseData.length > 0 ? expenseData.reduce((total, currentExpense) => { return total + parseInt(currentExpense.amount)},0) : 0} />
             </div>
             <p className="tracker--incomePercentage">You have spent {Math.round((incomeTotal - expenseTotal)/incomeTotal*100)}% of your income</p>
+
+            <div>
+                <button id="incomeBtn" className="tracker--show--button" onClick={showModal}>Add Incomes</button>
+                <button id="expenseBtn" className="tracker--show--button" onClick={showModal}>Add Expenses</button>
+            </div>
+            
             <div className="budget--container">
                 <div className="budget--header">
                     <h3 className="budget--header--title">BUDGET</h3>
@@ -123,6 +129,7 @@ export default function IncomeExpense() {
                 <button id="expenseBtn" className="tracker--show--button" onClick={showModal}>Show All Expenses</button>
                 <TransactionModal key="expenseModal" title="Expense" data={expenseData} breakdown={expenseBreakdown} />
             </div>
+            
         </div>
     )
 }
