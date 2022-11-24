@@ -18,22 +18,23 @@ export default function AdvisorProfileEditModal({nameP, ageP, professionP, descP
         }
     );
 
-    console.log(nameP);
+    async function saveAdvisorData() {
+        console.log(advisorDetails)
+        await fetch("https://finzeoy.000webhostapp.com/UpdateProfile.php?userid="+sessionStorage.getItem("userId")+"&age="+advisorDetails.age+"&profession="+advisorDetails.profession+"&desc="+advisorDetails.desc+"&linkedin="+advisorDetails.linkedin+"&twitter="+advisorDetails.twitter+"&facebook="+advisorDetails.facebook+"&website="+advisorDetails.website+"")
+        .then(res => res.json())
+        .then(data => data.status === "success" ? alert("Profile edited successfully") : alert("Profile editing failed"))
 
-    function saveAdvisorData() {
+        window.location.reload();
     }
 
     function advisorChangeHandler(event) {
         const {name, value} =  event.target;
         setAdvisorDetails(prevState => {
             return {
-                ...advisorDetails,
+                ...prevState,
                 [name]: value
             }
-            }
-        )
-
-        console.log(advisorDetails)
+        })
     }
 
     useEffect(() => {
@@ -55,8 +56,6 @@ export default function AdvisorProfileEditModal({nameP, ageP, professionP, descP
         )
 
     }, [nameP]);
-
-    console.log(advisorDetails);
 
     return (
         <div id="myModal" className="modal" style={{ overflowY: "hidden" }}>

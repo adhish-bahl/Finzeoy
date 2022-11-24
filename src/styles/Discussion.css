@@ -45,6 +45,14 @@
     height: fit-content;
 }
 
+.questionAnswered h4 {
+}
+
+.questionAnswered h4:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .DCRlower h1, .DCRupper h1 {
     font-size: 1rem;
 }

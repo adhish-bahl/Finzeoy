@@ -13,9 +13,6 @@
 
 	if($mysqli->query($sql) === TRUE)
 	{
-// 		$result = $mysqli->query($currentIdValue);
-// 		$row = $result->fetch_assoc();
-// 		$id = $row["AUTO_INCREMENT"];
         $id = mysqli_insert_id($mysqli);
 		echo json_encode(array("status" => "Success", "userId" => $id));
 	}

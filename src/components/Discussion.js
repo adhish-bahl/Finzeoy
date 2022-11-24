@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import "../styles/Discussion.css"
 import DiscussionBox from './DiscussionBox'
+import '../styles/ArticleStyles.css';
+import ArticleModal from "./ArticleModal";
 
 function Discussion() {
 
@@ -32,7 +34,8 @@ function Discussion() {
 
     const questionsAnswered = questionsAnsweredData.map(question => {
         return <div className="questionAnswered" key={question.quesid}>
-            <h4>{question.ques}</h4>
+            <h4 onClick={showModal}>{question.ques}</h4>
+            <ArticleModal title={question.ques} content={question.answer}/>
         </div>
     })
 
@@ -48,6 +51,16 @@ function Discussion() {
         .then(data => data.status === "success" ? alert("Question posted successfully") : alert("Question posting failed"))
 
         window.location.reload()
+    }
+
+    function showModal(event) {
+        var modal = event.target.parentElement.children[1];
+        var span = modal.children[0].children[0].children[0];
+        
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
     }
 
     return (
