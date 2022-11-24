@@ -68,7 +68,7 @@ export default function AdvisorProfileEditModal({nameP, ageP, professionP, descP
                     <form action="" style={{width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", overflowY: "hidden"}}>
                         <div className="leftOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <p className="advisorEditName" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Name</p>
-                            <input type={"text"} name="name" onChange={advisorChangeHandler} id="advisorEditNameInput" value={advisorDetails.name} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <input type={"text"} disabled name="name" onChange={advisorChangeHandler} id="advisorEditNameInput" value={advisorDetails.name} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             <p className="advisorEditAge" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Age</p>
                             <input type={"text"} name="age" onChange={advisorChangeHandler} id="advisorEditAgeInput" value={advisorDetails.age} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             <p className="advisorEditProfession" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Profession</p>
@@ -78,11 +78,11 @@ export default function AdvisorProfileEditModal({nameP, ageP, professionP, descP
                         </div>
                         <div className="rightOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <p className="advisorEditPhNo" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Phone Number</p>
-                            <input type={"text"} onChange={advisorChangeHandler} name="phno" id="advisorEditPhNoInput" value={advisorDetails.phno} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <input type={"text"} disabled onChange={advisorChangeHandler} name="phno" id="advisorEditPhNoInput" value={advisorDetails.phno} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                            <p className="advisorEditEmail" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>E-mail</p>
+                            <input type="email" disabled onChange={advisorChangeHandler} name="email" id="advisorEditEmailInput" value={advisorDetails.email} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             <p className="advisorEditTwitter" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Twitter</p>
                             <input type={"text"} onChange={advisorChangeHandler} name="twitter" id="advisorEditTwitterInput" value={advisorDetails.twitter} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                            <p className="advisorEditEmail" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>E-mail</p>
-                            <input type="email" onChange={advisorChangeHandler} name="email" id="advisorEditEmailInput" value={advisorDetails.email} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             <p className="advisorEditFacebook" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>Facebook</p>
                             <input type={"text"} onChange={advisorChangeHandler} name="facebook" id="advisorEditFacebookInput" value={advisorDetails.facebook} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             <p className="advisorEditLinkedIn" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom:"0px" }}>LinkedIn</p>

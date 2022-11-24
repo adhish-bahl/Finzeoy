@@ -5,6 +5,8 @@ import Progress from "./Progress";
 import "../styles/IncomeExpenseStyles.css";
 import TransactionModal from "./TransactionModal";
 import PieChart from "./PieChart";
+import AddIncomeModal from "./AddIncomeModal";
+import AddExpenseModal from "./AddExpenseModal"
 
 export default function IncomeExpense() {
 
@@ -19,16 +21,28 @@ export default function IncomeExpense() {
         var modals = document.getElementsByClassName("modal");
         var spans = document.getElementsByClassName("close");
         
-        if(event.target.id == "incomeBtn") {
+        if (event.target.id == "addIncomeBtn") {
             modals[0].style.display = "block";
             spans[0].onclick = function() {
                 modals[0].style.display = "none";
             }
         }
-        else {
+        else if (event.target.id == "addExpenseBtn") {
             modals[1].style.display = "block";
             spans[1].onclick = function() {
                 modals[1].style.display = "none";
+            }
+        }
+        else if (event.target.id == "incomeBtn") {
+            modals[2].style.display = "block";
+            spans[2].onclick = function () {
+                modals[2].style.display = "none";
+            }
+        }
+        else if (event.target.id == "expenseBtn") {
+            modals[3].style.display = "block";
+            spans[3].onclick = function () {
+                modals[3].style.display = "none";
             }
         }
     }
@@ -105,6 +119,15 @@ export default function IncomeExpense() {
                 <Metric metricName="EXPENSE" amount={expenseTotal = expenseData.length > 0 ? expenseData.reduce((total, currentExpense) => { return total + parseInt(currentExpense.amount)},0) : 0} />
             </div>
             <p className="tracker--incomePercentage">You have spent {Math.round((incomeTotal - expenseTotal)/incomeTotal*100)}% of your income</p>
+
+            <div>
+                <button id="addIncomeBtn" className="tracker--show--button" onClick={showModal}>Add Incomes</button>
+                <AddIncomeModal />
+                <button id="addExpenseBtn" className="tracker--show--button" onClick={showModal}>Add Expenses</button>
+                <AddExpenseModal />
+
+            </div>
+
             <div className="budget--container">
                 <div className="budget--header">
                     <h3 className="budget--header--title">BUDGET</h3>
@@ -123,6 +146,7 @@ export default function IncomeExpense() {
                 <button id="expenseBtn" className="tracker--show--button" onClick={showModal}>Show All Expenses</button>
                 <TransactionModal key="expenseModal" title="Expense" data={expenseData} breakdown={expenseBreakdown} />
             </div>
+            
         </div>
     )
 }
