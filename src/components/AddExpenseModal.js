@@ -40,7 +40,7 @@ function AddExpenseModal() {
         fetch("https://finzeoy.000webhostapp.com/GetBudgetData.php?userId="+sessionStorage.getItem("userId")+"")
         .then(res => res.json())
         .then(data => setBudgetData(data))
-    })
+    }, [])
 
     return (
         <div id="postModal" className="modal">
@@ -58,7 +58,7 @@ function AddExpenseModal() {
                               <p className="category" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Category</p>
                               <select name="category" id="categories" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
                                     {budgetData.map(item => {
-                                        return <option value="commision">{item.category}</option>
+                                        return <option key={item.budgetid} value={item.category}>{item.category}</option>
                                     })}
                               </select>
 

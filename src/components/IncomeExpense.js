@@ -6,7 +6,7 @@ import "../styles/IncomeExpenseStyles.css";
 import TransactionModal from "./TransactionModal";
 import PieChart from "./PieChart";
 import AddIncomeModal from "./AddIncomeModal";
-import AddExpenseModal from "./AddExpenseModal"
+import AddExpenseModal from "./AddExpenseModal";
 
 export default function IncomeExpense() {
 
@@ -20,7 +20,7 @@ export default function IncomeExpense() {
     function showModal(event) {
         var modals = document.getElementsByClassName("modal");
         var spans = document.getElementsByClassName("close");
-        
+
         if (event.target.id == "addIncomeBtn") {
             modals[0].style.display = "block";
             spans[0].onclick = function() {
@@ -34,15 +34,15 @@ export default function IncomeExpense() {
             }
         }
         else if (event.target.id == "incomeBtn") {
-            modals[2].style.display = "block";
-            spans[2].onclick = function () {
-                modals[2].style.display = "none";
-            }
-        }
-        else if (event.target.id == "expenseBtn") {
             modals[3].style.display = "block";
             spans[3].onclick = function () {
                 modals[3].style.display = "none";
+            }
+        }
+        else if (event.target.id == "expenseBtn") {
+            modals[4].style.display = "block";
+            spans[4].onclick = function () {
+                modals[4].style.display = "none";
             }
         }
     }
@@ -132,7 +132,7 @@ export default function IncomeExpense() {
                 <div className="budget--header">
                     <h3 className="budget--header--title">BUDGET</h3>
                     <div className="budget--buttons">
-                        <button className="budget--header--button"><img src="./Images/add_icon.png" className="budget--buttonImage"/></button>
+                        <button id="addBudgetBtn" className="budget--header--button" onClick={showModal}><img src="./Images/add_icon.png" className="budget--buttonImage"/></button>
                     </div>
                 </div>
                 {budgetData!==undefined && expenseBreakdown!==undefined ? budgetData.map((item) => {

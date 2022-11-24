@@ -34,9 +34,6 @@ function AddIncomeModal() {
         window.location.reload();
     }   
 
-
-    const options = ['Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-
   return (
       <div id="postModal" className="modal">
           <div className="modal--content" style={{ width: "30vw" }}>
