@@ -75,6 +75,8 @@ function AdvisorProfile() {
             <div className="APleft">
                 <button className='editProfileButton' onClick={showModal}><img src={editIcon} alt="Edit Icon"/></button>
                 <AdvisorProfileEditModal nameP = {advisorInfo.name} ageP = {advisorInfo.age} professionP = {advisorInfo.profession} descP = {advisorInfo.desc} phnoP = {advisorInfo.phno} twitterP = {advisorInfo.twitter} emailP = {advisorInfo.email} facebookP = {advisorInfo.facebook} linkedinP = {advisorInfo.linkedin} websiteP = {advisorInfo.website} />
+                {/* <AdvisorProfileEditModal advisorData = {advisorInfo}/> */}
+
 
                 <div className="APLone">
 
