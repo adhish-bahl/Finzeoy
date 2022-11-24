@@ -4,7 +4,6 @@ import ProgressContainer from "./ProgressContainer";
 import "../styles/IncomeExpenseStyles.css";
 import "../styles/ProgressContainerStyles.css";
 import Progress from "./Progress";
-import AddIncomeModal from "./AddIncomeModal";
 
 export default function IncomeExpense() {
 
