@@ -67,6 +67,10 @@
     left: 330px;
 }
 
+.editProfileButton:hover {
+    cursor: pointer;
+}
+
 .APadname {
     font-size: 2rem;
     font-weight: 500;

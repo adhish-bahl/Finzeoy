@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "../styles/AdvisorQuestionComp.css"
 import AdvisorAnsweringModal from './AdvisorAnsweringModal'
 
-function AdvisorQuestionComp({question, author}) {
+function AdvisorQuestionComp({question, author, quesId}) {
 
     const [askedBy, setAskedBy] = useState("");
 
@@ -32,7 +32,7 @@ function AdvisorQuestionComp({question, author}) {
           </div>
           <div className="AQbtnContainer">
               <button type="submit" className='AQsubmitBtn' onClick={showModal}>Answer</button>
-              <AdvisorAnsweringModal question = {question} askedBy = {askedBy.name} />
+              <AdvisorAnsweringModal question = {question} quesId={quesId} askedBy = {askedBy.name} />
           </div>
       </div>
     )

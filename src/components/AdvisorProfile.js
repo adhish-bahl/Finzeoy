@@ -16,56 +16,62 @@ function AdvisorProfile() {
     const [questionsData, setQuestionsData] = React.useState([]);
     const [advisorInfo, setAdvisorInfo] = React.useState({});
 
-    // function showModal(event) {
-    //     var modal = event.target.parentElement.children[1];
-    //     var span = modal.children[0].children[0].children[0];
-
-    //     modal.style.display = "block";
-    //     span.onclick = function () {
-    //         modal.style.display = "none";
-    //     }
-    // }
-
+    
     useEffect(() => {
-        fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
-        .then(res => res.json())
-        .then(data => setQuestionsData(data))
+        const getData = async () =>
+        {
+            await fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
+            .then(res => res.json())
+            .then(data => setQuestionsData(data))
+            
+            await fetch("https://finzeoy.000webhostapp.com/GetAdvisorInfo.php?userId="+sessionStorage.getItem("userId")+"")
+            .then(res => res.json())
+            .then(data => setAdvisorInfo(data))
 
-        fetch("https://finzeoy.000webhostapp.com/GetAdvisorInfo.php?userId="+sessionStorage.getItem("userId")+"")
-        .then(res => res.json())
-        .then(data => setAdvisorInfo(data))
-
-        fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
-        .then(res => res.json())
-        .then(data => setAdvisorInfo(prevState => {
-            return {...prevState,
+            await fetch("https://finzeoy.000webhostapp.com/GetUserData.php?userId="+sessionStorage.getItem("userId")+"")
+            .then(res => res.json())
+            .then(data => setAdvisorInfo(prevState => {
+                return {...prevState,
                     "name": data.name,
                     "phno": data.phno,
                     "email": data.email}
-        }))
-    }, [])
-
-    const unansweredQuestionsData = questionsData.filter(question => {
-        return question.answer === null
-    })
-
-    const unansweredQuestions = unansweredQuestionsData.map(question => {
-        return <AdvisorQuestionComp key={question.quesid} question={question.ques} author={question.quesBy} />
-    })
-
-    function showModal() {
-        var modal = document.getElementsByClassName('modal')[0];
-        var span = document.getElementsByClassName('close')[0];
+                    
+                }))
+            }
+            getData()
+        }, [])
         
-        modal.style.display = "block";
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
+        const unansweredQuestionsData = questionsData.filter(question => {
+            return question.answer === null
+        })
+        
+        const unansweredQuestions = unansweredQuestionsData.map(question => {
+            return <AdvisorQuestionComp key={question.quesId} quesId={question.quesId} question={question.ques} author={question.quesBy} />
+        })
+        
+        function showModal() {
+            var modal = document.getElementsByClassName('modal')[0];
+            var span = document.getElementsByClassName('close')[0];
+            
+            modal.style.display = "block";
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+    }
+    
+    function showPostModal(event) {
+        var modal = document.getElementById('postModal');
+            var span = document.getElementsByClassName('postModalClose')[0];
+            
+            modal.style.display = "block";
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
     }
 
     return (
         <div className='APcontainer'>
-            <button type="submit" className='postButton' onClick={showModal}>+</button>
+            <button type="submit" className='postButton' onClick={showPostModal}>+</button>
             <div className="APleft">
                 <button className='editProfileButton' onClick={showModal}><img src={editIcon} alt="Edit Icon"/></button>
                 <AdvisorProfileEditModal nameP = {advisorInfo.name} ageP = {advisorInfo.age} professionP = {advisorInfo.profession} descP = {advisorInfo.desc} phnoP = {advisorInfo.phno} twitterP = {advisorInfo.twitter} emailP = {advisorInfo.email} facebookP = {advisorInfo.facebook} linkedinP = {advisorInfo.linkedin} websiteP = {advisorInfo.website} />

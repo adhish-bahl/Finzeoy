@@ -19,7 +19,7 @@ function PostByAdvisorModal() {
   }
 
   async function submitContent() {
-    if(articleData.title == "" || articleData.article == "") {
+    if(articleData.title === "" || articleData.article === "") {
       alert("Please fill all the fields")
     }
 
@@ -34,10 +34,10 @@ function PostByAdvisorModal() {
   }
 
   return (
-    <div id="myModal" className="modal">
+    <div id="postModal" className="modal">
         <div className="modal--content">
             <div className="modal--header">
-                <span className="close">&times;</span>
+                <span className="close postModalClose">&times;</span>
                 <h2>Post Content</h2>
             </div>
             <div className="modal--mainContent">
