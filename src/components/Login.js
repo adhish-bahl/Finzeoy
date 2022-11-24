@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import {useHistory} from 'react-router-dom'
 import '../styles/SignUpStyles.css'
 
@@ -63,7 +63,6 @@ export default function Login() {
     function loginUser() {
         if(loginDetails[0].hasError || loginDetails[1].hasError || loginDetails[2].hasError) {
             setErrorlabel("Invalid inputs. Please check your inputs and retry.");
-            // alert("Invalid inputs. Please check your inputs and retry.");
         }
         else {
             for(let i = 0; i<usersData.length; i++) {
@@ -72,21 +71,18 @@ export default function Login() {
                     switch(loginDetails[2].userType) {
                         case "end-user":
                             setErrorlabel("Login successful!");
-                            // alert("Login successful!");
                             history.push('/general');
                             window.location.reload();
                             break;
                             
                         case "financial-advisor":
                             setErrorlabel("Login successful!");
-                            // alert("Login successful");
                             history.push('/advisors');
                             window.location.reload();
                             break;
                             
                         case "student":
                             setErrorlabel("Login successful!");
-                            // alert("Login successful");
                             history.push('/learning');
                             window.location.reload();
                             break;
@@ -98,7 +94,6 @@ export default function Login() {
                 }
             }
             setErrorlabel("Invalid email or password. Please try again.");
-            // alert("Invalid email or password. Please try again.");
         }
     }
 
