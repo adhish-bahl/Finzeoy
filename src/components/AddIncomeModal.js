@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function AddIncomeModal() {
-
-
+    
     var curr = new Date();
     curr.setDate(curr.getDate() + 3);
     var date = curr.toISOString().substring(0, 10);
+    
+    const [incomeData, setIncomeData] = useState(
+        {
+            "title": "",
+            "category": "",
+            "amount": "",
+            "date": date
+        }
+    )
+    
+    function changeHandler(event) {
+        const {name, value} = event.target;
 
-    const changeHandler = () => {
-         
+        setIncomeData(prevState => {
+            return {
+                ...prevState,
+                [name] : value
+            }
+        })
     }
+
+    async function submitIncomeData() {
+        await fetch("https://finzeoy.000webhostapp.com/SaveIncomeData.php?userId="+sessionStorage.getItem("userId")+"&title="+incomeData.title+"&category="+incomeData.category+"&amount="+incomeData.amount+"&date="+incomeData.date+"")
+        .then(res => res.json())
+        .then(data => data.status === "success" ? alert("Income saved successfully") : alert("Income save failed"))
+
+        window.location.reload();
+    }   
+
 
     const options = ['Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
@@ -22,14 +46,12 @@ function AddIncomeModal() {
               </div>
               <div className="modal--mainContent">
                   <div>
-
                       <form action="" style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr", overflowY: "hidden" }}>
                           <div className="leftOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                               <p className="title" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Title</p>
                               <input type={"text"} name="title" onChange={changeHandler} id="titleInput"  style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                              
                               <p className="category" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Category</p>
-                              <select name="categories" id="categories" style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
+                              <select name="category" id="categories" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
                                   <option value="salary">Salary</option>
                                   <option value="commision">Commision</option>
                                   <option value="interest">Interest</option>
@@ -46,16 +68,7 @@ function AddIncomeModal() {
                           </div>
                           
                       </form>
-
-
-
-                      {/* <input type="text" name="title" id="title" placeholder='Give Title' onChange={handleChange} />
-                      <select name="typeOfArticle" id="articleType" onChange={handleChange} >
-                          <option value="investment">Investment</option>
-                          <option value="general">General</option>
-                      </select>
-                      <textarea type="" name="article" id="article" placeholder='Article Here' onChange={handleChange} />
-                      <button id="postButton" type="submit" >Post</button> */}
+                        <button style={{marginTop:"2em", padding:"0.6em", backgroundColor:"transparent", width:"50%", alignSelf: "center"}} onClick={submitIncomeData}>Add income</button>
                   </div>
               </div>
           </div>
