@@ -1,13 +1,31 @@
 import React, { useEffect, useState } from 'react';
 
 function AddBudgetModal() {
+    
+    const [budgetData, setBudgetData] = useState(
+        {
+            "category": "",
+            "amount": ""
+        }
+    )
+    
+    function changeHandler(event) {
+        const {name, value} = event.target;
 
-    const changeHandler = () => {
-        // Code Here
+        setBudgetData(prevState => {
+            return {
+                ...prevState,
+                [name] : value
+            }
+        })
     }
 
-    const submitBudgetData = () => {
-        // Code Here
+    async function submitBudgetData() {
+        await fetch("https://finzeoy.000webhostapp.com/SaveBudgetData.php?userId="+sessionStorage.getItem("userId")+"&category="+budgetData.category+"&amount="+budgetData.amount+"")
+        .then(res => res.json())
+        .then(data => data.status === "success" ? alert("Budget category saved successfully") : alert("Budget category save failed"))
+
+        window.location.reload();
     }
 
 
@@ -22,18 +40,10 @@ function AddBudgetModal() {
                     <div>
                         <form action="" style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr", overflowY: "hidden" }}>
                             <div className="leftOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                <p className="title" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Title</p>
-                                <input type={"text"} name="title" onChange={changeHandler} id="titleInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                                 <p className="category" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Category</p>
-                                <select name="category" id="categories" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
-                                </select>
-
+                                <input type={"text"} name="category" onChange={changeHandler} id="titleInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                                 <p className="amount" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Amount</p>
-                                <input type={"number"} name="amount" onChange={changeHandler} id="amountInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-
-                                <p className="date" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }} >Date</p>
-
-                                {/* <input type={"date"} name="date" onChange={changeHandler} id="dateInput" defaultValue={date} style={{ textAlign: "left", width: "80%", padding: "5px" }} /> */}
+                                <input type={"text"} name="amount" onChange={changeHandler} id="amountInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             </div>
 
                         </form>
