@@ -96,3 +96,7 @@
     border-radius: 30px;
     padding: 5px 15px;
 }
+
+.postQuestionButton:hover {
+    cursor: pointer;
+}
