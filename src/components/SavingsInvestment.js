@@ -4,6 +4,7 @@ import ProgressContainer from "./ProgressContainer";
 import "../styles/IncomeExpenseStyles.css";
 import "../styles/ProgressContainerStyles.css";
 import Progress from "./Progress";
+import AddSavingModal from "./AddSavingModal";
 
 export default function IncomeExpense() {
 
@@ -11,6 +12,25 @@ export default function IncomeExpense() {
     const [investmentData, setInvestmentData] = useState([])
     let investmentBreakdown = [];
     let totalSavings = 0, totalInvestments=0;
+
+
+    function showModal(event) {
+        var modals = document.getElementsByClassName("modal");
+        var spans = document.getElementsByClassName("close");
+
+        if (event.target.id == "addSavingImg") {
+            modals[5].style.display = "block";
+            spans[5].onclick = function () {
+                modals[5].style.display = "none";
+            }
+        }
+        else if (event.target.id == "addExpenseBtn") {
+            modals[1].style.display = "block";
+            spans[1].onclick = function () {
+                modals[1].style.display = "none";
+            }
+        }
+    }
 
     function calculateInvestmentBreakdown(investmentData) {
         const groupByCategory = investmentData.reduce((group, investment) => {
@@ -56,7 +76,8 @@ export default function IncomeExpense() {
                 <div className="budget--header">
                     <h3 className="budget--header--title">SAVINGS</h3>
                     <div className="budget--buttons">
-                        <button className="budget--header--button"><img src="./Images/add_icon.png" className="budget--buttonImage"/></button>
+                        <button className="budget--header--button"><img id="addSavingImg" onClick={showModal} src="./Images/add_icon.png"  className="budget--buttonImage"/></button>
+                        <AddSavingModal />
                     </div>
                 </div>
                 {savingsData!==undefined ? savingsData.map((item) => {
