@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {useHistory} from 'react-router-dom'
 import CryptoJS from "crypto-js";
 import '../styles/SignUpStyles.css'
@@ -8,6 +8,7 @@ import hidePassword from "../Images/hidePassword.png"
 export default function SignUp() {
 
     const [signupError, setSignupError] = useState("");
+    const [usersData, setUsersData] = useState([]);
     const [acceptPolicy, setAcceptPolicy] = useState(false);
     const ref = useRef(null);
 
@@ -34,23 +35,23 @@ export default function SignUp() {
     const [userDetails, setUserDetails] = useState([
         {
             "name": "null",
-            "hasError": false
+            "hasError": true
         },
         {
             "email": "null",
-            "hasError": false
+            "hasError": true
         },
         {
             "phno": "null",
-            "hasError": false
+            "hasError": true
         },
         {
             "userType": "end-user",
-            "hasError": false
+            "hasError": true
         },
         {
             "password": "null",
-            "hasError": false
+            "hasError": true
         }
     ]
     );
@@ -103,40 +104,49 @@ export default function SignUp() {
                 setSignupError("Invalid inputs. Please check your inputs and retry.");
             }
             else {
-                userDetails[4].password = CryptoJS.AES.encrypt(userDetails[4].password, "finzeoy").toString();
-                
-                await saveData();
-
-                if(userDetails[3].userType === "financial-advisor") {
-                    await fetch("https://finzeoy.000webhostapp.com/SaveAdvisorInfo.php?userid="+userId+"")
-                    .then(res => res.json())
-                    .then(data => {})
+                if(usersData.find(checkIfUserExists)) {
+                    setSignupError("Email with user type already exists")
                 }
+                else {
+                    userDetails[4].password = CryptoJS.AES.encrypt(userDetails[4].password, "finzeoy").toString();
+                    
+                    await saveData();
 
-                switch(userDetails[3].userType) {
-                    case "end-user":
-                        history.push('/general');
-                        window.location.reload();
-                        break;
+                    if(userDetails[3].userType === "financial-advisor") {
+                        await fetch("https://finzeoy.000webhostapp.com/SaveAdvisorInfo.php?userid="+userId+"")
+                        .then(res => res.json())
+                        .then(data => {})
+                    }
 
-                    case "financial-advisor":
-                        history.push('/advisors');
-                        window.location.reload();
-                        break;
+                    switch(userDetails[3].userType) {
+                        case "end-user":
+                            history.push('/general');
+                            window.location.reload();
+                            break;
 
-                    case "student":
-                        history.push('/learning');
-                        window.location.reload();
-                        break;
+                        case "financial-advisor":
+                            history.push('/advisors');
+                            window.location.reload();
+                            break;
 
-                    default:
-                        break;
+                        case "student":
+                            history.push('/learning');
+                            window.location.reload();
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
             }
         }
         else {
             setSignupError("Please check the accept policy box")
         }
+    }
+
+    function checkIfUserExists(user) {
+        return user.email === userDetails[1].email && user.userType === userDetails[3].userType 
     }
 
     async function saveData() {
@@ -153,6 +163,12 @@ export default function SignUp() {
             }
         });
     }
+    
+    useEffect(() => {
+        fetch("https://finzeoy.000webhostapp.com/GetUsersData.php")
+        .then(res => res.json())
+        .then(data => setUsersData(data))
+    }, [])
 
     return (
         <div>
