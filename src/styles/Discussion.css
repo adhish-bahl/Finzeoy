@@ -73,13 +73,20 @@
 .postQuestion {
     background-color: white;
     margin-top: 20px;
-    width: 90%;
+    width: 96%;
     margin-left: 20px;
     border-radius: 30px;
     padding: 10px;
     display: flex;
     justify-content:space-between;
     align-items: center;
+    flex-direction: column;
+}
+.postQuestionInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 #questionInput {

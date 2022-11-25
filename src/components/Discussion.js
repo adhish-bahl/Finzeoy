@@ -6,12 +6,14 @@ import ArticleModal from "./ArticleModal";
 
 function Discussion() {
 
+    const [errorText, setErrorText] = React.useState()
+
     const [questionsData, setQuestionsData] = React.useState([]);
 
     useEffect(() => {
         fetch("https://finzeoy.000webhostapp.com/GetQuestionsData.php")
-        .then(res => res.json())
-        .then(data => setQuestionsData(data))
+            .then(res => res.json())
+            .then(data => setQuestionsData(data))
     }, [])
 
     const questionsAskedData = questionsData.filter(question => {
@@ -19,7 +21,7 @@ function Discussion() {
     })
 
     const questionsAnsweredData = questionsData.filter(question => {
-        return (question.answer != null && question.quesBy == sessionStorage.getItem("userId")); 
+        return (question.answer != null && question.quesBy == sessionStorage.getItem("userId"));
     })
 
     const allQuestionsAnsweredData = questionsData.filter(question => {
@@ -35,7 +37,7 @@ function Discussion() {
     const questionsAnswered = questionsAnsweredData.map(question => {
         return <div className="questionAnswered" key={question.quesid}>
             <h4 onClick={showModal}>{question.ques}</h4>
-            <ArticleModal title={question.ques} content={question.answer}/>
+            <ArticleModal title={question.ques} content={question.answer} />
         </div>
     })
 
@@ -46,19 +48,22 @@ function Discussion() {
     async function submitQuestion() {
         var question = document.getElementById("questionInput").value;
 
-        await fetch("https://finzeoy.000webhostapp.com/SaveQuestion.php?question="+question+"&quesBy="+sessionStorage.getItem("userId")+"&operation=insert&answer=null&userId=null&quesId=null")
-        .then(res => res.json())
-        .then(data => data.status === "success" ? alert("Question posted successfully") : alert("Question posting failed"))
-
-        window.location.reload()
+        if(question == "") {
+            setErrorText("Enter a valid question")
+        } else {            
+            await fetch("https://finzeoy.000webhostapp.com/SaveQuestion.php?question=" + question + "&quesBy=" + sessionStorage.getItem("userId") + "&operation=insert&answer=null&userId=null&quesId=null")
+            .then(res => res.json())
+            .then(data => data.status === "success" ? setErrorText("Question posted successfully") : setErrorText("Question posting failed"))   
+            window.location.reload()
+        }
     }
 
     function showModal(event) {
         var modal = event.target.parentElement.children[1];
         var span = modal.children[0].children[0].children[0];
-        
+
         modal.style.display = "block";
-        span.onclick = function() {
+        span.onclick = function () {
             modal.style.display = "none";
         }
     }
@@ -69,7 +74,7 @@ function Discussion() {
                 <div className="DClheading">
                     <h1>My Questions</h1>
                 </div>
-        
+
                 <div className="DCRupper">
                     <h1>Questions Asked:</h1>
                     {questionsAsked}
@@ -83,8 +88,11 @@ function Discussion() {
 
             <div className="DCright">
                 <div className="postQuestion">
-                    <input type="text" name="questionInput" id="questionInput" placeholder='Write your Question here...' />
-                    <button type="submit" className='postQuestionButton' onClick={submitQuestion}>Post</button>
+                    <div className='postQuestionInput'>
+                        <input type="text" name="questionInput" id="questionInput" placeholder='Write your Question here...' />
+                        <button type="submit" className='postQuestionButton' onClick={submitQuestion}>Post</button>
+                    </div>
+                    <label className="loginErrorDislayLabel" style={{ width: "100%", textAlign: "left", paddingLeft: "20px" }}> {errorText} </label>
                 </div>
                 {allQuestionsAnswered}
             </div>
