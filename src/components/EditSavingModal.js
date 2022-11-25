@@ -4,7 +4,7 @@ function EditSavingModal(props) {
 
     const [savingData, setSavingData] = useState(
         {
-            "savingFundId": props.data.length === 0 ? "" : props.data[0].savingId,
+            "savingFundId": props.data ? "" : props.data[0].savingId,
             "amountSaved": "",
         }
     )
@@ -46,7 +46,6 @@ function EditSavingModal(props) {
             }
         }
     }
-
 
     return (
         <div id="postModal" className="modal">

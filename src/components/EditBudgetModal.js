@@ -1,13 +1,43 @@
 import React, { useEffect, useState } from 'react';
 
-function AddBudgetModal() {
+function EditBudgetModal(props) {
 
-    const changeHandler = () => {
-        // Code Here
+    const [budgetData, setBudgetData] = useState(
+        {
+            "budgetId": props.data.length === 0 ? "" : props.data[0].budgetId,
+            "amount": "",
+        }
+    )
+
+    function changeHandler(event) {
+        const {name, value} = event.target;
+
+        setBudgetData(prevState => {
+            return {
+                ...prevState,
+                [name] : value
+            }
+        })
     }
 
-    const submitBudgetData = () => {
-        // Code Here
+    async function updateBudgetData() {
+        if(budgetData.budgetId === "" || budgetData.amount === "") {
+            alert("Please fill all the fields")
+        }
+        else {
+            await fetch("https://finzeoy.000webhostapp.com/UpdateBudgetData.php?userId="+sessionStorage.getItem("userId")+"&budgetid="+budgetData.budgetId+"&amount="+budgetData.amount+"")
+                .then(res => res.json())
+                .then(data => 
+                    {
+                        if(data.status === "success") {
+                            alert("Budget updated successfully")
+                            window.location.reload();
+                        }
+                        else {
+                            alert("Budget update failed")
+                        }
+                    })
+        }
     }
 
 
@@ -22,14 +52,11 @@ function AddBudgetModal() {
                     <div>
                         <form action="" style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr", overflowY: "hidden" }}>
                             <div className="leftOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                <p className="title" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Title</p>
-                                <input type={"text"} name="title" onChange={changeHandler} id="titleInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-
-                                <p className="goal" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Goal</p>
-                                <input type={"text"} name="goal" onChange={changeHandler} id="goalInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-
-                                <p className="list" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>List</p>
-                                <select name="list" id="listInput" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
+                                <p className="list" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Budget categories</p>
+                                <select name="budgetId" id="listInput" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
+                                    {props.data.map(item => {
+                                        return <option key={item.budgetId} value={item.budgetId}>{item.category}</option>
+                                    })}
                                 </select>
 
                                 <p className="amount" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Amount</p>
@@ -37,7 +64,7 @@ function AddBudgetModal() {
                             </div>
 
                         </form>
-                        <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={submitBudgetData}>Add Budget</button>
+                        <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={updateBudgetData}>Edit Budget</button>
                     </div>
                 </div>
             </div>
@@ -45,4 +72,4 @@ function AddBudgetModal() {
     )
 }
 
-export default AddBudgetModal
+export default EditBudgetModal
