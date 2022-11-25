@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 function AddSavingModal() {
 
+    const [errorText, setErrorText] = useState();
+
     const [savingData, setSavingData] = useState(
         {
             "title": "",
@@ -10,6 +12,7 @@ function AddSavingModal() {
     )
 
     function changeHandler(event) {
+        setErrorText("")
         const {name, value} = event.target;
 
         setSavingData(prevState => {
@@ -22,7 +25,7 @@ function AddSavingModal() {
 
     async function submitSavingData() {
         if(savingData.title === "" || savingData.goal === "") {
-            alert("Please fill all the fields")
+            setErrorText("Please fill all the fields")
         }
         else {
             await fetch("https://finzeoy.000webhostapp.com/SaveSavingData.php?userId="+sessionStorage.getItem("userId")+"&title="+savingData.title+"&goal="+savingData.goal+"")
@@ -30,11 +33,11 @@ function AddSavingModal() {
             .then(data => 
                 {
                     if(data.status === "success") {
-                        alert("Saving saved successfully")
+                        setErrorText("Saving saved successfully")
                         window.location.reload();
                     }
                     else {
-                        alert("Saving save failed")
+                        setErrorText("Saving save failed")
                     }
                 })
         }
@@ -59,6 +62,7 @@ function AddSavingModal() {
                             </div>
 
                         </form>
+                        <label className="loginErrorDislayLabel"> {errorText} </label>
                         <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={submitSavingData}>Add Saving</button>
                     </div>
                 </div>
