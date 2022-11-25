@@ -125,7 +125,6 @@ export default function Login() {
             </div>
             <form className="signUp--form">
                 <input type={"email"} placeholder="Email ID" className="form--input" name="email" onChange={handleChange}></input>
-                {/* <input type={"password"} placeholder="Password" className="form--input" name="password" onChange={handleChange}></input> */}
 
                 <div className="form--input passwordDiv">
                     <input className="form--input passwordInput" type={passwordShown ? "text" : "password"} placeholder="Password" name="password" onChange={handleChange} ></input>

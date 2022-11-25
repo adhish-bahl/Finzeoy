@@ -14,6 +14,7 @@ import RegistrationLogin from './components/RegistrationLogin';
 import RegistrationSignup from './components/RegistrationSignup';
 import FeedMainPage from './components/FeedMainPage';
 import GeneralPage from './components/GeneralPage';
+import Contact from './components/Contact';
 
 function Routing() {
   return (
@@ -71,10 +72,15 @@ function Routing() {
                         <FeedMainPage />
                     </Route>
 
+                    <Route path="/contact">
+                        <Contact />
+                    </Route>
+                    
                     {/* PAGE NOT FOUND  */}
                     <Route >
                         <PageNotFound />
                     </Route>
+
 
                 </Switch>
             </div>

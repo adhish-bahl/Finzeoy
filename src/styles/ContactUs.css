@@ -1,0 +1,41 @@
+.teamContainer {
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 10px;
+}
+
+.teamPicture {
+    width: 500px;
+}
+
+.lower h1 {
+    text-decoration: underline;
+}
+
+.information{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.information div {
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.intro {
+    font-size: 1.2rem;
+    text-align: justify;
+}
