@@ -4,6 +4,8 @@ import '../styles/PostByAdvisorModal.css'
 
 function PostByAdvisorModal() {
 
+  const [errorText, setErrorText] = useState()
+
   const [articleData, setArticleData] = useState({
     "title": "",
     "typeOfArticle": "investment",
@@ -11,6 +13,7 @@ function PostByAdvisorModal() {
   });
 
   function handleChange(event) {
+    setErrorText("")
     const {name, value} = event.target;
 
     setArticleData(prevData => {
@@ -20,14 +23,14 @@ function PostByAdvisorModal() {
 
   async function submitContent() {
     if(articleData.title === "" || articleData.article === "") {
-      alert("Please fill all the fields")
+      setErrorText("Please fill all the fields")
     }
 
     else {
       var date = new Date();
       await fetch("https://finzeoy.000webhostapp.com/SaveArticles.php?title="+articleData.title+"&postedBy="+sessionStorage.getItem("userId")+"&date="+date.toLocaleDateString()+"&article="+articleData.article+"&type="+articleData.typeOfArticle+"")
       .then(res => res.json())
-      .then(data => data.status === "success" ? alert("Article posted successfully") : alert("Article could not be posted"))
+      .then(data => data.status === "success" ? setErrorText("Article posted successfully") : setErrorText("Article could not be posted"))
 
       window.location.reload();
     }
