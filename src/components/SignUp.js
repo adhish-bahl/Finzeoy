@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import {useHistory} from 'react-router-dom'
 import '../styles/SignUpStyles.css'
+import CryptoJS from "crypto-js";
 
 export default function SignUp() {
 
@@ -89,11 +90,12 @@ export default function SignUp() {
     async function saveFormData() {
         if(acceptPolicy) {
             if(userDetails[0].hasError || userDetails[1].hasError || userDetails[2].hasError || userDetails[3].hasError || userDetails[4].hasError) {
-                // alert("Invalid inputs. Please check your inputs and retry.");
                 setSignupError("Invalid inputs. Please check your inputs and retry.");
             }
             else {
-                await getUsersData();
+                userDetails[4].password = CryptoJS.AES.encrypt(userDetails[4].password, "finzeoy").toString();
+                
+                await saveData();
 
                 if(userDetails[3].userType === "financial-advisor") {
                     await fetch("https://finzeoy.000webhostapp.com/SaveAdvisorInfo.php?userid="+userId+"")
@@ -127,18 +129,16 @@ export default function SignUp() {
         }
     }
 
-    async function getUsersData() {
+    async function saveData() {
         await fetch("https://finzeoy.000webhostapp.com/SaveUserData.php?name="+userDetails[0].name+"&email="+userDetails[1].email+"&phno="+userDetails[2].phno+"&type="+userDetails[3].userType+"&pwd="+userDetails[4].password+"")
         .then(res => res.json())
         .then(data => {
             if(data.status === "Success") {
                 userId = data.userId;
                 sessionStorage.setItem("userId", userId);
-                // alert("Signed up successfully");
                 setSignupError("Signed up successfully")
             }
             else {
-                // alert("Sign up failed");
                 setSignupError("Sign up failed")
             }
         });

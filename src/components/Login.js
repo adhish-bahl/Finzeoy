@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import {useHistory} from 'react-router-dom'
 import '../styles/SignUpStyles.css'
+import CryptoJS from "crypto-js";
 
 export default function Login() {
 
@@ -66,6 +67,9 @@ export default function Login() {
         }
         else {
             for(let i = 0; i<usersData.length; i++) {
+                var bytes  = CryptoJS.AES.decrypt(usersData[i].password, "finzeoy");
+                usersData[i].password = bytes.toString(CryptoJS.enc.Utf8);
+
                 if(loginDetails[0].email === usersData[i].email && loginDetails[1].password === usersData[i].password && loginDetails[2].userType === usersData[i].userType) {
                     sessionStorage.setItem("userId", usersData[i].userId)
                     switch(loginDetails[2].userType) {
