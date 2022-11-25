@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import {useHistory} from 'react-router-dom'
 import CryptoJS from "crypto-js";
 import '../styles/SignUpStyles.css'
+import showPassword from "../Images/showPassword.png"
+import hidePassword from "../Images/hidePassword.png"
 
 export default function SignUp() {
 
