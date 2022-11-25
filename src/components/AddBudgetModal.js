@@ -21,11 +21,22 @@ function AddBudgetModal() {
     }
 
     async function submitBudgetData() {
-        await fetch("https://finzeoy.000webhostapp.com/SaveBudgetData.php?userId="+sessionStorage.getItem("userId")+"&category="+budgetData.category+"&amount="+budgetData.amount+"")
-        .then(res => res.json())
-        .then(data => data.status === "success" ? alert("Budget category saved successfully") : alert("Budget category save failed"))
-
-        window.location.reload();
+        if(budgetData.category === "" || budgetData.amount === "") {
+            alert("Please fill all the fields")
+        }
+        else {
+            await fetch("https://finzeoy.000webhostapp.com/SaveBudgetData.php?userId="+sessionStorage.getItem("userId")+"&category="+budgetData.category+"&amount="+budgetData.amount+"")
+            .then(res => res.json())
+            .then(data => {
+                if(data.status === "success") {
+                    alert("Budget saved successfully")
+                    window.location.reload();
+                }
+                else {
+                    alert("Budget save failed")
+                }
+            })
+        }
     }
 
 

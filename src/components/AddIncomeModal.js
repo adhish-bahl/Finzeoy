@@ -9,7 +9,7 @@ function AddIncomeModal() {
     const [incomeData, setIncomeData] = useState(
         {
             "title": "",
-            "category": "",
+            "category": "Salary",
             "amount": "",
             "date": date
         }
@@ -27,11 +27,23 @@ function AddIncomeModal() {
     }
 
     async function submitIncomeData() {
-        await fetch("https://finzeoy.000webhostapp.com/SaveIncomeData.php?userId="+sessionStorage.getItem("userId")+"&title="+incomeData.title+"&category="+incomeData.category+"&amount="+incomeData.amount+"&date="+incomeData.date+"")
-        .then(res => res.json())
-        .then(data => data.status === "success" ? alert("Income saved successfully") : alert("Income save failed"))
-
-        window.location.reload();
+        if(incomeData.title === "" || incomeData.category === "" || incomeData.amount === "" || incomeData.date === "") {
+            alert("Please fill all the fields")
+        }
+        else {
+            await fetch("https://finzeoy.000webhostapp.com/SaveIncomeData.php?userId="+sessionStorage.getItem("userId")+"&title="+incomeData.title+"&category="+incomeData.category+"&amount="+incomeData.amount+"&date="+incomeData.date+"")
+            .then(res => res.json())
+            .then(data => 
+                {
+                    if(data.status === "success") {
+                        alert("Income saved successfully")
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Income save failed")
+                    }
+                })
+        }
     }   
 
   return (
@@ -60,7 +72,6 @@ function AddIncomeModal() {
                               <input type={"number"} name="amount" onChange={changeHandler} id="amountInput"  style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                               
                               <p className="date" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }} >Date</p>
-                              
                               <input type={"date"} name="date" onChange={changeHandler} id="dateInput" defaultValue={date}  style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                           </div>
                           

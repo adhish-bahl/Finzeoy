@@ -11,7 +11,7 @@ function AddExpenseModal() {
     const [expenseData, setExpenseData] = useState(
         {
             "title": "",
-            "category": "",
+            "category": budgetData.length === 0 ? "" : budgetData[0].category,
             "amount": "",
             "date": date
         }
@@ -29,11 +29,23 @@ function AddExpenseModal() {
     }
 
     async function submitExpenseData() {
-        await fetch("https://finzeoy.000webhostapp.com/SaveExpenseData.php?userId="+sessionStorage.getItem("userId")+"&title="+expenseData.title+"&category="+expenseData.category+"&amount="+expenseData.amount+"&date="+expenseData.date+"")
-        .then(res => res.json())
-        .then(data => data.status === "success" ? alert("Expenses saved successfully") : alert("Expense save failed"))
-
-        window.location.reload();
+        if(expenseData.title === "" || expenseData.category === "" || expenseData.amount === "" || expenseData.amount === "") {
+            alert("Please fill all the fields")
+        }
+        else {
+            await fetch("https://finzeoy.000webhostapp.com/SaveExpenseData.php?userId="+sessionStorage.getItem("userId")+"&title="+expenseData.title+"&category="+expenseData.category+"&amount="+expenseData.amount+"&date="+expenseData.date+"")
+            .then(res => res.json())
+            .then(data => 
+                {
+                    if(data.status === "success") {
+                        alert("Expense saved successfully")
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Expense save failed")
+                    }
+                })
+        }
     }
 
     useEffect(() => {

@@ -2,14 +2,43 @@ import React, { useEffect, useState } from 'react';
 
 function AddSavingModal() {
 
-    const changeHandler = () => {
-        // Code Here
+    const [savingData, setSavingData] = useState(
+        {
+            "title": "",
+            "goal": ""
+        }
+    )
+
+    function changeHandler(event) {
+        const {name, value} = event.target;
+
+        setSavingData(prevState => {
+            return {
+                ...prevState,
+                [name] : value
+            }
+        })
     }
 
-    const submitBudgetData = () => {
-        // Code Here
+    async function submitSavingData() {
+        if(savingData.title === "" || savingData.goal === "") {
+            alert("Please fill all the fields")
+        }
+        else {
+            await fetch("https://finzeoy.000webhostapp.com/SaveSavingData.php?userId="+sessionStorage.getItem("userId")+"&title="+savingData.title+"&goal="+savingData.goal+"")
+            .then(res => res.json())
+            .then(data => 
+                {
+                    if(data.status === "success") {
+                        alert("Saving saved successfully")
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Saving save failed")
+                    }
+                })
+        }
     }
-
 
     return (
         <div id="postModal" className="modal">
@@ -27,17 +56,10 @@ function AddSavingModal() {
                                 
                                 <p className="goal" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Goal</p>
                                 <input type={"text"} name="goal" onChange={changeHandler} id="goalInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-
-                                <p className="list" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>List</p>
-                                <select name="list" id="listInput" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
-                                </select>
-
-                                <p className="amount" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Amount</p>
-                                <input type={"number"} name="amount" onChange={changeHandler} id="amountInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             </div>
 
                         </form>
-                        <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={submitBudgetData}>Add Budget</button>
+                        <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={submitSavingData}>Add Saving</button>
                     </div>
                 </div>
             </div>
