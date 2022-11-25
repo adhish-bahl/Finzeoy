@@ -1,13 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-function AddSavingModal() {
+function EditSavingModal(props) {
 
-    const changeHandler = () => {
-        // Code Here
+    const [savingData, setSavingData] = useState(
+        {
+            "savingFundId": props.data.length === 0 ? "" : props.data[0].savingId,
+            "amountSaved": "",
+        }
+    )
+
+    function changeHandler(event) {
+        const {name, value} = event.target;
+
+        setSavingData(prevState => {
+            return {
+                ...prevState,
+                [name] : value
+            }
+        })
     }
 
-    const submitBudgetData = () => {
-        // Code Here
+    async function updateSaving() {
+        if(savingData.savingFundId === "" || savingData.amountSaved === "") {
+            alert("Please fill all the fields")
+        }
+        else {
+            var newSavingAmt = 0;
+
+            for(var i = 0; i<props.data.length; i++) {
+                if(props.data[i].savingId == savingData.savingFundId) {
+                    newSavingAmt = parseInt(props.data[i].amtSaved) + parseInt(savingData.amountSaved);
+                    await fetch("https://finzeoy.000webhostapp.com/EditSavingData.php?userId="+sessionStorage.getItem("userId")+"&title="+props.data[i].title+"&amount="+newSavingAmt+"")
+                        .then(res => res.json())
+                        .then(data => 
+                            {
+                                if(data.status === "success") {
+                                    alert("Saving updated successfully")
+                                    window.location.reload();
+                                }
+                                else {
+                                    alert("Saving update failed")
+                                }
+                            })
+                }
+            }
+        }
     }
 
 
@@ -22,22 +59,20 @@ function AddSavingModal() {
                     <div>
                         <form action="" style={{ width: "100%", display: "grid", gridTemplateColumns: "1fr", overflowY: "hidden" }}>
                             <div className="leftOfEditModal" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                <p className="title" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Title</p>
-                                <input type={"text"} name="title" onChange={changeHandler} id="titleInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
 
-                                <p className="goal" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Goal</p>
-                                <input type={"text"} name="goal" onChange={changeHandler} id="goalInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-
-                                <p className="list" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>List</p>
-                                <select name="list" id="listInput" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
+                                <p className="list" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Savings</p>
+                                <select name="savingFundId" id="listInput" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
+                                    {props.data.map(item => {
+                                        return <option key={item.savingId} value={item.savingId}>{item.title}</option>
+                                    })}
                                 </select>
 
-                                <p className="amount" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Amount</p>
-                                <input type={"number"} name="amount" onChange={changeHandler} id="amountInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                                <p className="amount" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Add amount Saved</p>
+                                <input type={"number"} name="amountSaved" onChange={changeHandler} id="amountInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             </div>
 
                         </form>
-                        <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={submitBudgetData}>Add Budget</button>
+                        <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={updateSaving}>Update saving</button>
                     </div>
                 </div>
             </div>
@@ -45,4 +80,4 @@ function AddSavingModal() {
     )
 }
 
-export default AddSavingModal
+export default EditSavingModal

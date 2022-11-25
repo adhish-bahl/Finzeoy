@@ -87,7 +87,7 @@ export default function IncomeExpense() {
                         <button className="budget--header--button"><img id="addSavingImg" onClick={showModal} src="./Images/add_icon.png"  className="budget--buttonImage"/></button>
                         <AddSavingModal />
                         <button className="budget--header--button"><img id="editSavingImg" onClick={showModal} src="./Images/edit_icon.png"  className="budget--buttonImage"/></button>
-                        <EditSavingModal  />
+                        <EditSavingModal data={savingsData} />
                     </div>
                 </div>
                 {savingsData!==undefined ? savingsData.map((item) => {
