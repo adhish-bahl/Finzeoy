@@ -6,6 +6,7 @@ import "../styles/ProgressContainerStyles.css";
 import Progress from "./Progress";
 import AddSavingModal from "./AddSavingModal";
 import AddInvestmentModal from "./AddInvestmentModal";
+import EditSavingModal from "./EditSavingModal";
 
 export default function IncomeExpense() {
 
@@ -26,6 +27,12 @@ export default function IncomeExpense() {
             }
         }
         else if (event.target.id == "addInvestmentImg") {
+            modals[7].style.display = "block";
+            spans[7].onclick = function () {
+                modals[7].style.display = "none";
+            }
+        }
+        else if (event.target.id == "editSavingImg") {
             modals[6].style.display = "block";
             spans[6].onclick = function () {
                 modals[6].style.display = "none";
@@ -79,6 +86,8 @@ export default function IncomeExpense() {
                     <div className="budget--buttons">
                         <button className="budget--header--button"><img id="addSavingImg" onClick={showModal} src="./Images/add_icon.png"  className="budget--buttonImage"/></button>
                         <AddSavingModal />
+                        <button className="budget--header--button"><img id="editSavingImg" onClick={showModal} src="./Images/edit_icon.png"  className="budget--buttonImage"/></button>
+                        <EditSavingModal  />
                     </div>
                 </div>
                 {savingsData!==undefined ? savingsData.map((item) => {
