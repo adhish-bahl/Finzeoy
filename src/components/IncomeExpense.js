@@ -8,6 +8,7 @@ import PieChart from "./PieChart";
 import AddIncomeModal from "./AddIncomeModal";
 import AddExpenseModal from "./AddExpenseModal";
 import AddBudgetModal from "./AddBudgetModal";
+import EditBudgetModal from "./EditBudgetModal"
 
 export default function IncomeExpense() {
 
@@ -41,15 +42,21 @@ export default function IncomeExpense() {
             }
         }
         else if (event.target.id == "incomeBtn") {
-            modals[3].style.display = "block";
-            spans[3].onclick = function () {
-                modals[3].style.display = "none";
-            }
-        }
-        else if (event.target.id == "expenseBtn") {
             modals[4].style.display = "block";
             spans[4].onclick = function () {
                 modals[4].style.display = "none";
+            }
+        }
+        else if (event.target.id == "expenseBtn") {
+            modals[5].style.display = "block";
+            spans[5].onclick = function () {
+                modals[5].style.display = "none";
+            }
+        }
+        else if (event.target.id == "editBudgetImg") {
+            modals[3].style.display = "block";
+            spans[3].onclick = function () {
+                modals[3].style.display = "none";
             }
         }
     }
@@ -141,6 +148,8 @@ export default function IncomeExpense() {
                     <div className="budget--buttons">
                         <button id="addBudgetBtn" className="budget--header--button" onClick={showModal}><img id="addBudgetBtnImg" src="./Images/add_icon.png" className="budget--buttonImage" onClick={showModal} /></button>
                         <AddBudgetModal />
+                        <button className="budget--header--button"><img id="editBudgetImg" onClick={showModal} src="./Images/edit_icon.png" className="budget--buttonImage" /></button>
+                        <EditBudgetModal />
                     </div>
                 </div>
                 {budgetData!==undefined && expenseBreakdown!==undefined ? budgetData.map((item) => {

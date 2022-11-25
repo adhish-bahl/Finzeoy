@@ -21,21 +21,21 @@ export default function IncomeExpense() {
         var spans = document.getElementsByClassName("close");
 
         if (event.target.id == "addSavingImg") {
-            modals[5].style.display = "block";
-            spans[5].onclick = function () {
-                modals[5].style.display = "none";
-            }
-        }
-        else if (event.target.id == "addInvestmentImg") {
-            modals[7].style.display = "block";
-            spans[7].onclick = function () {
-                modals[7].style.display = "none";
-            }
-        }
-        else if (event.target.id == "editSavingImg") {
             modals[6].style.display = "block";
             spans[6].onclick = function () {
                 modals[6].style.display = "none";
+            }
+        }
+        else if (event.target.id == "addInvestmentImg") {
+            modals[8].style.display = "block";
+            spans[8].onclick = function () {
+                modals[8].style.display = "none";
+            }
+        }
+        else if (event.target.id == "editSavingImg") {
+            modals[7].style.display = "block";
+            spans[7].onclick = function () {
+                modals[7].style.display = "none";
             }
         }
     }
