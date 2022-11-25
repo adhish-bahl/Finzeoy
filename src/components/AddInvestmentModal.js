@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 function AddSavingModal() {
 
+    const [errorText, setErrorText] = useState()
+
     var curr = new Date();
     curr.setDate(curr.getDate() + 3);
     var date = curr.toISOString().substring(0, 10);
@@ -16,31 +18,31 @@ function AddSavingModal() {
     )
 
     function changeHandler(event) {
-        const {name, value} = event.target;
+        setErrorText("")
+        const { name, value } = event.target;
 
         setInvestmentData(prevState => {
             return {
                 ...prevState,
-                [name] : value
+                [name]: value
             }
         })
     }
 
     async function submitInvestmentData() {
-        if(investmentData.title === "" || investmentData.category === "" || investmentData.amount === "" || investmentData.date === "") {
-            alert("Please fill all the fields")
+        if (investmentData.title === "" || investmentData.category === "" || investmentData.amount === "" || investmentData.date === "") {
+            setErrorText("Please fill all the fields")
         }
         else {
-            await fetch("https://finzeoy.000webhostapp.com/SaveInvestmentData.php?userId="+sessionStorage.getItem("userId")+"&title="+investmentData.title+"&category="+investmentData.category+"&amount="+investmentData.amount+"&date="+investmentData.date+"")
-            .then(res => res.json())
-            .then(data => 
-                {
-                    if(data.status === "success") {
-                        alert("Investment saved successfully")
+            await fetch("https://finzeoy.000webhostapp.com/SaveInvestmentData.php?userId=" + sessionStorage.getItem("userId") + "&title=" + investmentData.title + "&category=" + investmentData.category + "&amount=" + investmentData.amount + "&date=" + investmentData.date + "")
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        setErrorText("Investment saved successfully")
                         window.location.reload();
                     }
                     else {
-                        alert("Investment save failed")
+                        setErrorText("Investment save failed")
                     }
                 })
         }
@@ -71,12 +73,13 @@ function AddSavingModal() {
 
                                 <p className="amount" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Amount</p>
                                 <input type={"number"} name="amount" onChange={changeHandler} id="amountInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
-                                
+
                                 <p className="date" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }} >Date</p>
-                                <input type={"date"} name="date" onChange={changeHandler} id="dateInput" defaultValue={date}  style={{ textAlign: "left", width: "80%", padding: "5px" }} />
+                                <input type={"date"} name="date" onChange={changeHandler} id="dateInput" defaultValue={date} style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                             </div>
 
                         </form>
+                        <label className="loginErrorDislayLabel"> {errorText} </label>
                         <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={submitInvestmentData}>Add investment</button>
                     </div>
                 </div>

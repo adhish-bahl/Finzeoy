@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 function EditSavingModal(props) {
 
+    const [errorText, setErrorText] = useState()
+
     const [savingData, setSavingData] = useState(
         {
             "savingFundId": props.data ? "" : props.data[0].savingId,
@@ -10,38 +12,38 @@ function EditSavingModal(props) {
     )
 
     function changeHandler(event) {
-        const {name, value} = event.target;
+        setErrorText("")
+        const { name, value } = event.target;
 
         setSavingData(prevState => {
             return {
                 ...prevState,
-                [name] : value
+                [name]: value
             }
         })
     }
 
     async function updateSaving() {
-        if(savingData.savingFundId === "" || savingData.amountSaved === "") {
-            alert("Please fill all the fields")
+        if (savingData.savingFundId === "" || savingData.amountSaved === "") {
+            setErrorText("Please fill all the fields")
         }
         else {
             var newSavingAmt = 0;
 
-            for(var i = 0; i<props.data.length; i++) {
-                if(props.data[i].savingId == savingData.savingFundId) {
+            for (var i = 0; i < props.data.length; i++) {
+                if (props.data[i].savingId == savingData.savingFundId) {
                     newSavingAmt = parseInt(props.data[i].amtSaved) + parseInt(savingData.amountSaved);
-                    await fetch("https://finzeoy.000webhostapp.com/EditSavingData.php?userId="+sessionStorage.getItem("userId")+"&title="+props.data[i].title+"&amount="+newSavingAmt+"")
+                    await fetch("https://finzeoy.000webhostapp.com/EditSavingData.php?userId=" + sessionStorage.getItem("userId") + "&title=" + props.data[i].title + "&amount=" + newSavingAmt + "")
                         .then(res => res.json())
-                        .then(data => 
-                            {
-                                if(data.status === "success") {
-                                    alert("Saving updated successfully")
-                                    window.location.reload();
-                                }
-                                else {
-                                    alert("Saving update failed")
-                                }
-                            })
+                        .then(data => {
+                            if (data.status === "success") {
+                                setErrorText("Saving updated successfully")
+                                window.location.reload();
+                            }
+                            else {
+                                setErrorText("Saving update failed")
+                            }
+                        })
                 }
             }
         }
@@ -71,6 +73,7 @@ function EditSavingModal(props) {
                             </div>
 
                         </form>
+                        <label className="loginErrorDislayLabel"> {errorText} </label>
                         <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={updateSaving}>Update saving</button>
                     </div>
                 </div>
