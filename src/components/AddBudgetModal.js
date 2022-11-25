@@ -1,41 +1,45 @@
 import React, { useEffect, useState } from 'react';
 
 function AddBudgetModal() {
-    
+
+    const [errorText, setErrorText] = useState()
+
+
     const [budgetData, setBudgetData] = useState(
         {
             "category": "",
             "amount": ""
         }
     )
-    
+
     function changeHandler(event) {
-        const {name, value} = event.target;
+        setErrorText("")
+        const { name, value } = event.target;
 
         setBudgetData(prevState => {
             return {
                 ...prevState,
-                [name] : value
+                [name]: value
             }
         })
     }
 
     async function submitBudgetData() {
-        if(budgetData.category === "" || budgetData.amount === "") {
-            alert("Please fill all the fields")
+        if (budgetData.category === "" || budgetData.amount === "") {
+            setErrorText("Please fill all the fields")
         }
         else {
-            await fetch("https://finzeoy.000webhostapp.com/SaveBudgetData.php?userId="+sessionStorage.getItem("userId")+"&category="+budgetData.category+"&amount="+budgetData.amount+"")
-            .then(res => res.json())
-            .then(data => {
-                if(data.status === "success") {
-                    alert("Budget saved successfully")
-                    window.location.reload();
-                }
-                else {
-                    alert("Budget save failed")
-                }
-            })
+            await fetch("https://finzeoy.000webhostapp.com/SaveBudgetData.php?userId=" + sessionStorage.getItem("userId") + "&category=" + budgetData.category + "&amount=" + budgetData.amount + "")
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        setErrorText("Budget saved successfully")
+                        window.location.reload();
+                    }
+                    else {
+                        setErrorText("Budget save failed")
+                    }
+                })
         }
     }
 
@@ -58,6 +62,7 @@ function AddBudgetModal() {
                             </div>
 
                         </form>
+                        <label className="loginErrorDislayLabel"> {errorText} </label>
                         <button style={{ marginTop: "2em", padding: "0.6em", backgroundColor: "transparent", width: "50%", alignSelf: "center" }} onClick={submitBudgetData}>Add Budget</button>
                     </div>
                 </div>
