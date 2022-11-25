@@ -10,7 +10,7 @@ export default function ArticleModal(props) {
                     <h2>{props.title}</h2>
                 </div>
                 <div className="modal--mainContent">
-                    <p>{props.content}</p>
+                    <p style={{textAlign: "justify"}} >{props.content}</p>
                 </div>
             </div>
         </div>

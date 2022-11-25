@@ -8,7 +8,6 @@ import facebookIcon from "../Images/facebookIcon.png"
 import linkedinIcon from "../Images/linkedinIcon.png"
 import websiteIcon from "../Images/websiteIcon.png"
 import twitterIcon from "../Images/twitterIcon.png"
-// import ArticleModal from './ArticleModal';
 
 
 function AdvisorProfile() {
