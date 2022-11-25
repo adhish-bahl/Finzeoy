@@ -7,7 +7,7 @@ export default function Progress(props) {
     setTimeout(() => {
         const newStyle = {
         opacity: 1,
-        width: `${props.done}%`
+        width: `${props.done <= 100 ? props.done : "100"}%`
         }
         
         setStyle(newStyle);
@@ -21,7 +21,7 @@ export default function Progress(props) {
             </div>
             <div className="progress--bar">
                 <div className="progress--done" style={style}>
-                    {props.done}%
+                    {props.done <= 100 ? props.done : "100"}%
                 </div>
             </div>
         </div>

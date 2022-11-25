@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function AddExpenseModal() {
-
-    const [budgetData, setBudgetData] = useState([]);
+function AddExpenseModal(props) {
 
     var curr = new Date();
     curr.setDate(curr.getDate() + 3);
@@ -13,7 +11,7 @@ function AddExpenseModal() {
     const [expenseData, setExpenseData] = useState(
         {
             "title": "",
-            "category": budgetData.length === 0 ? "" : budgetData[0].category,
+            "category": props.data.length === 0 ? "" : props.data[0].category,
             "amount": "",
             "date": date
         }
@@ -51,12 +49,6 @@ function AddExpenseModal() {
         }
     }
 
-    useEffect(() => {
-        fetch("https://finzeoy.000webhostapp.com/GetBudgetData.php?userId=" + sessionStorage.getItem("userId") + "")
-            .then(res => res.json())
-            .then(data => setBudgetData(data))
-    }, [])
-
     return (
         <div id="postModal" className="modal">
             <div className="modal--content" style={{ width: "30vw" }}>
@@ -72,7 +64,7 @@ function AddExpenseModal() {
                                 <input type={"text"} name="title" onChange={changeHandler} id="titleInput" style={{ textAlign: "left", width: "80%", padding: "5px" }} />
                                 <p className="category" style={{ textAlign: "left", width: "80%", fontWeight: "500", marginBottom: "0px" }}>Category</p>
                                 <select name="category" id="categories" onChange={changeHandler} style={{ textAlign: "left", width: "80%", padding: "5px", marginTop: "5px" }} >
-                                    {budgetData.map(item => {
+                                    {props.data.map(item => {
                                         return <option key={item.budgetid} value={item.category}>{item.category}</option>
                                     })}
                                 </select>

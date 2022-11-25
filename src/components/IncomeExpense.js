@@ -138,7 +138,7 @@ export default function IncomeExpense() {
                 <button id="addIncomeBtn" className="tracker--show--button" onClick={showModal}>Add Incomes</button>
                 <AddIncomeModal />
                 <button id="addExpenseBtn" className="tracker--show--button" onClick={showModal}>Add Expenses</button>
-                <AddExpenseModal />
+                <AddExpenseModal data={budgetData} />
 
             </div>
 
@@ -149,12 +149,12 @@ export default function IncomeExpense() {
                         <button id="addBudgetBtn" className="budget--header--button" onClick={showModal}><img id="addBudgetBtnImg" src="./Images/add_icon.png" className="budget--buttonImage" onClick={showModal} /></button>
                         <AddBudgetModal />
                         <button className="budget--header--button"><img id="editBudgetImg" onClick={showModal} src="./Images/edit_icon.png" className="budget--buttonImage" /></button>
-                        <EditBudgetModal />
+                        <EditBudgetModal data={budgetData} />
                     </div>
                 </div>
                 {budgetData!==undefined && expenseBreakdown!==undefined ? budgetData.map((item) => {
                     const {[item.category] : usedAmount} = Object.fromEntries(expenseBreakdown);
-                    return <Progress key={item.budgetid} title={item.category} done={usedAmount !== undefined ? Math.round(usedAmount/item.amount*100) : 0} amount={item.amount} />
+                    return <Progress key={item.budgetId} title={item.category} done={usedAmount !== undefined ? Math.round(usedAmount/item.amount*100) : 0} amount={item.amount} />
                 }) : 0}
             </div>
             <div>
