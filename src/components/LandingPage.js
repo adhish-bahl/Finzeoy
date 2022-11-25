@@ -41,7 +41,7 @@ function LandingPage() {
             <img className='LPCoinStack' src={coinStack} alt="Coins" />
           </div>
           <div className="LPrightLower">
-          © FINZEOY 2022
+          {/* © FINZEOY 2022 */}
           </div>
         </div>
     </div>
