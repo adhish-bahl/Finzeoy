@@ -40,3 +40,11 @@
     font-size: 1.2rem;
     text-align: justify;
 }
+
+.socialMediaCreater {
+    display: flex;
+    justify-content: space-evenly !important ;
+    align-items: center;
+    flex-direction: row !important;
+    width: 100%;
+}
