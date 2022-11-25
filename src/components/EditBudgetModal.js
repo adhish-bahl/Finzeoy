@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 function EditBudgetModal(props) {
 
+    const [errorText, setErrorText] = useState()
+
     const [budgetData, setBudgetData] = useState(
         {
             "budgetId": props.data.length === 0 ? "" : props.data[0].budgetId,
@@ -10,33 +12,33 @@ function EditBudgetModal(props) {
     )
 
     function changeHandler(event) {
-        const {name, value} = event.target;
+        setErrorText("")
+        const { name, value } = event.target;
 
         setBudgetData(prevState => {
             return {
                 ...prevState,
-                [name] : value
+                [name]: value
             }
         })
     }
 
     async function updateBudgetData() {
-        if(budgetData.budgetId === "" || budgetData.amount === "") {
-            alert("Please fill all the fields")
+        if (budgetData.budgetId === "" || budgetData.amount === "") {
+            setErrorText("Please fill all the fields")
         }
         else {
-            await fetch("https://finzeoy.000webhostapp.com/UpdateBudgetData.php?userId="+sessionStorage.getItem("userId")+"&budgetid="+budgetData.budgetId+"&amount="+budgetData.amount+"")
+            await fetch("https://finzeoy.000webhostapp.com/UpdateBudgetData.php?userId=" + sessionStorage.getItem("userId") + "&budgetid=" + budgetData.budgetId + "&amount=" + budgetData.amount + "")
                 .then(res => res.json())
-                .then(data => 
-                    {
-                        if(data.status === "success") {
-                            alert("Budget updated successfully")
-                            window.location.reload();
-                        }
-                        else {
-                            alert("Budget update failed")
-                        }
-                    })
+                .then(data => {
+                    if (data.status === "success") {
+                        setErrorText("Budget updated successfully")
+                        window.location.reload();
+                    }
+                    else {
+                        setErrorText("Budget update failed")
+                    }
+                })
         }
     }
 
