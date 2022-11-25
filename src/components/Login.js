@@ -2,12 +2,22 @@ import React, { useEffect, useState } from "react"
 import {useHistory} from 'react-router-dom'
 import '../styles/SignUpStyles.css'
 import CryptoJS from "crypto-js";
+import showPassword from "../Images/showPassword.png"
+import hidePassword from "../Images/hidePassword.png"
 
 export default function Login() {
 
     const history = useHistory();
 
     const[errorLabel, setErrorlabel] = useState()
+
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    const togglePassword = (e) => {
+        e.preventDefault();
+        setPasswordShown(!passwordShown);
+        console.log(passwordShown);
+    };
 
     const [loginDetails, setLoginDetails] = useState([
         {
@@ -115,7 +125,15 @@ export default function Login() {
             </div>
             <form className="signUp--form">
                 <input type={"email"} placeholder="Email ID" className="form--input" name="email" onChange={handleChange}></input>
-                <input type={"password"} placeholder="Password" className="form--input" name="password" onChange={handleChange}></input>
+                {/* <input type={"password"} placeholder="Password" className="form--input" name="password" onChange={handleChange}></input> */}
+
+                <div className="form--input passwordDiv">
+                    <input className="form--input passwordInput" type={passwordShown ? "text" : "password"} placeholder="Password" name="password" onChange={handleChange} ></input>
+                    <button className="passwordButton" onClick={togglePassword}>
+                        <img className="showImageIcon" onClick={togglePassword} src={passwordShown ? showPassword : hidePassword} alt="showPassword" />
+                    </button>
+                </div>
+
                 <fieldset className="form--radioInput">
                     <legend className="form--radioInput--legend">User Type</legend>
                     <input type={"radio"} name="userType" id="endUser" value="end-user" checked={loginDetails[2].userType === "end-user"} onChange={handleChange}></input>
