@@ -17,13 +17,17 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className="center">
-                        <div className="name">Gayathri S.</div>
+                        <div className="name">Kavish Kumar S.</div>
                         <div className="intro">
                             Hi, I am Gayathri. I’d describe myself as a person largely driven by curiosity. Being a student at Christ (Deemed to be University) has provided me the opportunity to come up with this website and provided me an outlet where I along with my team have given direction to our curiosity and shaped our ideas to life. I’ve always envisioned on creating a platform that brings together like minded people and T-Une is just that! 
                         </div>
                     </div>
                     <div className="right">
-                        <div className="name">Anikait M. Nair</div>
+                        <div className="name">Priyanshi S. Mundhra</div>
+                        <div className="intro">I am a student pursuing BCA in Christ University. My interest lies in back-end development and AI. my expertise are in MySQL, HTML5 and C. Among my other interest is Music and art.</div>
+                    </div>
+                    <div className="right">
+                        <div className="name">Riddhish Savalkar</div>
                         <div className="intro">I am a student pursuing BCA in Christ University. My interest lies in back-end development and AI. my expertise are in MySQL, HTML5 and C. Among my other interest is Music and art.</div>
                     </div>
                 </div>

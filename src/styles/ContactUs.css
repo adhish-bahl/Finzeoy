@@ -17,7 +17,7 @@
 
 .information{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     /* align-items: center; */
     /* justify-content: center; */
 }
@@ -27,6 +27,7 @@
     justify-content: center;
     align-items: center ;
     flex-direction: column;
+    margin: 10px;
 }
 
 .name {

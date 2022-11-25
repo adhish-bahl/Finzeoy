@@ -6,7 +6,7 @@ function Footer() {
 	const history = useHistory();
 
 	const redirectToAboutUs = () => {
-		history.push('/contsct')
+		history.push('/contact')
 		window.location.reload()
 	}
 

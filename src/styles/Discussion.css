@@ -39,19 +39,12 @@
 
 .DCRlower {
     background-color: #bfb0b2;
-<<<<<<< HEAD
     height: 30vh;
-=======
-    max-height: 30vh;
->>>>>>> b40fdadc8ef02f98822c1d2d9f9738b1fd25645a
     border-radius: 10px;
     padding: 5px;
     width: 90%;
     margin-bottom: 15px;
-<<<<<<< HEAD
     /* height: fit-content; */
-=======
->>>>>>> b40fdadc8ef02f98822c1d2d9f9738b1fd25645a
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
