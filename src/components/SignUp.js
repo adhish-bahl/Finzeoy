@@ -1,12 +1,22 @@
 import React, { useState, useRef } from "react";
-import {useHistory} from 'react-router-dom'
-import '../styles/SignUpStyles.css'
+import {useHistory} from 'react-router-dom';
+import '../styles/SignUpStyles.css';
+import showPassword from "../Images/showPassword.png";
+import hidePassword from "../Images/hidePassword.png";
 
 export default function SignUp() {
 
     const [signupError, setSignupError] = useState("");
     const [acceptPolicy, setAcceptPolicy] = useState(false);
     const ref = useRef(null);
+
+    const [passwordShown, setPasswordShown] = useState(false);
+
+    const togglePassword = (e) => {
+        e.preventDefault();
+        setPasswordShown(!passwordShown);
+        console.log(passwordShown);
+    };
 
     const history = useHistory();
     var userId;
@@ -161,7 +171,13 @@ export default function SignUp() {
                         <option value="financial-advisor">Financial Advisor</option>
                         <option value="student">Student</option>
                     </select>
-                    <input type={"password"} placeholder="Password" className="form--input" name="password" onChange={handleChange}></input>
+                    <div className="form--input passwordDiv">
+                        <input className="form--input passwordInput" type={passwordShown ? "text" : "password"} placeholder="Password" name="password" onChange={handleChange} ></input>
+                        <button className="passwordButton" onClick={togglePassword}>
+                            <img className="showImageIcon" onClick={togglePassword} src={passwordShown ? showPassword : hidePassword} alt="showPassword" />
+                        </button>
+                    </div>
+                    
                 </form>
                 <div className="PoliciesSection">
                     <input type="checkbox" name="form--terms" id="policies" onChange={ischecked} ref = {ref} />

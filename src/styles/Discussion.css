@@ -28,11 +28,13 @@
 
 .DCRupper {
     background-color: #bfb0b2;
-    min-height: 30vh;
+    max-height: 30vh;
     border-radius: 10px;
     padding: 5px;
     width: 90%;
-    height: fit-content;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* height: fit-content; */
 }
 
 .DCRlower {
