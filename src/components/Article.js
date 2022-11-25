@@ -22,7 +22,7 @@ export default function Article(props) {
         .then(data => setPostedBy(data.name))
     }, [])
 
-    console.log(props.content)
+    // console.log(props.content)
     
     return (
         <div className="article">

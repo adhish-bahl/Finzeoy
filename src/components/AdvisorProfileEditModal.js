@@ -19,7 +19,7 @@ export default function AdvisorProfileEditModal({nameP, ageP, professionP, descP
     );
 
     async function saveAdvisorData() {
-        console.log(advisorDetails)
+        // console.log(advisorDetails)
         await fetch("https://finzeoy.000webhostapp.com/UpdateProfile.php?userid="+sessionStorage.getItem("userId")+"&age="+advisorDetails.age+"&profession="+advisorDetails.profession+"&desc="+advisorDetails.desc+"&linkedin="+advisorDetails.linkedin+"&twitter="+advisorDetails.twitter+"&facebook="+advisorDetails.facebook+"&website="+advisorDetails.website+"")
         .then(res => res.json())
         .then(data => data.status === "success" ? alert("Profile edited successfully") : alert("Profile editing failed"))
