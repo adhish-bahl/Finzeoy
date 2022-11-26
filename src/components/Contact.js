@@ -3,21 +3,22 @@ import teamImg from "../Images/bg-illustration1.png"
 import "../styles/ContactUs.css";
 import linkedin from "../Images/linkedinIcon.png"
 import github from "../Images/githubIcon.png"
+import groupImg from "../Images/groupImgMain.jpg"
 
 export default function Contact() {
     return (
         <div className='teamContainer'>
             <div className="upper">
-                <img className='teamPicture' src={teamImg} alt="" />
+                <img className='teamPicture' src={groupImg} alt="" />
             </div>
             <div className="lower">
                 <h1>About Us</h1>
                 <div className="information">
                     <div className="left">
                         <div className="name">Adhish Bahl</div>
-                        <div className="intro">Heya! I am a self taught web developer and I am more interested in Front-end development. My experties are HTML V5, CSS V3, JavaScript along with ReactJS for front end development. Other then web development, Video Editing and Photography also interests me. Also I am coffee addict :)
+                        <div className="intro">Hey! I am a self taught web developer and I am more interested in Front-end development. My experties are HTML V5, CSS V3, JavaScript along with ReactJS for front end development. Other then web development, Video Editing and Photography also interests me. Also I am coffee addict :)
                             <div className="socialMediaCreater">
-                                <a href="https://www.linkedin.com/in/adhish-bahl-4113591b7/" target="_blank">
+                                <a href="https://www.linkedin.com/in/adhish-bahl-4113591b7/" target="_blank" >
                                     <img src={linkedin} alt="linkedIn" style={{ width: "30px" }} />
                                 </a>
                                 <a href="https://github.com/adhish-bahl" target="_blank">
@@ -29,12 +30,12 @@ export default function Contact() {
                     <div className="center">
                         <div className="name">Kavish Kumar S.</div>
                         <div className="intro">
-                            Hi, I am Gayathri. I’d describe myself as a person largely driven by curiosity. Being a student at Christ (Deemed to be University) has provided me the opportunity to come up with this website and provided me an outlet where I along with my team have given direction to our curiosity and shaped our ideas to life. I’ve always envisioned on creating a platform that brings together like minded people and T-Une is just that!
+                            Hi, I am Kavish Kumar S. I am currently pursuing BCA from Chist (Deemed to be University). I am learning full-stack development using MERN stack. I have a keen interest in developing web based applications.
                             <div className="socialMediaCreater">
-                                <a href="https://www.linkedin.com/in/adhish-bahl-4113591b7/" target="_blank">
+                                <a href="https://www.linkedin.com/in/kavish-bamboli-8944a021b/" target="_blank">
                                     <img src={linkedin} alt="linkedIn" style={{ width: "30px" }} />
                                 </a>
-                                <a href="https://github.com/adhish-bahl" target="_blank">
+                                <a href="https://github.com/KavishBamboli" target="_blank">
                                     <img src={github} alt="linkedIn" style={{ width: "30px" }} />
                                 </a>
                             </div>
@@ -42,26 +43,26 @@ export default function Contact() {
                     </div>
                     <div className="right">
                         <div className="name">Priyanshi S. Mundhra</div>
-                        <div className="intro">I am a student pursuing BCA in Christ University. My interest lies in back-end development and AI. my expertise are in MySQL, HTML5 and C. Among my other interest is Music and art.</div>
+                        <div className="intro">Hi, I am Priyanshi Mundhra. I am currently interested in anything and evrything related to data. I like only 3 things: Data, Data and more Data.</div>
                         <div className="socialMediaCreater">
-                            <a href="https://www.linkedin.com/in/adhish-bahl-4113591b7/" target="_blank">
+                            <a href="https://www.linkedin.com/in/priyanshi-mundhra-592590200/" target="_blank">
                                 <img src={linkedin} alt="linkedIn" style={{ width: "30px" }} />
                             </a>
-                            <a href="https://github.com/adhish-bahl" target="_blank">
+                            {/* <a href="https://github.com/adhish-bahl" target="_blank">
                                 <img src={github} alt="linkedIn" style={{ width: "30px" }} />
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                     <div className="right">
-                        <div className="name">Riddhish Savalkar</div>
-                        <div className="intro">I am a student pursuing BCA in Christ University. My interest lies in back-end development and AI. my expertise are in MySQL, HTML5 and C. Among my other interest is Music and art.</div>
+                        <div className="name">Riddhisha D. Sevalkar</div>
+                        <div className="intro">I am Ria, a BCA student at Christ University. A keen learner with an inquisitive mind who likes to learn and explore new skills and a team player. One of my strengths is my ability to manage deadlines and work on time. My interests lie in reading, sketching, writing and photography</div>
                         <div className="socialMediaCreater">
-                            <a href="https://www.linkedin.com/in/adhish-bahl-4113591b7/" target="_blank">
+                            {/* <a href="https://www.linkedin.com/in/adhish-bahl-4113591b7/" target="_blank">
                                 <img src={linkedin} alt="linkedIn" style={{ width: "30px" }} />
-                            </a>
-                            <a href="https://github.com/adhish-bahl" target="_blank">
+                            </a> */}
+                            {/* <a href="https://github.com/adhish-bahl" target="_blank">
                                 <img src={github} alt="linkedIn" style={{ width: "30px" }} />
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>
